@@ -1,0 +1,33 @@
+import React from "react";
+import { Settings } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+
+const Navbar = ({ onOpenSettings }) => {
+	return (
+		<header className="sticky top-0 z-50 w-full border-b border-border bg-bg/80 backdrop-blur-md">
+			<div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+				{/* Left side: Logo */}
+				<div className="flex items-center gap-2">
+					<img src="/logo.svg" alt="IITM Mess Logo" className="h-8 w-8" />
+					<span className="text-xl font-bold text-fg">IITM Mess Menu</span>
+				</div>
+
+				{/* Right side: Icons */}
+				<div className="flex items-center gap-2">
+					<ThemeToggle />
+					<button
+						onClick={onOpenSettings}
+						className="p-2 rounded-full text-muted hover:text-fg hover:bg-input-bg transition-colors"
+						aria-label="Open settings"
+						data-tooltip-id="navbar-tooltip"
+						data-tooltip-content="Settings"
+					>
+						<Settings size={20} />
+					</button>
+				</div>
+			</div>
+		</header>
+	);
+};
+
+export default Navbar;
