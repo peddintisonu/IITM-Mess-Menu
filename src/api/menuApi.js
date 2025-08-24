@@ -1,5 +1,3 @@
-// src/api/menuApi.js
-
 import data from "../database/messMenu.json";
 import ApiResponse from "./ApiResponse";
 import {
@@ -8,39 +6,58 @@ import {
 	getCurrentDay,
 } from "../utils/weekManager";
 
-// A direct reference to the core data for cleaner access
-const menuData = data.Messmenu.Categories;
+/**
+ * A central helper function to get the data for the currently active menu version.
+ * It encapsulates the logic of reading the versioned JSON structure, making other
+ * functions cleaner and ensuring consistency.
+ * @returns {object | null} The `Categories` object for the current version, or null on failure.
+ */
+const getCurrentVersionData = () => {
+	const currentKey = data.currentVersionKey;
+	if (currentKey && data.versions[currentKey]) {
+		return data.versions[currentKey].Messmenu.Categories;
+	}
+	// This indicates a configuration error in messMenu.json
+	return null;
+};
 
 /**
- * Retrieves the menu for a specific day, week, and category.
- * This is the core data-fetching function.
- * @param {string} category - The menu category (e.g., "South_Veg").
- * @param {string} week - The menu week letter (e.g., "A", "B", "C", "D").
- * @param {string} day - The day of the week (e.g., "Monday").
- * @returns {Promise<ApiResponse>} A promise that resolves to an ApiResponse object.
+ * Retrieves the menu for a specific day, week, and category from the CURRENT active version.
+ * @param {string} category The menu category (e.g., "South_Veg").
+ * @param {string} week The menu week letter (e.g., "A", "B", "C", "D").
+ * @param {string} day The day of the week (e.g., "Monday").
+ * @returns {Promise<ApiResponse>} A promise resolving to an ApiResponse object.
  */
 export const getDayMenu = async (category, week, day) => {
 	try {
+		const menuData = getCurrentVersionData();
+		if (!menuData) {
+			throw new Error(
+				"Could not load the current menu version. Please check messMenu.json configuration."
+			);
+		}
+
 		const categoryData = menuData[category];
 		if (!categoryData) {
-			throw new Error(`Category "${category}" not found.`);
+			throw new Error(
+				`Category "${category}" not found in the current menu version.`
+			);
 		}
 
 		const weekData = categoryData[week];
 		if (!weekData) {
 			throw new Error(
-				`Menu for week "${week}" in category "${category}" not found.`
+				`Menu for week "${week}" not found in category "${category}".`
 			);
 		}
 
 		const dayMenu = weekData.schedule[day];
 		if (!dayMenu) {
-			throw new Error(`Menu for "${day}" not found in schedule.`);
+			throw new Error(`Menu for "${day}" not found in the schedule.`);
 		}
 
 		const commonItems = categoryData.common_items || {};
 
-		// Structure the final menu data
 		const finalMenu = {
 			Breakfast: dayMenu.Breakfast || [],
 			Lunch: dayMenu.Lunch || [],
@@ -49,35 +66,68 @@ export const getDayMenu = async (category, week, day) => {
 			common: {
 				Breakfast: commonItems.Breakfast || "",
 				Lunch: commonItems.Lunch || "",
-				Dinner: commonItems.Dinner || "",
 				Snacks: commonItems.Snacks || "",
+				Dinner: commonItems.Dinner || "",
 			},
 		};
 
 		return new ApiResponse(200, "Menu retrieved successfully", finalMenu);
 	} catch (error) {
-		console.error("Error in getDayMenu:", error.message);
 		return new ApiResponse(404, error.message, null);
 	}
 };
 
 /**
- * Retrieves the entire menu schedule for a specific week and category.
- * @param {string} category - The menu category (e.g., "South_Veg").
- * @param {string} week - The menu week letter (e.g., "A", "B", "C", "D").
- * @returns {Promise<ApiResponse>} A promise that resolves to an ApiResponse object.
+ * A convenience function to get the menu for the current day.
+ * It automatically determines the category, week, and day, and fetches the menu
+ * from the currently active version.
+ * @returns {Promise<ApiResponse>} A promise resolving to the menu for today.
+ */
+export const getTodaysMenu = async () => {
+	try {
+		const category = getUserCategory();
+		const week = getCurrentWeek();
+		const day = getCurrentDay();
+
+		if (!category || !week || !day) {
+			throw new Error(
+				"User context (category, week, or day) is not fully set up."
+			);
+		}
+
+		// Reuses the core getDayMenu function, which is now version-aware.
+		return await getDayMenu(category, week, day);
+	} catch (error) {
+		return new ApiResponse(500, error.message, null);
+	}
+};
+
+/**
+ * Retrieves the entire menu schedule for a specific week and category from the CURRENT version.
+ * @param {string} category The menu category (e.g., "South_Veg").
+ * @param {string} week The menu week letter (e.g., "A", "B", "C", "D").
+ * @returns {Promise<ApiResponse>} A promise resolving to an ApiResponse object.
  */
 export const getWeekMenu = async (category, week) => {
 	try {
+		const menuData = getCurrentVersionData();
+		if (!menuData) {
+			throw new Error(
+				"Could not load the current menu version. Please check messMenu.json configuration."
+			);
+		}
+
 		const categoryData = menuData[category];
 		if (!categoryData) {
-			throw new Error(`Category "${category}" not found.`);
+			throw new Error(
+				`Category "${category}" not found in the current menu version.`
+			);
 		}
 
 		const weekData = categoryData[week];
 		if (!weekData) {
 			throw new Error(
-				`Menu for week "${week}" in category "${category}" not found.`
+				`Menu for week "${week}" not found in category "${category}".`
 			);
 		}
 
@@ -96,42 +146,6 @@ export const getWeekMenu = async (category, week) => {
 			fullWeekData
 		);
 	} catch (error) {
-		console.error("Error in getWeekMenu:", error.message);
 		return new ApiResponse(404, error.message, null);
-	}
-};
-
-/**
- * A convenience function to get the menu for the current day.
- * It automatically determines the category from localStorage and the week cycle.
- * @returns {Promise<ApiResponse>} A promise that resolves to the menu for today.
- */
-export const getTodaysMenu = async () => {
-	try {
-		// Automatically determine the context using the weekManager
-		const category = getUserCategory();
-		const week = getCurrentWeek();
-		const day = getCurrentDay();
-
-		console.log(
-			`Fetching today's menu for: Category=${category}, Week=${week}, Day=${day}`
-		);
-
-		// Reuse the core getDayMenu function
-		const response = await getDayMenu(category, week, day);
-
-		// Enhance the message with today's context if successful
-		if (response.success) {
-			response.message = `Today's menu for ${category} (Week ${week})`;
-		}
-
-		return response;
-	} catch (error) {
-		console.error("Error in getTodaysMenu:", error.message);
-		return new ApiResponse(
-			500,
-			"Failed to determine context for today's menu.",
-			null
-		);
 	}
 };
