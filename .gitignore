@@ -4,6 +4,7 @@
 # Build files
 /dist
 /dist-ssr
+/dev-dist # <-- ADD THIS LINE
 
 # Log files
 logs
