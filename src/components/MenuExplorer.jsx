@@ -6,9 +6,7 @@ import {
 	getCurrentDay,
 	getCurrentWeek,
 	getUserCategory,
-	setUserCategory,
 } from "../utils/weekManager";
-// We now need DAY_SHORTCUTS for the pellets
 import { MENUS, WEEKS, DAY_SHORTCUTS } from "../api/constants";
 
 // Component imports
@@ -16,22 +14,24 @@ import MealCard from "./MealCard";
 import SelectDropdown from "./SelectDropdown";
 
 const MenuExplorer = () => {
-	// State for menu data, loading, and errors
 	const [menu, setMenu] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// State for user selections, initialized with current context
-	const [selectedCategory, setSelectedCategory] = useState(getUserCategory());
-	const [selectedWeek, setSelectedWeek] = useState(getCurrentWeek());
-	const [selectedDay, setSelectedDay] = useState(getCurrentDay());
+	// This state is now purely LOCAL to the explorer.
+	// It initializes with your saved preferences but doesn't change them.
+	const [selectedCategory, setSelectedCategory] = useState(
+		() => getUserCategory() || "South_Non_Veg"
+	);
+	const [selectedWeek, setSelectedWeek] = useState(
+		() => getCurrentWeek() || "A"
+	);
+	const [selectedDay, setSelectedDay] = useState(getCurrentDay);
 
-	// Effect to fetch the menu whenever any selection changes
 	useEffect(() => {
 		const fetchMenu = async () => {
 			setLoading(true);
 			setError(null);
-
 			const response = await getDayMenu(
 				selectedCategory,
 				selectedWeek,
@@ -47,15 +47,10 @@ const MenuExplorer = () => {
 			setLoading(false);
 		};
 
-		fetchMenu();
+		if (selectedCategory && selectedWeek && selectedDay) {
+			fetchMenu();
+		}
 	}, [selectedCategory, selectedWeek, selectedDay]);
-
-	// Handler to update category and persist it
-	const handleCategoryChange = (e) => {
-		const newCategory = e.target.value;
-		setUserCategory(newCategory); // Persist choice
-		setSelectedCategory(newCategory);
-	};
 
 	const renderContent = () => {
 		if (loading) {
@@ -73,9 +68,9 @@ const MenuExplorer = () => {
 				</div>
 			);
 		}
+
 		if (menu) {
 			return (
-				// Use the same updated container here
 				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
 					<div className="flex-shrink-0 w-[80%] sm:w-auto">
 						<MealCard
@@ -121,17 +116,16 @@ const MenuExplorer = () => {
 			<div className="text-center mb-8">
 				<h2>Explore Full Menu</h2>
 				<p className="text-muted text-lg mt-1">
-					Select a mess, week, and day to view the complete menu.
+					Select a mess, week, and day to view any menu.
 				</p>
 			</div>
 
-			{/* Dropdowns for Mess and Week */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-2xl mx-auto">
 				<SelectDropdown
 					label="Select Mess"
 					id="mess-explorer"
 					value={selectedCategory}
-					onChange={handleCategoryChange}
+					onChange={(e) => setSelectedCategory(e.target.value)}
 					options={MENUS}
 				/>
 				<SelectDropdown
@@ -143,7 +137,6 @@ const MenuExplorer = () => {
 				/>
 			</div>
 
-			{/* Day Selection Pellets */}
 			<div className="flex items-center justify-center gap-2 flex-wrap mb-8">
 				{DAY_SHORTCUTS.map((day) => (
 					<button
