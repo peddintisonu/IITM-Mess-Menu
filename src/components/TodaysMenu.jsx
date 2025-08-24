@@ -115,12 +115,12 @@ const TodaysMenu = () => {
 				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">
 					<div>
 						<span className="font-medium">Your Mess:</span>
-						<span className="ml-2 badge badge-blue">{menuLabel}</span>{" "}
+						<span className="ml-2 badge badge-primary">{menuLabel}</span>{" "}
 						{/* <-- Use the correct label */}
 					</div>
 					<div className="mt-1 sm:mt-0">
 						<span className="font-medium">Current Week:</span>
-						<span className="ml-2 badge badge-purple">
+						<span className="ml-2 badge badge-primary">
 							Week {currentWeek || "Not Set"}
 						</span>
 					</div>
