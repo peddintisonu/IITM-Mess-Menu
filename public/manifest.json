@@ -1,0 +1,21 @@
+{
+	"name": "IITM Mess Menu",
+	"short_name": "IITM Mess",
+	"description": "A user-friendly web application to view and explore the daily mess menus at IIT Madras.",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"start_url": ".",
+	"display": "standalone",
+	"theme_color": "#111827",
+	"background_color": "#111827"
+}
