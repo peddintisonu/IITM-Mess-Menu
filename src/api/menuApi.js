@@ -5,6 +5,7 @@ import {
 	getUserCategory,
 	getCurrentDay,
 } from "../utils/weekManager";
+import { MENUS } from "./constants";
 
 /**
  * A central helper function to get the data for the currently active menu version.
@@ -19,6 +20,27 @@ const getCurrentVersionData = () => {
 	}
 	// This indicates a configuration error in messMenu.json
 	return null;
+};
+
+/**
+ * Gets a list of mess categories that are available in the CURRENT active menu version.
+ * This is used to dynamically populate the dropdown selectors in the UI.
+ * @returns {{value: string, label: string}[]} An array of available menu options.
+ */
+export const getAvailableCategoriesForCurrentVersion = () => {
+	const menuData = getCurrentVersionData();
+	if (!menuData) {
+		return []; // Return empty if the menu data is not configured correctly
+	}
+
+	const availableCategoryKeys = Object.keys(menuData);
+
+	// Filter the master list from constants.js to only include available categories
+	const availableMenus = MENUS.filter(menu =>
+		availableCategoryKeys.includes(menu.value)
+	);
+
+	return availableMenus;
 };
 
 /**

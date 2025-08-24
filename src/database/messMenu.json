@@ -4,6 +4,1438 @@
 		"2025-07-28": {
 			"Messmenu": {
 				"Categories": {
+					"Unified_Veg": {
+						"common_items": {
+							"Breakfast": "Brown Bread, Butter, Jam, Tea, Coffee and Milk, Sugar",
+							"Lunch": "Plain Rice, Phulka, Curd, Salt, Sugar, Papad/ Fryums",
+							"Snacks": "Tea, Coffee & Milk",
+							"Dinner": "Plain Rice, Sugar, Salt, Papad/ Fryums"
+						},
+						"A": {
+							"source": "Week A.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Boiled Chawli white",
+										"Pongal",
+										"Groundnut chutney",
+										"Mix veg Sambar"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Aloo beans (dry)",
+										"Bhindi masala (gravy)",
+										"Radish Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Masala corn & Lemon"],
+									"Dinner": [
+										"Corn peas pulao",
+										"Pudina Chapathi",
+										"Mealmaker curry",
+										"Mix veg Sambar",
+										"Sabudana Kheer",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Omelette",
+										"Green Gram Sprouts",
+										"Vegetable rava upma",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Cabbage peas sabzi (dry)",
+										"Mix Veg Curry (gravy)",
+										"Tomato dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Roasted phool makhana"],
+									"Dinner": [
+										"Kal Dosa",
+										"Coconut chutney",
+										"Mix veg Sambar",
+										"Fruit custard",
+										"Buttermilk"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Full boiled egg",
+										"Boiled Peanut",
+										"Pav bhaji",
+										"Lime and onion"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Tendli ki sabzi (dry)",
+										"Meal Maker peas (gravy)",
+										"Bhindi  Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["Rusk"],
+									"Dinner": [
+										"Methi Chapathi",
+										"Jeera Rice",
+										"Palak paneer",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled Black Chana",
+										"Maggi",
+										"Tomato sauce"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Brinjal ki sabzi (dry)",
+										"Mor kuzhambu (gravy)",
+										"Palak dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal"
+									],
+									"Snacks": ["Bhel puri"],
+									"Dinner": [
+										"Vegetable Pulao",
+										"Sherva",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg",
+										"Boiled white chana",
+										"Masala Dosa",
+										"Mint chutney",
+										"Mix veg Sambar"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Bitter Gourd fry(dry)",
+										"Gutti Vankaya Curry (gravy)",
+										"Drumstick Sambar",
+										"Gongura Thoviyal"
+									],
+									"Snacks": ["Butter salted Popcorn"],
+									"Dinner": [
+										"Chole Bhature",
+										"Drumstick sambar",
+										"Tomato rasam",
+										"Papaya",
+										"Ragi drink"
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled green gram",
+										"Poha",
+										"Tamarind chutney",
+										"Lime and onion"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Drumstick curry (dry)",
+										"Cauliflower peas curry(gravy)",
+										"Toor dal ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Bread pakora"],
+									"Dinner": [
+										"Lemon rice",
+										"Sambar Rice",
+										"Curd Rice",
+										"Boost Milk",
+										"Banana fruit",
+										"Potato chips"
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Full Boiled Egg",
+										"Boiled white peas",
+										"Rava Idly and Vada (2 no)",
+										"Groundnut chutney",
+										"Brinjal Sambar"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Bagara rice & Sherva",
+										"Kadai Mushroom curry",
+										"Tomato Rasam",
+										"Boondi Raita ",
+										"Gulab Jamun - 2 pieces"
+									],
+									"Snacks": ["Chana chaat"],
+									"Dinner": [
+										"Kerala Paratha",
+										"Veg Kurma",
+										"Drumstick Sambar",
+										"Pineapple",
+										"Buttermilk"
+									]
+								}
+							}
+						},
+						"B": {
+							"source": "Week B.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Boiled peanut",
+										"Poori",
+										"Aloo masala"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Aloo capsicum (dry)",
+										"Methi matar malai (gravy)",
+										"Radish Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Biscuits"],
+									"Dinner": [
+										"Veg pulao",
+										"Kofta curry",
+										"Mix veg Sambar",
+										"Rava kesari",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Full boiled Egg",
+										"Boiled Black Chana",
+										"Semiya upma",
+										"Groundnut chutney"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Bhindi fry (dry)",
+										"Guthi vankaya (gravy)",
+										"Tomato dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Veg cutlet - 2 no"],
+									"Dinner": [
+										"Idli - Podi",
+										"Ghee",
+										"Mix veg Sambar",
+										"Badam milk",
+										"Papaya"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled peas",
+										"Kachori",
+										"Aloo sabji",
+										"Imli chutney"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Aloo jeera (dry)",
+										"Kara kuzhambu (gravy)",
+										"Bhindi  Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["Masala boiled chana"],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Kadai paneer",
+										"Garlic Rasam",
+										"Carrot halwa",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled white chana",
+										"Onion Uttapam",
+										"Sambar",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Paruppu podi",
+										"Ghee",
+										"Lauki ki sabzi (dry)",
+										"Gobi aloo masala(gravy)",
+										"Palak dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal"
+									],
+									"Snacks": ["Veg sandwich"],
+									"Dinner": [
+										"Ghee Rice",
+										"Soya matar curry",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg ",
+										"Boiled peanut",
+										"Macaroni ",
+										"Cutlet",
+										"Tomato Sauce"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Brinjal (dry)",
+										"Rajma masala (gravy)",
+										"Drumstick Sambar",
+										"Gongura Thoviyal"
+									],
+									"Snacks": ["Sev puri"],
+									"Dinner": [
+										"Gobi paratha",
+										"Drumstick sambar",
+										"Tomato Raasam ",
+										"Ragi drink"
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled white chana",
+										"Pesarattu-Upma",
+										"Sambar",
+										"Tomato chutney"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Kadai bhindi (dry)",
+										"Ridge gourd tomato(gravy)",
+										"Toor dal ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Samosa - 2 no"],
+									"Dinner": [
+										"Tamarind  rice",
+										"Sambar Rice",
+										"Curd Rice",
+										"Horlicks",
+										"Banana fruit",
+										"Potato chips"
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Full boiled",
+										"Green Gram Sprouts",
+										"Rava Dosa",
+										"Sambar",
+										"Groundnut chutney"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Paneer Dum biryani",
+										"Salan",
+										"Tomato Rasam",
+										"Mix veg Raita",
+										"Custard bread"
+									],
+									"Snacks": ["Papdi chaat"],
+									"Dinner": [
+										"Plain chapathi ",
+										"Gobi Peas Masala",
+										"Drumstick Sambar",
+										"Buttermilk"
+									]
+								}
+							}
+						},
+						"C": {
+							"source": "Week C.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Boiled Chawli white ",
+										"Kara Bath",
+										"Groundnut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Beans poriyal  (dry)",
+										"Palak paneer (gravy)",
+										"Radish Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Sambar vada"],
+									"Dinner": [
+										"Methi Chapathi",
+										"Mix veg kadai",
+										"Toor dal",
+										"Rice kheer",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Omelette",
+										"Green Gram Sprouts",
+										"Idli",
+										"Ghee & Podi ",
+										"Sambar",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Potato spinach sabzi(dry)",
+										"Tomato drumstick curry (gravy)",
+										"Tomato dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Punugulu with kara chutney"],
+									"Dinner": [
+										"Set Dosa",
+										"Tomato chutney",
+										"Mix veg Sambar",
+										"Fruit custard",
+										"Buttermilk"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Fried egg",
+										"Boiled Peanut",
+										"Wheat Dosa",
+										"Tomato chutney",
+										"Sambar"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Cabbage poriyal(dry)",
+										"Bhindi puli Kuzhambu(gravy)",
+										"Radish  Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["Rusk"],
+									"Dinner": [
+										"Phulka",
+										"Jeera rice",
+										"Paneer butter Masala",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled Black Chana",
+										"Wheat Upma",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Carrot methi sabzi (dry)",
+										"Soya chunks kurma(gravy)",
+										"Palak dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal",
+										"Lassi"
+									],
+									"Snacks": ["Bhel puri"],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Baby potato peas curry",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg",
+										"Boiled white chana",
+										"Puffed rice upma",
+										"Mint chutney",
+										"Mix veg Sambar"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Tindly fry(dry)",
+										"Gutti Vankaya Curry (gravy)",
+										"Drumstick Sambar",
+										"Gongura Thoviyal"
+									],
+									"Snacks": ["Banana bajji"],
+									"Dinner": [
+										"Plain Chapathi",
+										"Dahi bhindi",
+										"Drumstick Sambar",
+										"Papaya",
+										"Ragi drink"
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled green gram",
+										"Moong dal chilla",
+										"Tomato sauce"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Aloo baingan(dry)",
+										"Pumpkin curry(gravy)",
+										"Toor dal ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Makhana chaat"],
+									"Dinner": [
+										"Tomato Rice",
+										"Masala khichdi",
+										"Curd Rice",
+										"Boost Milk",
+										"Banana fruit",
+										"Potato chips"
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Fried Egg",
+										"Boiled white peas",
+										"Luchi(poori) Aloo dum",
+										"Lime and onion"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Bagara rice & Sherva",
+										"Baby corn Masala ",
+										"Tomato Rasam",
+										"Onion TomatoRaita",
+										"Kala  Jamun - 2 pieces"
+									],
+									"Snacks": ["Crispy soya chunks"],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Mealmaker curry ",
+										"Drumstick Sambar",
+										"Pineapple",
+										"Buttermilk"
+									]
+								}
+							}
+						},
+						"D": {
+							"source": "Week D.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Chana Sundal",
+										"Tomato upma ",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Raw banana fry (dry)",
+										"Chana masala (gravy)",
+										"Drumstick Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Fruit cake"],
+									"Dinner": [
+										"Methi chapathi",
+										"Aloo Rajma curry",
+										"Dal Makhani",
+										"Gajar ka halwa ",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled Peanut",
+										"Puttu ",
+										"Kadala curry"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Carrot beans poriyal(dry)",
+										"Gobi Capsicum masala (gravy)",
+										"Gongura dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Veg roll"],
+									"Dinner": [
+										"Neer Dosa",
+										"Coconut chutney",
+										"Veg kurma",
+										"Mix veg Sambar",
+										"Pineapple ",
+										"Buttermilk"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Fried egg",
+										"Boiled Black Chana",
+										"Ragi Dosa",
+										"Tomato chutney ",
+										"Sambar"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Brinjal chana masala(dry)",
+										"Kadhi pakora (gravy)",
+										"Radish Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["French Fries with tomato sauce"],
+									"Dinner": [
+										"Pudina chapathi",
+										"Jeera Rice",
+										"Tawa paneer ",
+										"Tomato Rasam",
+										"Semiya payasam",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled white peas",
+										"Aloo Paratha",
+										"Mint chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Lauki ki sabzi (dry)",
+										"Puli Kuzhambu (gravy)",
+										"Tomato dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal"
+									],
+									"Snacks": ["Dahi vada"],
+									"Dinner": [
+										"Plain chapathi",
+										"Baingan Bharta ",
+										"Mix Veg Sambar",
+										"Banana",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg",
+										"Boiled Rajma",
+										"Rava Idli ",
+										"Groundnut chutney ",
+										"Sambar"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Aloo beans (dry)",
+										"Ridge gourd tomato masala (gravy) ",
+										"Bhindi  Sambar",
+										"Gongura Thoviyal "
+									],
+									"Snacks": ["Onion pakoda"],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Mixed veg palak gravy",
+										"Radish sambar",
+										"Papaya",
+										"Ragi drink "
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled rajma",
+										"Idiyappam",
+										"Veg Kurma"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Cabbage peas (dry)",
+										"Mor kuzhambu (gravy)",
+										"Dal makhani ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Dahi chaat"],
+									"Dinner": [
+										"Vangi bath ",
+										"Bisibelabath ",
+										"Curd Rice",
+										"Boost Milk",
+										"Banana fruit",
+										"Potato chips"
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Fried Egg",
+										"Boiled white chana",
+										"Aloo Poha ",
+										"Tamarind chutney"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Veg dum biryani",
+										"Salan ",
+										"Tomato Rasam",
+										"Cucumber Raita",
+										"Bread halwa"
+									],
+									"Snacks": ["Biscuits"],
+									"Dinner": [
+										"Methi Chapathi",
+										"Aloo Soya curry",
+										"Drumstick Sambar",
+										"Pineapple",
+										"Buttermilk"
+									]
+								}
+							}
+						}
+					},
+					"Unified_Non_Veg": {
+						"common_items": {
+							"Breakfast": "Brown Bread, Butter, Jam, Tea, Coffee and Milk, Sugar",
+							"Lunch": "Plain Rice, Phulka , Curd, Salt, Sugar, Papad/ Fryums",
+							"Snacks": "Tea, Coffee & Milk",
+							"Dinner": "Plain Rice, Sugar, Salt, Papad/ Fryums"
+						},
+						"A": {
+							"source": "Week A.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Boiled Chawli white",
+										"Pongal",
+										"Groundnut chutney",
+										"Mix veg Sambar"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Aloo beans (dry)",
+										"Bhindi masala (gravy)",
+										"Radish Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Masala corn & Lemon"],
+									"Dinner": [
+										"Corn peas pulao",
+										"Pudina chapathi",
+										"Roasted egg masala",
+										"Mix veg Sambar",
+										"Sabudana Kheer",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Omelette",
+										"Green Gram Sprouts",
+										"Vegetable rava upma",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Cabbage peas sabzi (dry)",
+										"Mix Veg Curry (gravy)",
+										"Tomato dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Roasted phool makhana"],
+									"Dinner": [
+										"Kal Dosa",
+										"Coconut chutney",
+										"Mix veg Sambar",
+										"Fruit custard",
+										"Buttermilk"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Full boiled egg",
+										"Boiled Peanut",
+										"Pav bhaji",
+										"Lime and onion"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Tendli ki sabzi (dry)",
+										"Meal Maker peas (gravy)",
+										"Bhindi  Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["Rusk"],
+									"Dinner": [
+										"Methi chapathi",
+										"Jeera Rice",
+										"Kadai Chicken Curry",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled Black Chana",
+										"Maggi",
+										"Tomato sauce"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Brinjal ki sabzi (dry)",
+										"Mor kuzhambu (gravy)",
+										"Palak dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal"
+									],
+									"Snacks": ["Bhel puri"],
+									"Dinner": [
+										"Boiled Egg pulao",
+										"Sherva",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg",
+										"Boiled white chana",
+										"Masala Dosa",
+										"Mint chutney",
+										"Mix veg Sambar"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Bitter Gourd fry(dry)",
+										"Gutti Vankaya Curry (gravy)",
+										"Drumstick Sambar",
+										"Gongura Thoviyal"
+									],
+									"Snacks": ["Butter salted Popcorn"],
+									"Dinner": [
+										"Chole Bhature ",
+										"Drumstick sambar",
+										"Tomato Raasam ",
+										"Papaya",
+										"Ragi drink"
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled green gram",
+										"Poha",
+										"Tamarind chutney",
+										"Lime and onion"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Beetroot poriyal (dry)",
+										"Cauliflower peas curry(gravy)",
+										"Toor dal ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Bread pakora"],
+									"Dinner": [
+										"Lemon rice",
+										"Sambar Rice",
+										"Curd Rice",
+										"Boost Milk",
+										"Banana fruit",
+										"Potato chips"
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Full boiled Egg",
+										"Boiled white peas",
+										"Rava Idly and Vada (2 no)",
+										"Groundnut chutney",
+										"Brinjal Sambar"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Bagara rice & Sherva",
+										"Chicken masala",
+										"Tomato Rasam",
+										"Boondi Raita ",
+										"Gulab Jamun - 2 pieces"
+									],
+									"Snacks": ["Chana chaat"],
+									"Dinner": [
+										"Kerala Paratha",
+										"Veg Kurma",
+										"Drumstick Sambar",
+										"Pineapple",
+										"Buttermilk"
+									]
+								}
+							}
+						},
+						"B": {
+							"source": "Week B.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Boiled peanut",
+										"Poori",
+										"Aloo masala"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Aloo capsicum (dry)",
+										"Methi matar malai (gravy)",
+										"Radish Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Biscuits"],
+									"Dinner": [
+										"Veg pulao",
+										"Chettinad egg curry",
+										"Mix veg Sambar",
+										"Rava kesari",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Full boiled Egg",
+										"Boiled Black Chana",
+										"Semiya upma",
+										"Groundnut chutney"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Bhindi fry (dry)",
+										"Guthi vankaya (gravy)",
+										"Tomato dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Veg cutlet - 2 no"],
+									"Dinner": [
+										"Idli - Podi ",
+										"Ghee",
+										"Mix veg Sambar",
+										"Badam milk",
+										"Papaya"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled peas",
+										"Kachori",
+										"Aloo sabji",
+										"Imli chutney"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Aloo jeera (dry)",
+										"Kara kuzhambu (gravy)",
+										"Bhindi  Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["Masala boiled Chana "],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Andhra Chicken  ",
+										"Garlic Rasam",
+										"Carrot halwa",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled white chana",
+										"Onion Uttapam",
+										"Sambar",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Paruppu podi",
+										"Ghee",
+										"Lauki ki sabzi (dry)",
+										"Gobi aloo masala(gravy)",
+										"Palak dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal"
+									],
+									"Snacks": ["Veg sandwich"],
+									"Dinner": [
+										"Ghee Rice",
+										"Roasted egg masala",
+										"Mix Veg Sambar",
+										"Banana",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg ",
+										"Boiled peanut",
+										"Macaroni ",
+										"Cutlet",
+										"Tomato Sauce"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Brinjal (dry)",
+										"Rajma masala (gravy)",
+										"Drumstick Sambar",
+										"Gongura Thoviyal"
+									],
+									"Snacks": ["Sev puri"],
+									"Dinner": [
+										"Gobi paratha",
+										"Drumstick sambar",
+										"Tomato Raasam ",
+										"Ragi drink"
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled white chana",
+										"Pesarattu-Upma",
+										"Sambar",
+										"Tomato chutney"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Kadai bhindi (dry)",
+										"Ridge gourd  tomato(gravy)",
+										"Toor dal",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Samosa - 2 no"],
+									"Dinner": [
+										"Tamarind  rice",
+										"Sambar Rice",
+										"Curd Rice",
+										"Horlicks",
+										"Banana fruit",
+										"Potato chips"
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Full boiled",
+										"Green Gram Sprouts",
+										"Rava Dosa",
+										"Sambar",
+										"Groundnut chutney"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Hyderabadi Chicken Dum biryani",
+										"Salan",
+										"Tomato Rasam",
+										"Mix veg Raita ",
+										"Custard bread"
+									],
+									"Snacks": ["Papdi chaat"],
+									"Dinner": [
+										"Plain chapathi  ",
+										"Gobi Peas Masala",
+										"Drumstick Sambar",
+										"Buttermilk"
+									]
+								}
+							}
+						},
+						"C": {
+							"source": "Week C.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Boiled Chawli white ",
+										"Kara Bath",
+										"Groundnut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Beans poriyal  (dry)",
+										"Palak paneer (gravy)",
+										"Radish Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Sambar vada"],
+									"Dinner": [
+										"Methi chapathi",
+										"Masala egg bhurji",
+										"Toor dal",
+										"Rice kheer",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Omelette",
+										"Green Gram Sprouts",
+										"Idli",
+										"Ghee & Podi  ",
+										"Sambar",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Potato spinach sabzi(dry)",
+										"Tomato drumstick curry (gravy)",
+										"Tomato dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Punugulu with kara chutney"],
+									"Dinner": [
+										"Set Dosa",
+										"Tomato chutney",
+										"Mix veg Sambar",
+										"Mix fruit",
+										"Buttermilk"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Fried egg",
+										"Boiled Peanut",
+										"Wheat Dosa",
+										"Tomato chutney",
+										"Sambar"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Cabbage poriyal(dry)",
+										"Bhindi puli Kuzhambu(gravy)",
+										"Radish Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["Rusk"],
+									"Dinner": [
+										"Phulka",
+										"Jeera Rice",
+										"Pepper Chicken",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled Black Chana",
+										"Wheat Upma",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Carrot methi sabzi (dry)",
+										"Soya chunks kurma(gravy)",
+										"Palak dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal",
+										"Lassi"
+									],
+									"Snacks": ["Bhel puri"],
+									"Dinner": [
+										"Pudina chapathi",
+										"Kerala egg roast masala",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg",
+										"Boiled white chana",
+										"Puffed rice upma",
+										"Mint chutney",
+										"Mix veg Sambar"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Tindly fry(dry)",
+										"Gutti Vankaya Curry (gravy)",
+										"Drumstick Sambar",
+										"Gongura Thoviyal"
+									],
+									"Snacks": ["Banana bajji"],
+									"Dinner": [
+										"Plain Chapathi",
+										"Dahi Bhindi",
+										"Drumstick sambar",
+										"Papaya",
+										"Ragi drink  "
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled green gram",
+										"Moong dal chilla",
+										"Tomato sauce"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Aloo baingan(dry)",
+										"Pumpkin curry(gravy)",
+										"Toor dal ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Makhana chaat"],
+									"Dinner": [
+										"Tomato Rice",
+										"Masala khichdi",
+										"Curd Rice",
+										"Boost Milk",
+										"Banana fruit",
+										"Potato chips "
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Fried Egg",
+										"Boiled white peas",
+										"Luchi(poori) Aloo dum",
+										"Lime and onion"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Bagara rice & Sherva",
+										"Butter Chicken masala",
+										"Tomato Rasam",
+										"Onion Tomato Raita ",
+										"Kala  Jamun - 2 pieces"
+									],
+									"Snacks": ["Crispy soya chunks"],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Mealmaker curry  ",
+										"Drumstick Sambar",
+										"Pineapple",
+										"Buttermilk"
+									]
+								}
+							}
+						},
+						"D": {
+							"source": "Week D.pdf",
+							"schedule": {
+								"Monday": {
+									"Breakfast": [
+										"Boiled Egg",
+										"Chana Sundal",
+										"Tomato upma  ",
+										"Coconut chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Raw banana fry (dry)",
+										"Chana masala (gravy)",
+										"Drumstick Sambar",
+										"Gongura thoviyal"
+									],
+									"Snacks": ["Fruit cake"],
+									"Dinner": [
+										"Methi chapathi",
+										"Egg keema  ",
+										"Dal Makhani",
+										"Gajar ka halwa  ",
+										"Lemon Water"
+									]
+								},
+								"Tuesday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled Peanut",
+										"Puttu  ",
+										"Kadala curry"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Carrot beans poriyal(dry)",
+										"Gobi Capsicum masala (gravy)",
+										"Gongura dal",
+										"Pepper Rasam",
+										"Mint Thoviyal"
+									],
+									"Snacks": ["Veg roll"],
+									"Dinner": [
+										"Neer Dosa",
+										"Coconut chutney",
+										"Veg kurma",
+										"Mix veg Sambar",
+										"Pineapple  ",
+										"Buttermilk"
+									]
+								},
+								"Wednesday": {
+									"Breakfast": [
+										"Fried egg",
+										"Boiled Black Chana",
+										"Ragi Dosa",
+										"Tomato chutney  ",
+										"Sambar"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Brinjal chana masala(dry)",
+										"Kadhi pakora (gravy)",
+										"Radish Sambar",
+										"Ridge Gourd Thoviyal"
+									],
+									"Snacks": ["French Fries with tomato sauce"],
+									"Dinner": [
+										"Pudina chapathi",
+										"Jeera Rice",
+										"Chettinad chicken masala",
+										"Tomato Rasam",
+										"Semiya payasam",
+										"Lemon water"
+									]
+								},
+								"Thursday": {
+									"Breakfast": [
+										"Scrambled egg",
+										"Boiled white peas",
+										"Aloo Paratha",
+										"Mint chutney"
+									],
+									"Lunch": [
+										"Cucumber carrot salad",
+										"Lauki ki sabzi (dry)",
+										"Puli Kuzhambu (gravy)",
+										"Tomato dal",
+										"Tomato rasam",
+										"Curry Leaf Thoviyal"
+									],
+									"Snacks": ["Dahi vada"],
+									"Dinner": [
+										"Plain chapathi",
+										"Tomato egg roast masala",
+										"Mix Veg Sambar",
+										"Banana",
+										"Buttermilk"
+									]
+								},
+								"Friday": {
+									"Breakfast": [
+										"Boiled egg",
+										"Boiled Rajma",
+										"Rava Idli  ",
+										"Groundnut chutney  ",
+										"Sambar"
+									],
+									"Lunch": [
+										"Beetroot tomato salad",
+										"Aloo beans (dry)",
+										"Ridge gourd tomato masala (gravy) ",
+										"Bhindi  Sambar",
+										"Gongura Thoviyal "
+									],
+									"Snacks": ["Onion pakoda"],
+									"Dinner": [
+										"Pudina Chapathi",
+										"Mixed veg palak gravy",
+										"Radish sambar",
+										"Papaya",
+										"Ragi drink  "
+									]
+								},
+								"Saturday": {
+									"Breakfast": [
+										"Omelette",
+										"Boiled rajma",
+										"Idiyappam",
+										"Veg Kurma"
+									],
+									"Lunch": [
+										"Radish cucumber salad",
+										"Cabbage peas (dry)",
+										"Mor kuzhambu (gravy)",
+										"Dal makhani  ",
+										"Pepper rasam",
+										"Tomato Thoviyal"
+									],
+									"Snacks": ["Dahi chaat"],
+									"Dinner": [
+										"Vangi bath  ",
+										"Bisibelabath  ",
+										"Curd Rice",
+										"Boost Milk",
+										"Banana fruit",
+										"Potato chips "
+									]
+								},
+								"Sunday": {
+									"Breakfast": [
+										"Fried Egg",
+										"Boiled white chana",
+										"Aloo Poha  ",
+										"Tamarind chutney"
+									],
+									"Lunch": [
+										"Onion lemon  Cucumber salad",
+										"Chicken fry piece biryani  ",
+										"Salan  ",
+										"Tomato Rasam",
+										"Cucumber Raita",
+										"Bread halwa"
+									],
+									"Snacks": ["Biscuits"],
+									"Dinner": [
+										"Methi Chapathi",
+										"Aloo Soya curry",
+										"Drumstick Sambar",
+										"Pineapple",
+										"Buttermilk"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"2025-09-01": {
+			"Messmenu": {
+				"Categories": {
 					"South_Veg": {
 						"common_items": {
 							"Breakfast": "Brown & White Bread, Butter, Tea, Coffee and Milk, Sugar",

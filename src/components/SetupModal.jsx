@@ -1,39 +1,48 @@
-import React, { useState } from "react";
-import { MENUS, WEEKS } from "../api/constants";
-import { getCurrentWeek, getUserCategory } from "../utils/weekManager";
+import React, { useState, useEffect } from "react";
+import { getAvailableCategoriesForCurrentVersion } from "../api/menuApi";
+import { getUserCategory } from "../utils/weekManager";
 import SelectDropdown from "./SelectDropdown";
 import { X } from "lucide-react";
 
 /**
- * A modal for both initial setup and updating user preferences.
+ * A modal for setting and updating the user's preferred mess category.
  * @param {{
- *   onComplete: (week: string, category: string) => void;
+ *   onComplete: (category: string) => void;
  *   onClose: () => void;
  *   isInitialSetup: boolean;
  * }} props
  */
 const SetupModal = ({ onComplete, onClose, isInitialSetup }) => {
-	// Initialize state with current settings if they exist, otherwise use defaults
-	const [selectedWeek, setSelectedWeek] = useState(
-		() => getCurrentWeek() || "A"
-	);
+	const [availableMenus, setAvailableMenus] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState(
 		() => getUserCategory() || "South_Non_Veg"
 	);
 
+	useEffect(() => {
+		const menus = getAvailableCategoriesForCurrentVersion();
+		setAvailableMenus(menus);
+
+		const isSavedCategoryStillAvailable = menus.some(
+			(menu) => menu.value === selectedCategory
+		);
+		if (!isSavedCategoryStillAvailable && menus.length > 0) {
+			setSelectedCategory(menus[0].value);
+		}
+	}, [selectedCategory]);
+
 	const handleSave = () => {
-		onComplete(selectedWeek, selectedCategory);
+		onComplete(selectedCategory);
 	};
 
 	const title = isInitialSetup ? "Welcome!" : "Settings";
 	const description = isInitialSetup
-		? "Let's set up your preferences to get started. You can change these anytime in the settings."
-		: "Update your current mess week and default mess category.";
+		? "Please select your mess to get started. You can change this anytime in the settings."
+		: "Update your default mess category.";
+	const buttonText = isInitialSetup ? "Save & Continue" : "Save Changes";
 
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in">
 			<div className="bg-bg border border-border rounded-xl shadow-2xl p-6 w-full max-w-md mx-4 relative">
-				{/* Close button (not shown on mandatory initial setup) */}
 				{!isInitialSetup && (
 					<button
 						onClick={onClose}
@@ -47,24 +56,27 @@ const SetupModal = ({ onComplete, onClose, isInitialSetup }) => {
 				<p className="text-muted mb-6">{description}</p>
 
 				<div className="space-y-4">
-					<SelectDropdown
-						label="Current Mess Week"
-						id="setup-week"
-						value={selectedWeek}
-						onChange={(e) => setSelectedWeek(e.target.value)}
-						options={WEEKS}
-					/>
-					<SelectDropdown
-						label="Your Mess"
-						id="setup-mess"
-						value={selectedCategory}
-						onChange={(e) => setSelectedCategory(e.target.value)}
-						options={MENUS}
-					/>
+					{availableMenus.length > 0 ? (
+						<SelectDropdown
+							label="Your Mess"
+							id="setup-mess"
+							value={selectedCategory}
+							onChange={(e) => setSelectedCategory(e.target.value)}
+							options={availableMenus}
+						/>
+					) : (
+						<p className="text-center text-muted border border-border rounded-lg p-4">
+							Loading available messes...
+						</p>
+					)}
 				</div>
 
-				<button onClick={handleSave} className="btn-primary w-full mt-6">
-					Save Changes
+				<button
+					onClick={handleSave}
+					disabled={availableMenus.length === 0}
+					className="btn-primary w-full mt-6"
+				>
+					{buttonText}
 				</button>
 			</div>
 		</div>

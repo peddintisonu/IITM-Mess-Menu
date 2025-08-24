@@ -112,24 +112,24 @@ const TodaysMenu = () => {
 		<section id="todays-menu" className="w-full max-w-7xl mx-auto px-4 py-8">
 			<div className="mb-8">
 				{/* Current Settings Display */}
-				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">
-					<div>
-						<span className="font-medium">Your Mess:</span>
-						<span className="ml-2 badge badge-primary">{menuLabel}</span>{" "}
-						{/* <-- Use the correct label */}
-					</div>
+				<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1 ">
 					<div className="mt-1 sm:mt-0">
 						<span className="font-medium">Current Week:</span>
 						<span className="ml-2 badge badge-primary">
 							Week {currentWeek || "Not Set"}
 						</span>
 					</div>
+					<div>
+						<span className="font-medium">Your Mess:</span>
+						<span className="ml-2 badge badge-primary">{menuLabel}</span>{" "}
+						{/* <-- Use the correct label */}
+					</div>
 				</div>
 
 				{/* Helper Text */}
 				<div className="flex items-center gap-1.5 text-xs text-muted/80">
 					<Settings size={12} />
-					<span>You can change these in the settings.</span>
+					<span>You can change this in the settings.</span>
 				</div>
 
 				{/* Main Heading */}

@@ -9,15 +9,15 @@ const DAYS_OF_WEEK = [
 	"Friday",
 	"Saturday",
 ];
+const REFERENCE_DATE_STRING = "2025-07-28"; // This MUST be a Monday
+const REFERENCE_WEEK = "A";
 
 // --- localStorage Keys ---
 const SETUP_COMPLETE_KEY = "isSetupComplete";
-const CURRENT_WEEK_KEY = "currentMessWeek";
-const LAST_UPDATE_KEY = "lastWeekUpdateDate";
 const USER_CATEGORY_KEY = "userPreferredCategory";
 
 /**
- * Checks if the user has completed the initial setup.
+ * Checks if the user has completed the initial setup (i.e., chosen their mess).
  * @returns {boolean} True if setup is complete, false otherwise.
  */
 export function isSetupComplete() {
@@ -25,66 +25,39 @@ export function isSetupComplete() {
 }
 
 /**
- * Marks the initial setup as complete and saves the user's first choices.
- * @param {string} initialWeek The week selected by the user.
+ * Marks the initial setup as complete and saves the user's mess category.
  * @param {string} initialCategory The category selected by the user.
  */
-export function completeSetup(initialWeek, initialCategory) {
-	localStorage.setItem(CURRENT_WEEK_KEY, initialWeek);
+export function completeSetup(initialCategory) {
 	localStorage.setItem(USER_CATEGORY_KEY, initialCategory);
-	localStorage.setItem(LAST_UPDATE_KEY, new Date().toISOString());
 	localStorage.setItem(SETUP_COMPLETE_KEY, "true");
 }
 
 /**
- * Manually sets the current week cycle and resets the update timer.
- * @param {'A' | 'B' | 'C' | 'D'} week The week to set.
- */
-export function setCurrentWeek(week) {
-	if (!WEEKS.includes(week)) {
-		return;
-	}
-	localStorage.setItem(CURRENT_WEEK_KEY, week);
-	localStorage.setItem(LAST_UPDATE_KEY, new Date().toISOString());
-}
-
-/**
- * Gets the current week, automatically advancing the cycle if a Monday has passed.
- * @returns {'A' | 'B' | 'C' | 'D' | null} The current week, or null if not set.
+ * Calculates the current week (A, B, C, or D) based on a fixed reference date.
+ * This function is fully automated and does not rely on user input.
+ * @returns {'A' | 'B' | 'C' | 'D'} The calculated current week.
  */
 export function getCurrentWeek() {
-	const storedWeek = localStorage.getItem(CURRENT_WEEK_KEY);
-	const lastUpdateStr = localStorage.getItem(LAST_UPDATE_KEY);
+	const referenceDate = new Date(REFERENCE_DATE_STRING);
+	const today = new Date();
 
-	if (!storedWeek || !lastUpdateStr) {
-		return null; // The modal should handle this case
-	}
+	// Normalize dates to the start of the day to avoid timezone/DST issues
+	referenceDate.setHours(0, 0, 0, 0);
+	today.setHours(0, 0, 0, 0);
 
-	const lastUpdateDate = new Date(lastUpdateStr);
-	const currentDate = new Date();
-	lastUpdateDate.setHours(0, 0, 0, 0);
-	currentDate.setHours(0, 0, 0, 0);
+	const timeDifference = today.getTime() - referenceDate.getTime();
+	const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+	const weeksPassed = Math.floor(daysDifference / 7);
 
-	const timeDifference = currentDate.getTime() - lastUpdateDate.getTime();
-	const daysDifference = timeDifference / (1000 * 3600 * 24);
-	const lastUpdateDay = new Date(lastUpdateStr).getDay();
-	const mondaysPassed = Math.floor((daysDifference + lastUpdateDay) / 7);
+	const referenceIndex = WEEKS.indexOf(REFERENCE_WEEK);
+	const newIndex = (referenceIndex + weeksPassed) % WEEKS.length;
 
-	if (mondaysPassed > 0) {
-		const currentIndex = WEEKS.indexOf(storedWeek);
-		const newIndex = (currentIndex + mondaysPassed) % WEEKS.length;
-		const newWeek = WEEKS[newIndex];
-
-		localStorage.setItem(CURRENT_WEEK_KEY, newWeek);
-		localStorage.setItem(LAST_UPDATE_KEY, new Date().toISOString());
-		return newWeek;
-	}
-
-	return storedWeek;
+	return WEEKS[newIndex];
 }
 
 /**
- * Sets the user's preferred menu category in localStorage.
+ * Sets the user's preferred menu category in localStorage. Used for settings updates.
  * @param {string} category The category to save.
  */
 export function setUserCategory(category) {
@@ -101,7 +74,7 @@ export function getUserCategory() {
 
 /**
  * Gets the current day of the week as a string.
- * @returns {string} The name of the current day.
+ * @returns {string} The name of the current day (e.g., "Monday").
  */
 export const getCurrentDay = () => {
 	const dayIndex = new Date().getDay();

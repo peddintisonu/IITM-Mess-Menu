@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-
-// API and utility imports
-import { getDayMenu } from "../api/menuApi";
+import {
+	getDayMenu,
+	getAvailableCategoriesForCurrentVersion,
+} from "../api/menuApi";
 import {
 	getCurrentDay,
 	getCurrentWeek,
 	getUserCategory,
 } from "../utils/weekManager";
-import { MENUS, WEEKS, DAY_SHORTCUTS } from "../api/constants";
-
-// Component imports
+import { WEEKS, DAY_SHORTCUTS } from "../api/constants";
 import MealCard from "./MealCard";
 import SelectDropdown from "./SelectDropdown";
 
@@ -18,8 +17,10 @@ const MenuExplorer = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// This state is now purely LOCAL to the explorer.
-	// It initializes with your saved preferences but doesn't change them.
+	// State for dynamic menu options
+	const [availableMenus, setAvailableMenus] = useState([]);
+
+	// State for local, temporary selections
 	const [selectedCategory, setSelectedCategory] = useState(
 		() => getUserCategory() || "South_Non_Veg"
 	);
@@ -28,6 +29,20 @@ const MenuExplorer = () => {
 	);
 	const [selectedDay, setSelectedDay] = useState(getCurrentDay);
 
+	// Fetch available menus on mount and validate the current selection
+	useEffect(() => {
+		const menus = getAvailableCategoriesForCurrentVersion();
+		setAvailableMenus(menus);
+
+		const isCurrentCategoryValid = menus.some(
+			(menu) => menu.value === selectedCategory
+		);
+		if (!isCurrentCategoryValid && menus.length > 0) {
+			setSelectedCategory(menus[0].value);
+		}
+	}, []); // Runs once on component mount
+
+	// Effect to fetch menu data when a selection changes
 	useEffect(() => {
 		const fetchMenu = async () => {
 			setLoading(true);
@@ -63,7 +78,7 @@ const MenuExplorer = () => {
 					className="text-center bg-red-100 dark:bg-red-900/30 border border-red-400 text-red-700 dark:text-red-300 px-4 py-3 rounded-xl"
 					role="alert"
 				>
-					<strong className="font-bold">Oops!</strong>
+					<strong className="font-bold">Oops! </strong>
 					<span className="block sm:inline ml-2">{error}</span>
 				</div>
 			);
@@ -126,7 +141,7 @@ const MenuExplorer = () => {
 					id="mess-explorer"
 					value={selectedCategory}
 					onChange={(e) => setSelectedCategory(e.target.value)}
-					options={MENUS}
+					options={availableMenus}
 				/>
 				<SelectDropdown
 					label="Select Week"
