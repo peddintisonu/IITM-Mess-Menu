@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
-	"description": "A user-friendly web application to view and explore the daily mess menus at IIT Madras.",
+	"description": "A user-friendly web application to view and explore the daily mess menus at IIT Madras",
 	"scripts": {
 		"dev": "vite --host",
 		"build": "vite build",
