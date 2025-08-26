@@ -1,5 +1,21 @@
-import React from "react";
 import MenuIcon from "./MenuIcon";
+
+/**
+ * A small component to render a single menu item,
+ * with special styling for items marked with asterisks.
+ * @param {{ item: string }} props
+ */
+const MenuItem = ({ item }) => {
+	const isSpecial = item.startsWith("*") && item.endsWith("*");
+
+	if (isSpecial) {
+		// Remove asterisks and apply special styling
+		const specialItem = item.slice(1, -1);
+		return <span className="font-bold text-primary">{specialItem}</span>;
+	}
+
+	return <span>{item}</span>;
+};
 
 const MealCard = ({ title, items, commonItems }) => {
 	if (!items || items.length === 0) {
@@ -21,7 +37,8 @@ const MealCard = ({ title, items, commonItems }) => {
 				{items.map((item, index) => (
 					<li key={index} className="flex items-start">
 						<span className="text-primary mr-2 mt-1">•</span>
-						<span>{item}</span>
+						{/* Use the new MenuItem component for rendering */}
+						<MenuItem item={item} />
 					</li>
 				))}
 			</ul>

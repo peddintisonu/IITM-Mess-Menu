@@ -37,7 +37,7 @@ const SetupModal = ({ onComplete, onClose, isInitialSetup }) => {
 	const title = isInitialSetup ? "Welcome!" : "Settings";
 	const description = isInitialSetup
 		? "Please select your mess to get started. You can change this anytime in the settings."
-		: "Update your default mess category.";
+		: "Update your default mess category for the current cycle.";
 	const buttonText = isInitialSetup ? "Save & Continue" : "Save Changes";
 
 	return (

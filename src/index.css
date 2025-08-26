@@ -152,6 +152,29 @@
 		@apply bg-purple-900/30 text-purple-300;
 	}
 
+	/* ALERT STYLES */
+	.alert {
+		@apply w-full p-4 rounded-lg border text-sm;
+	}
+	.alert-title {
+		@apply mb-1 font-medium leading-none tracking-tight;
+	}
+	.alert-description {
+		@apply text-muted;
+	}
+
+	/* Destructive/Error Style */
+	.alert-destructive {
+		@apply bg-red-50 border-red-200 text-red-800;
+		@apply dark:bg-red-900/20 dark:border-red-900/50 dark:text-red-300;
+	}
+
+	/* Warning Style (for the fallback message) */
+	.alert-warning {
+		@apply bg-yellow-50 border-yellow-200 text-yellow-800;
+		@apply dark:bg-yellow-900/20 dark:border-yellow-900/50 dark:text-yellow-300;
+	}
+
 	/* Form Utilities */
 	.form-group {
 		@apply w-full flex flex-col gap-1.5;

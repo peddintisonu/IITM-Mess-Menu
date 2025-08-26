@@ -1,66 +1,69 @@
 import React, { useState, useEffect } from "react";
-import { getTodaysMenu } from "../api/menuApi";
-import {
-	getCurrentWeek,
-	getCurrentDay,
-	getUserCategory,
-} from "../utils/weekManager";
+import { getTodaysMenu, getContextForDate } from "../api/menuApi"; // We can use the simpler API again
+import { getCurrentWeek, getUserCategory } from "../utils/weekManager";
 import { MENUS } from "../api/constants";
 import MealCard from "./MealCard";
 import { Settings } from "lucide-react";
 
+/**
+ * A component that displays the menu for the current day, along with global
+ * info like the current cycle and week.
+ */
 const TodaysMenu = () => {
 	const [menu, setMenu] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// Get context directly from weekManager
+	// --- Static data for the top info bar (always reflects TODAY) ---
+	const userMessPreference = getUserCategory();
 	const currentWeek = getCurrentWeek();
-	const currentDay = getCurrentDay();
-	const currentCategoryValue = getUserCategory();
+	const currentCycle = getContextForDate(new Date())?.cycleName || "Loading...";
+	const menuLabel =
+		MENUS.find((menu) => menu.value === userMessPreference)?.label || "Not Set";
 
 	useEffect(() => {
-		const fetchMenu = async () => {
+		const fetchTodaysMenu = async () => {
 			setLoading(true);
 			setError(null);
+
+			// Using the simple getTodaysMenu API is sufficient now
 			const response = await getTodaysMenu();
 
 			if (response.success) {
 				setMenu(response.data);
 			} else {
-				setMenu(null);
 				setError(response.message);
+				setMenu(null);
 			}
 			setLoading(false);
 		};
 
-		if (currentCategoryValue && currentWeek) {
-			fetchMenu();
+		if (userMessPreference) {
+			fetchTodaysMenu();
 		} else {
 			setLoading(false);
-			setError("Initial setup not complete. Please configure your settings.");
+			setError("Please select your mess in the settings to get started.");
 		}
-	}, [currentCategoryValue, currentWeek]); // Re-run if category or week changes
+	}, [userMessPreference]); // Re-fetch only if the user's preference changes
+
+	const formattedDate = new Intl.DateTimeFormat("en-US", {
+		weekday: "long",
+		month: "long",
+		day: "numeric",
+	}).format(new Date());
 
 	const renderContent = () => {
 		if (loading) {
-			return (
-				<p className="text-center text-muted py-10">Loading today's menu...</p>
-			);
+			return <p className="text-center text-muted py-10">Loading menu...</p>;
 		}
-
 		if (error) {
 			return (
-				<div
-					className="text-center bg-red-100 dark:bg-red-900/30 border border-red-400 text-red-700 dark:text-red-300 px-4 py-3 rounded-xl"
-					role="alert"
-				>
-					<strong className="font-bold">Oops! </strong>
-					<span className="block sm:inline">{error}</span>
+				  <div className="alert alert-destructive" role="alert">
+					<div className="alert-title">Oops!</div>
+					<div className="alert-description">{error}</div>
 				</div>
 			);
 		}
-
 		if (menu) {
 			return (
 				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
@@ -95,51 +98,43 @@ const TodaysMenu = () => {
 				</div>
 			);
 		}
-
-		return <p className="text-center text-muted">No menu data available.</p>;
+		return (
+			<p className="text-center text-muted">No menu items for this meal.</p>
+		);
 	};
 
-	const menuLabel =
-		MENUS.find((menu) => menu.value === currentCategoryValue)?.label ||
-		"Not Set";
-
-	const formattedDate = new Intl.DateTimeFormat("en-US", {
-		month: "long",
-		day: "numeric",
-	}).format(new Date());
-
 	return (
-		<section id="todays-menu" className="w-full max-w-7xl mx-auto px-4 py-8">
+		<section
+			id="todays-menu"
+			className="w-full max-w-7xl mx-auto px-4 py-6 sm:py-8"
+		>
 			<div className="mb-8">
-				{/* Current Settings Display */}
-				<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1 ">
-					<div className="mt-1 sm:mt-0">
-						<span className="font-medium">Current Week:</span>
-						<span className="ml-2 badge badge-primary">
-							Week {currentWeek || "Not Set"}
-						</span>
-					</div>
+				{/* Settings and Global Info Bar */}
+				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">
 					<div>
+						<span className="font-medium">Current Cycle:</span>
+						<span className="ml-2 badge badge-primary">{currentCycle}</span>
+					</div>
+					<div className="mt-2 sm:mt-0">
+						<span className="font-medium">Current Week:</span>
+						<span className="ml-2 badge badge-primary">Week {currentWeek}</span>
+					</div>
+					<div className="mt-2 sm:mt-0">
 						<span className="font-medium">Your Mess:</span>
-						<span className="ml-2 badge badge-primary">{menuLabel}</span>{" "}
-						{/* <-- Use the correct label */}
+						<span className="ml-2 badge badge-primary">{menuLabel}</span>
 					</div>
 				</div>
-
-				{/* Helper Text */}
 				<div className="flex items-center gap-1.5 text-xs text-muted/80">
 					<Settings size={12} />
-					<span>You can change this in the settings.</span>
+					<span>You can change your mess in the settings.</span>
 				</div>
 
 				{/* Main Heading */}
-				<h1 className="mt-4">
-					Today's Menu:{" "}
-					<span className="text-primary">
-						{currentDay}, {formattedDate}
-					</span>{" "}
-					{/* <-- Use the formatted date */}
-				</h1>
+				<div className="flex items-center gap-4 mt-4">
+					<h1 className="m-0">
+						Today's Menu <span className="text-primary">{formattedDate}</span>
+					</h1>
+				</div>
 			</div>
 
 			{renderContent()}

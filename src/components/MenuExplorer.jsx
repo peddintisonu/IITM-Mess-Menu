@@ -139,12 +139,9 @@ const MenuExplorer = () => {
 		}
 		if (error) {
 			return (
-				<div
-					className="text-center bg-red-100 dark:bg-red-900/30 border border-red-400 text-red-700 dark:text-red-300 px-4 py-3 rounded-xl"
-					role="alert"
-				>
-					<strong className="font-bold">Oops! </strong>
-					<span className="block sm:inline ml-2">{error}</span>
+				<div className="alert alert-destructive" role="alert">
+					<div className="alert-title">Oops!</div>
+					<div className="alert-description">{error}</div>
 				</div>
 			);
 		}
@@ -188,7 +185,10 @@ const MenuExplorer = () => {
 	};
 
 	return (
-		<section id="explorer" className="w-full max-w-7xl mx-auto px-4 py-8">
+		<section
+			id="explorer"
+			className="w-full max-w-7xl mx-auto px-4 py-6 sm:py-8"
+		>
 			<div className="text-center mb-8">
 				<h2>Explore Full Menu</h2>
 				<p className="text-muted text-lg mt-1">
@@ -229,7 +229,7 @@ const MenuExplorer = () => {
 							${
 								selectedDay === day.value
 									? "bg-primary text-white shadow"
-									: "bg-input-bg text-muted hover:bg-border dark:hover:bg-gray-700"
+									: "bg-input-bg text-muted hover:bg-primary-100 dark:hover:bg-primary-900/30"
 							}
 						`}
 					>

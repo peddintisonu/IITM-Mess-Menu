@@ -34,28 +34,41 @@ export function completeSetup(initialCategory) {
 }
 
 /**
- * Calculates the current week (A, B, C, or D) based on a fixed reference date.
- * This function is fully automated and does not rely on user input.
- * @returns {'A' | 'B' | 'C' | 'D'} The calculated current week.
+ * A reusable function to calculate the A/B/C/D week for any given date.
+ * This is the new core logic.
+ * @param {Date} targetDate The date for which to calculate the week.
+ * @returns {'A' | 'B' | 'C' | 'D'} The calculated week.
  */
-export function getCurrentWeek() {
+export function getWeekForDate(targetDate) {
 	const referenceDate = new Date(REFERENCE_DATE_STRING);
-	const today = new Date();
+	// Use a copy of the targetDate to avoid modifying the original
+	const dateToCalculate = new Date(targetDate);
 
-	// Normalize dates to the start of the day to avoid timezone/DST issues
+	// Normalize dates to the start of the day for accurate calculations
 	referenceDate.setHours(0, 0, 0, 0);
-	today.setHours(0, 0, 0, 0);
+	dateToCalculate.setHours(0, 0, 0, 0);
 
-	const timeDifference = today.getTime() - referenceDate.getTime();
+	const timeDifference = dateToCalculate.getTime() - referenceDate.getTime();
 	const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
 	const weeksPassed = Math.floor(daysDifference / 7);
 
 	const referenceIndex = WEEKS.indexOf(REFERENCE_WEEK);
+	// Use Math.abs and handle negative weeksPassed for dates before the reference
 	const newIndex = (referenceIndex + weeksPassed) % WEEKS.length;
 
-	return WEEKS[newIndex];
+	// Handle negative results from the modulo operator
+	return WEEKS[(newIndex + WEEKS.length) % WEEKS.length];
 }
 
+
+/**
+ * Calculates the current week (A, B, C, or D) based on today's date.
+ * This function now uses the more generic getWeekForDate.
+ * @returns {'A' | 'B' | 'C' | 'D'} The calculated current week.
+ */
+export function getCurrentWeek() {
+	return getWeekForDate(new Date());
+}
 /**
  * Sets the user's preferred menu category in localStorage. Used for settings updates.
  * @param {string} category The category to save.
