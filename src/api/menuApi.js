@@ -4,75 +4,210 @@ import {
 	getCurrentWeek,
 	getUserCategory,
 	getCurrentDay,
+	getWeekForDate,
 } from "../utils/weekManager";
 import { MENUS } from "./constants";
 
-// --- Core Helper Functions for the New Logic ---
+// --- Core Helper Functions ---
 
 /**
- * Finds the correct menu version key for a given date.
- * It iterates through all available versions and finds the most recent one
- * that started on or before the target date.
- * @param {Date} targetDate The date for which to find the menu version.
- * @returns {string | null} The version key (e.g., "2025-07-28") or null if not found.
+ * A deep-merging utility to apply overrides. It recursively merges objects and
+ * replaces arrays and other types. This version is secure against prototype pollution.
+ * @param {object} base The base object to merge into.
+ * @param {object} override The override object to apply.
+ * @returns {object} The new, merged object.
  */
-const getVersionKeyForDate = (targetDate) => {
-	const availableVersionKeys = Object.keys(data.versions);
-	targetDate.setHours(0, 0, 0, 0); // Normalize for accurate date comparison
-
-	const applicableKeys = availableVersionKeys.filter((key) => {
-		return new Date(key) <= targetDate;
-	});
-
-	if (applicableKeys.length === 0) return null;
-
-	// Sort descending to find the most recent version key
-	applicableKeys.sort((a, b) => new Date(b) - new Date(a));
-	return applicableKeys[0];
+const deepMerge = (base, override) => {
+	const merged = { ...base };
+	for (const key in override) {
+		if (Object.prototype.hasOwnProperty.call(override, key)) {
+			if (
+				Object.prototype.hasOwnProperty.call(merged, key) &&
+				typeof merged[key] === "object" &&
+				!Array.isArray(merged[key]) &&
+				merged[key] !== null &&
+				typeof override[key] === "object" &&
+				!Array.isArray(override[key]) &&
+				override[key] !== null
+			) {
+				merged[key] = deepMerge(merged[key], override[key]);
+			} else {
+				merged[key] = override[key];
+			}
+		}
+	}
+	return merged;
 };
 
 /**
  * Finds the cycle object that a given date falls within.
- * This is now more robust: it finds the most recent cycle that has started.
  * @param {Date} targetDate The date to check.
- * @returns {object | null} The cycle object or null if no matching cycle is found.
+ * @returns {object | null} The cycle object.
  */
 const getCycleForDate = (targetDate) => {
-	// Ensure cycles are sorted by date to handle lookups correctly
 	const sortedCycles = [...data.cycles].sort(
 		(a, b) => new Date(a.startDate) - new Date(b.startDate)
 	);
-
-	// Find the last cycle that started on or before the target date. This is the correct logic.
-	const applicableCycle = sortedCycles
-		.slice()
-		.reverse()
-		.find((cycle) => {
-			const startDate = new Date(cycle.startDate);
-			startDate.setHours(0, 0, 0, 0); // Normalize date for comparison
-			return startDate <= targetDate;
-		});
-
-	return applicableCycle || null; // Return the found cycle or null
+	return (
+		sortedCycles
+			.slice()
+			.reverse()
+			.find((cycle) => {
+				const startDate = new Date(cycle.startDate);
+				startDate.setHours(0, 0, 0, 0);
+				return startDate <= targetDate;
+			}) || null
+	);
 };
 
-// --- New Exported Functions for Calendar and Dynamic UI ---
-
 /**
- * Provides a complete context object for any given date.
- * This is the primary function for powering the new calendar-driven UI.
- * @param {Date} date The date for which to get the context.
- * @returns {object | null} An object containing all necessary info, or null on failure.
+ * The core logic engine. It chronologically builds the official menu state for a given date,
+ * correctly applying the base version and any subsequent permanent overrides.
+ * @param {Date} date The target date.
+ * @returns {{ menuContent: object, versionId: string } | null} The final menu content and the base version it came from.
  */
-export const getContextForDate = (date) => {
-	const versionKey = getVersionKeyForDate(date);
-	const cycle = getCycleForDate(date);
+const getMenuContentForDate = (date) => {
+	date.setHours(0, 0, 0, 0);
 
-	if (!versionKey || !data.versions[versionKey]) {
-		return null; // No valid version found for this date
+	const versionDates = Object.keys(data.versions).map((d) => new Date(d));
+	const overrideDates = Object.keys(data.overrides || {}).map(
+		(d) => new Date(d)
+	);
+
+	const applicableDates = [...versionDates, ...overrideDates]
+		.filter((d) => d <= date)
+		.sort((a, b) => a - b);
+
+	if (applicableDates.length === 0) return null;
+
+	let baseVersionKey = null;
+	for (let i = applicableDates.length - 1; i >= 0; i--) {
+		const dateKey = applicableDates[i].toISOString().split("T")[0];
+		if (data.versions[dateKey]) {
+			baseVersionKey = dateKey;
+			break;
+		}
 	}
 
-	const menuContent = data.versions[versionKey].Messmenu.Categories;
+	if (!baseVersionKey) return null;
+
+	let finalMenuContent = JSON.parse(
+		JSON.stringify(data.versions[baseVersionKey].Messmenu.Categories)
+	);
+	const baseVersionDate = new Date(baseVersionKey);
+
+	const applicableOverrides = applicableDates.filter((d) => {
+		const dateKey = d.toISOString().split("T")[0];
+		return (data.overrides || {})[dateKey] && d > baseVersionDate;
+	});
+
+	for (const overrideDate of applicableOverrides) {
+		const overrideKey = overrideDate.toISOString().split("T")[0];
+		finalMenuContent = deepMerge(finalMenuContent, data.overrides[overrideKey]);
+	}
+
+	return {
+		menuContent: finalMenuContent,
+		versionId: baseVersionKey,
+	};
+};
+
+// --- Exported API Functions ---
+
+/**
+ * Provides a complete context for a given date, including all data layers
+ * (versions, permanent overrides, and temporary event overrides).
+ * This is used by the "Daily Menu Viewer" (TodaysMenu.jsx).
+ * @param {Date} date The date for which to get the context.
+ * @returns {object | null} An object with all necessary info, or null on failure.
+ */
+export const getContextForDate = (date) => {
+	const cycle = getCycleForDate(date);
+	const menuData = getMenuContentForDate(new Date(date));
+
+	if (!menuData) return null;
+
+	let { menuContent, versionId } = menuData;
+
+	// Find any temporary event that is active for the given date
+	const activeEvent = (data.eventOverrides || []).find((event) => {
+		const startDate = new Date(event.startDate);
+		const endDate = new Date(event.endDate);
+		startDate.setHours(0, 0, 0, 0);
+		endDate.setHours(23, 59, 59, 999);
+		return date >= startDate && date <= endDate;
+	});
+
+	let eventName = null;
+	let eventDescription = null;
+
+	if (activeEvent) {
+		eventName = activeEvent.eventName;
+		const dateString = date.toISOString().split("T")[0];
+
+		// Find all rules within the event that apply to the specific date
+		const activeRules = activeEvent.rules.filter(
+			(rule) => rule.onDate === dateString
+		);
+
+		if (activeRules.length > 0) {
+			// Create a clean snapshot of the base menu before applying any event changes
+			// This is crucial for ensuring remaps always use original, unmodified data
+			const baseMenuSnapshot = JSON.parse(JSON.stringify(menuContent));
+			const weekForEventDate = getWeekForDate(date);
+
+			let descriptions = [];
+
+			// Process all active rules for the day
+			for (const rule of activeRules) {
+				if (rule.type === "remap" && rule.targetMeal && rule.sourceDay) {
+					const { targetMeal, sourceDay } = rule;
+					// Apply the remap to every category in the menu
+					for (const category in menuContent) {
+						// Get the source data from the clean snapshot
+						const sourceMenu =
+							baseMenuSnapshot[category]?.[weekForEventDate]?.schedule?.[
+								sourceDay
+							]?.[targetMeal];
+						if (sourceMenu) {
+							const dayOfWeek = date.toLocaleString("en-US", {
+								weekday: "long",
+							});
+							// Ensure the nested structure exists before assigning
+							if (!menuContent[category][weekForEventDate])
+								menuContent[category][weekForEventDate] = { schedule: {} };
+							if (!menuContent[category][weekForEventDate].schedule[dayOfWeek])
+								menuContent[category][weekForEventDate].schedule[dayOfWeek] =
+									{};
+							// Apply the remapped menu
+							menuContent[category][weekForEventDate].schedule[dayOfWeek][
+								targetMeal
+							] = sourceMenu;
+						}
+					}
+				} else if (rule.type === "override" && rule.newMenu) {
+					// Apply a content override by deep merging
+					menuContent = deepMerge(menuContent, rule.newMenu);
+				}
+
+				// Collect any descriptions from the processed rules
+				if (rule.description) {
+					descriptions.push(rule.description);
+				}
+			}
+
+			// Combine all collected descriptions into a single string
+			if (descriptions.length > 0) {
+				eventDescription = descriptions.join(" ");
+			}
+		}
+
+		// If no specific rule had a description, fall back to the main event description
+		if (eventName && !eventDescription && activeEvent.description) {
+			eventDescription = activeEvent.description;
+		}
+	}
+
 	const availableCategoryKeys = Object.keys(menuContent);
 	const availableCategories = MENUS.filter((menu) =>
 		availableCategoryKeys.includes(menu.value)
@@ -80,51 +215,25 @@ export const getContextForDate = (date) => {
 
 	return {
 		cycleName: cycle ? cycle.name : "No active cycle",
-		versionId: versionKey,
+		versionId: versionId,
+		eventName: eventName,
+		eventDescription: eventDescription,
 		menuContent: menuContent,
 		availableCategories: availableCategories,
 	};
 };
-
 /**
- * Gets a list of all defined cycles, formatted for use in a dropdown.
- * @returns {{value: string, label: string}[]} An array of all cycles.
- */
-export const getAllCycles = () => {
-	return data.cycles.map((cycle) => ({
-		value: cycle.startDate, // Use startDate as a unique identifier
-		label: cycle.name,
-	}));
-};
-
-/**
- * Finds the latest menu version active within a specific cycle's date range.
+ * Provides a complete context for a given CYCLE, including permanent overrides
+ * but ignoring temporary events. This is used by the MenuExplorer.
  * @param {object} cycle The cycle object containing startDate and endDate.
- * @returns {object | null} A context object for that cycle, or null if no version is found.
+ * @returns {object | null} A context object for that cycle.
  */
 export const getContextForCycle = (cycle) => {
-	if (!cycle || !cycle.startDate || !cycle.endDate) return null;
+	if (!cycle) return null;
+	const context = getMenuContentForDate(new Date(cycle.endDate));
+	if (!context) return null;
 
-	const cycleStartDate = new Date(cycle.startDate);
-	const cycleEndDate = new Date(cycle.endDate);
-	cycleStartDate.setHours(0, 0, 0, 0);
-	cycleEndDate.setHours(23, 59, 59, 999);
-
-	const availableVersionKeys = Object.keys(data.versions);
-
-	// Find all versions that started within this cycle's timeframe
-	const applicableKeys = availableVersionKeys.filter((key) => {
-		const versionDate = new Date(key);
-		return versionDate >= cycleStartDate && versionDate <= cycleEndDate;
-	});
-
-	if (applicableKeys.length === 0) return null;
-
-	// Sort descending to find the most recent (latest) version key within the cycle
-	applicableKeys.sort((a, b) => new Date(b) - new Date(a));
-	const latestVersionId = applicableKeys[0];
-
-	const menuContent = data.versions[latestVersionId].Messmenu.Categories;
+	const { menuContent, versionId } = context;
 	const availableCategoryKeys = Object.keys(menuContent);
 	const availableCategories = MENUS.filter((menu) =>
 		availableCategoryKeys.includes(menu.value)
@@ -132,60 +241,70 @@ export const getContextForCycle = (cycle) => {
 
 	return {
 		cycleName: cycle.name,
-		versionId: latestVersionId,
+		versionId: versionId,
 		menuContent: menuContent,
 		availableCategories: availableCategories,
 	};
 };
 
-// --- Existing Functions (Maintained for current UI, but could be refactored later) ---
-
 /**
- * A helper to get the data for the officially "current" menu version.
- * @returns {object | null} The `Categories` object for the current version.
+ * Gets a list of all defined cycles, formatted for use in a dropdown.
+ * @returns {{value: string, label: string}[]}
  */
-const getCurrentVersionData = () => {
-	const currentKey = data.currentVersionKey;
-	if (currentKey && data.versions[currentKey]) {
-		return data.versions[currentKey].Messmenu.Categories;
-	}
-	return null;
+export const getAllCycles = () => {
+	return data.cycles.map((cycle) => ({
+		value: cycle.startDate,
+		label: cycle.name,
+	}));
 };
 
 /**
- * Gets a list of mess categories available in the CURRENT active menu version.
- * @returns {{value: string, label: string}[]} An array of available menu options.
+ * Gets a list of messes available in the CURRENT active menu version.
+ * @returns {{value: string, label: string}[]}
  */
 export const getAvailableCategoriesForCurrentVersion = () => {
-	const menuData = getCurrentVersionData();
-	if (!menuData) return [];
-
-	const availableCategoryKeys = Object.keys(menuData);
-	return MENUS.filter((menu) => availableCategoryKeys.includes(menu.value));
+	const context = getContextForDate(new Date());
+	return context ? context.availableCategories : [];
 };
 
 /**
- * Retrieves the menu for a specific day from the CURRENT active version.
- * @param {string} category The menu category.
- * @param {string} week The menu week letter (A, B, C, D).
- * @param {string} day The day of the week.
- * @returns {Promise<ApiResponse>} A promise resolving to an ApiResponse object.
+ * A convenience function to get the menu for the current day.
+ * @returns {Promise<ApiResponse>}
  */
-export const getDayMenu = async (category, week, day) => {
+export const getTodaysMenu = async () => {
 	try {
-		const menuData = getCurrentVersionData();
-		if (!menuData) {
+		const category = getUserCategory();
+		const week = getCurrentWeek();
+		const day = getCurrentDay();
+
+		if (!category || !week || !day) {
+			throw new Error("User context is not fully set up.");
+		}
+
+		const context = getContextForDate(new Date());
+		if (!context) {
+			throw new Error("Could not load menu context for today.");
+		}
+
+		const menuData = context.menuContent;
+		const categoryData = menuData[category];
+		if (!categoryData) {
 			throw new Error(
-				"Could not load the current menu version. Check messMenu.json configuration."
+				`Your preferred mess "${category}" is not available in the current menu.`
 			);
 		}
-		// ... (The rest of this function remains the same as your provided code)
-		const categoryData = menuData[category];
-		if (!categoryData) throw new Error(`Category "${category}" not found.`);
+
 		const weekData = categoryData[week];
-		if (!weekData) throw new Error(`Menu for week "${week}" not found.`);
-		const dayMenu = weekData.schedule[day];
-		if (!dayMenu) throw new Error(`Menu for "${day}" not found.`);
+		const dayMenu = weekData?.schedule?.[day];
+
+		if (!dayMenu) {
+			return new ApiResponse(
+				200,
+				"Menu retrieved, but no items for this meal.",
+				{}
+			);
+		}
+
 		const commonItems = categoryData.common_items || {};
 		const finalMenu = {
 			Breakfast: dayMenu.Breakfast || [],
@@ -199,27 +318,12 @@ export const getDayMenu = async (category, week, day) => {
 				Dinner: commonItems.Dinner || "",
 			},
 		};
-		return new ApiResponse(200, "Menu retrieved successfully", finalMenu);
-	} catch (error) {
-		return new ApiResponse(404, error.message, null);
-	}
-};
 
-/**
- * A convenience function to get the menu for the current day.
- * @returns {Promise<ApiResponse>} A promise resolving to the menu for today.
- */
-export const getTodaysMenu = async () => {
-	try {
-		const category = getUserCategory();
-		const week = getCurrentWeek();
-		const day = getCurrentDay();
-		if (!category || !week || !day) {
-			throw new Error(
-				"User context (category, week, or day) is not fully set up."
-			);
-		}
-		return await getDayMenu(category, week, day);
+		return new ApiResponse(
+			200,
+			"Today's menu retrieved successfully",
+			finalMenu
+		);
 	} catch (error) {
 		return new ApiResponse(500, error.message, null);
 	}
