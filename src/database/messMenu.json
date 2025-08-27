@@ -90,7 +90,7 @@
 									"Breakfast": [
 										"Scrambled egg / Cornflakes",
 										"Boiled Black Chana",
-										"Maggi",
+										"*Maggi*",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -170,7 +170,7 @@
 									],
 									"Lunch": [
 										"Bagara rice & Sherva",
-										"Kadai Mushroom curry",
+										"*Kadai Mushroom curry*",
 										"Tomato Rasam",
 										"Boondi Raita ",
 										"Gulab Jamun - 2 pieces",
@@ -255,7 +255,7 @@
 									"Snacks": ["Masala boiled chana"],
 									"Dinner": [
 										"Pudina Chapathi",
-										"Kadai paneer",
+										"*Kadai paneer*",
 										"Garlic Rasam",
 										"Carrot halwa",
 										"Lemon water"
@@ -347,7 +347,7 @@
 									],
 									"Lunch": [
 										"Onion lemon  Cucumber salad",
-										"Paneer Dum biryani",
+										"*Paneer Dum biryani*",
 										"Salan",
 										"Tomato Rasam",
 										"Mix veg Raita",
@@ -376,7 +376,7 @@
 									"Lunch": [
 										"Cucumber carrot salad",
 										"Beans poriyal  (dry)",
-										"Palak paneer (gravy)",
+										"*Palak paneer (gravy)*",
 										"Radish Sambar",
 										"Gongura thoviyal"
 									],
@@ -434,7 +434,7 @@
 									"Dinner": [
 										"Phulka",
 										"Jeera rice",
-										"Paneer butter Masala",
+										"*Paneer butter Masala*",
 										"Garlic Rasam",
 										"Pineapple rava kesari",
 										"Lemon water"
@@ -610,7 +610,7 @@
 									"Dinner": [
 										"Pudina chapathi",
 										"Jeera Rice",
-										"Tawa paneer ",
+										"*Tawa paneer* ",
 										"Tomato Rasam",
 										"Semiya payasam",
 										"Lemon water"
@@ -745,7 +745,7 @@
 									"Dinner": [
 										"Corn peas pulao",
 										"Pudina chapathi",
-										"Roasted egg masala",
+										"*Roasted egg masala*",
 										"Mix veg Sambar",
 										"Sabudana Kheer",
 										"Lemon Water"
@@ -793,7 +793,7 @@
 									"Dinner": [
 										"Methi chapathi",
 										"Jeera Rice",
-										"Kadai Chicken Curry",
+										"*Kadai Chicken Curry*",
 										"Garlic Rasam",
 										"Pineapple rava kesari",
 										"Lemon water"
@@ -803,7 +803,7 @@
 									"Breakfast": [
 										"Scrambled egg / Cornflakes",
 										"Boiled Black Chana",
-										"Maggi",
+										"*Maggi*",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -883,7 +883,7 @@
 									],
 									"Lunch": [
 										"Bagara rice & Sherva",
-										"Chicken masala",
+										"*Chicken masala*",
 										"Tomato Rasam",
 										"Boondi Raita ",
 										"Gulab Jamun - 2 pieces",
@@ -920,7 +920,7 @@
 									"Snacks": ["Biscuit Packet"],
 									"Dinner": [
 										"Veg pulao",
-										"Chettinad egg curry",
+										"*Chettinad egg curry*",
 										"Mix veg Sambar",
 										"Rava kesari",
 										"Lemon Water"
@@ -968,7 +968,7 @@
 									"Snacks": ["Masala boiled Chana"],
 									"Dinner": [
 										"Pudina Chapathi",
-										"Andhra Chicken  ",
+										"*Andhra Chicken*",
 										"Garlic Rasam",
 										"Carrot halwa",
 										"Lemon water"
@@ -995,7 +995,7 @@
 									"Snacks": ["Veg puff"],
 									"Dinner": [
 										"Ghee Rice",
-										"Roasted egg masala",
+										"*Roasted egg masala*",
 										"Mix Veg Sambar",
 										"Banana",
 										"Buttermilk"
@@ -1060,7 +1060,7 @@
 									],
 									"Lunch": [
 										"Onion lemon  Cucumber salad",
-										"Hyderabadi Chicken Dum biryani",
+										"*Hyderabadi Chicken Dum biryani*",
 										"Salan",
 										"Tomato Rasam",
 										"Mix veg Raita ",
@@ -1089,14 +1089,14 @@
 									"Lunch": [
 										"Cucumber carrot salad",
 										"Beans poriyal  (dry)",
-										"Palak paneer (gravy)",
+										"*Palak paneer (gravy)*",
 										"Radish Sambar",
 										"Gongura thoviyal"
 									],
 									"Snacks": ["Sambar vada"],
 									"Dinner": [
 										"Methi chapathi",
-										"Masala egg bhurji",
+										"*Masala egg bhurji*",
 										"Toor dal",
 										"Rice kheer",
 										"Lemon Water"
@@ -1147,7 +1147,7 @@
 									"Dinner": [
 										"Phulka",
 										"Jeera Rice",
-										"Pepper Chicken",
+										"*Pepper Chicken*",
 										"Garlic Rasam",
 										"Pineapple rava kesari",
 										"Lemon water"
@@ -1237,7 +1237,7 @@
 									"Lunch": [
 										"Onion lemon  Cucumber salad",
 										"Bagara rice & Sherva",
-										"Butter Chicken masala",
+										"*Butter Chicken masala*",
 										"Tomato Rasam",
 										"Onion Tomato Raita ",
 										"Kala  Jamun - 2 pieces"
@@ -1323,7 +1323,7 @@
 									"Dinner": [
 										"Pudina chapathi",
 										"Jeera Rice",
-										"Chettinad chicken masala",
+										"*Chettinad chicken masala*",
 										"Tomato Rasam",
 										"Semiya payasam",
 										"Lemon water"
@@ -1411,7 +1411,7 @@
 									],
 									"Lunch": [
 										"Onion lemon  Cucumber salad",
-										"Chicken fry piece biryani  ",
+										"*Chicken fry piece biryani*",
 										"Salan  ",
 										"Tomato Rasam",
 										"Cucumber Raita",
@@ -1530,7 +1530,7 @@
 										"Plain rice",
 										"Phulka",
 										"Jeera Rice",
-										"Palak Paneer",
+										"*Palak Paneer*",
 										"Garlic Rasam",
 										"Carrot Halwa",
 										"Mango Pickle"
@@ -1636,7 +1636,7 @@
 									"Lunch": [
 										"Plain Chapathi",
 										"Veg biryani (Basmati rice)",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Raita (No Salad)",
 										"Cut Onion",
 										"Gulab Jamun"
@@ -1742,7 +1742,7 @@
 										"Plain rice",
 										"Phulka",
 										"Jeera Rice",
-										"Masala Paneer",
+										"*Masala Paneer*",
 										"Bhindi Sambar",
 										"Semiya Payasam",
 										"Mix Veg Pickle"
@@ -1789,7 +1789,7 @@
 									],
 									"Lunch": [
 										"Plain Chapati",
-										"Mutter Paneer",
+										"*Mutter Paneer*",
 										"Raw banana fry (Dry)",
 										"Tomato Rasam",
 										"Moong Dal",
@@ -1812,7 +1812,7 @@
 										"Chocos",
 										"Mango Jam",
 										"Boiled mixed pulses",
-										"Maggi",
+										"*Maggi*",
 										"Tomato Sauce",
 										"Idiyappam",
 										"Veg Kurma"
@@ -1850,7 +1850,7 @@
 									"Lunch": [
 										"Plain Chapathi",
 										"Veg Biryani (Basmati)",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Raita",
 										"Cut Onion",
 										"Custard Bread"
@@ -1956,7 +1956,7 @@
 										"Plain rice",
 										"Phulka",
 										"Jeera Rice",
-										"Palak Paneer",
+										"*Palak Paneer*",
 										"Garlic Rasam",
 										"Beetroot Halwa",
 										"Mango Pickle"
@@ -2062,7 +2062,7 @@
 									"Lunch": [
 										"Plain Chapathi",
 										"Veg biryani (Basmati rice)",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Raita (No Salad)",
 										"Cut Onion",
 										"Ice Cream"
@@ -2168,7 +2168,7 @@
 										"Plain rice",
 										"Phulka",
 										"Jeera Rice",
-										"Masala Paneer",
+										"*Masala Paneer*",
 										"Bhindi Sambar",
 										"Semiya Payasam",
 										"Mix Veg Pickle"
@@ -2215,7 +2215,7 @@
 									],
 									"Lunch": [
 										"Plain Chapati",
-										"Mutter Paneer",
+										"*Mutter Paneer*",
 										"Raw banana fry (Dry)",
 										"Tomato Rasam",
 										"Moong Dal",
@@ -2238,7 +2238,7 @@
 										"Chocos",
 										"Mango Jam",
 										"Boiled mixed pulses",
-										"Maggi",
+										"*Maggi*",
 										"Tomato Sauce",
 										"Tamarind pulihora"
 									],
@@ -2275,7 +2275,7 @@
 									"Lunch": [
 										"Plain Chapathi",
 										"Veg Biryani (Basmati)",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Raita",
 										"Cut Onion",
 										"Mysore Pak"
@@ -2326,7 +2326,7 @@
 									"Dinner": [
 										"Plain rice",
 										"Plain Chapati",
-										"Chettinad Egg Curry",
+										"*Chettinad Egg Curry*",
 										"Dum Aloo",
 										"Lemon Rasam",
 										"Banana Fruit",
@@ -2389,7 +2389,7 @@
 										"Plain rice",
 										"Phulka",
 										"Jeera Rice",
-										"Kadai Chicken Curry",
+										"*Kadai Chicken Curry*",
 										"Garlic Rasam",
 										"Carrot Halwa",
 										"Mango Pickle"
@@ -2496,7 +2496,7 @@
 										"Plain Chapathi",
 										"Kuska/ bagara rice",
 										"Sherva",
-										"Chicken Chettinad",
+										"*Chicken Chettinad*",
 										"Raita (No Salad)",
 										"Cut Onion",
 										"Gulab Jamun"
@@ -2542,7 +2542,7 @@
 									"Dinner": [
 										"Plain Rice",
 										"Phulka",
-										"Masala Egg Bhurji",
+										"*Masala Egg Bhurji*",
 										"Mix Veg Sambar",
 										"Sweet Pongal"
 									]
@@ -2601,7 +2601,7 @@
 									"Dinner": [
 										"Plain rice",
 										"Jeera Rice",
-										"Andhra Chicken Curry",
+										"*Andhra Chicken Curry*",
 										"Bhindi Sambar",
 										"Semiya Payasam",
 										"Mix Veg Pickle"
@@ -2630,7 +2630,7 @@
 									"Dinner": [
 										"Plain Rice",
 										"Plain Chapathi",
-										"Roasted Boiled Egg Masala",
+										"*Roasted Boiled Egg Masala*",
 										"Lemon Rasam",
 										"Pineapple Fruit",
 										"Lemon pickle"
@@ -2647,7 +2647,7 @@
 									],
 									"Lunch": [
 										"Plain Chapati",
-										"Mutter Paneer",
+										"*Mutter Paneer*",
 										"Raw banana fry (Dry)",
 										"Tomato Rasam",
 										"Moong Dal",
@@ -2670,7 +2670,7 @@
 										"Chocos",
 										"Mango Jam",
 										"Boiled mixed pulses",
-										"Maggi",
+										"*Maggi*",
 										"Tomato Sauce",
 										"Idiyappam",
 										"Veg Kurma"
@@ -2707,7 +2707,7 @@
 									],
 									"Lunch": [
 										"Plain Chapathi",
-										"Hyderabadi Chicken Dum Biryani",
+										"*Hyderabadi Chicken Dum Biryani*",
 										"Raita",
 										"Cut Onion",
 										"Custard Bread"
@@ -2750,7 +2750,7 @@
 									"Dinner": [
 										"Plain rice",
 										"Plain Chapati",
-										"Chettinad Egg Curry",
+										"*Chettinad Egg Curry*",
 										"Dum Aloo",
 										"Lemon Rasam",
 										"Banana Fruit",
@@ -2813,7 +2813,7 @@
 										"Plain rice",
 										"Phulka",
 										"Jeera Rice",
-										"Kadai Chicken Curry",
+										"*Kadai Chicken Curry*",
 										"Garlic Rasam",
 										"Beetroot Halwa",
 										"Mango Pickle"
@@ -2920,7 +2920,7 @@
 										"Plain Chapathi",
 										"Kuska/ bagara rice",
 										"Sherva",
-										"Chicken masala",
+										"*Chicken masala*",
 										"Raita (No Salad)",
 										"Cut Onion",
 										"Ice Cream"
@@ -2966,7 +2966,7 @@
 									"Dinner": [
 										"Plain Rice",
 										"Phulka",
-										"Masala Egg Bhurji",
+										"*Masala Egg Bhurji*",
 										"Mix Veg Sambar",
 										"Moong dal halwa"
 									]
@@ -3025,7 +3025,7 @@
 									"Dinner": [
 										"Plain rice",
 										"Jeera Rice",
-										"Andhra Chicken Curry",
+										"*Andhra Chicken Curry*",
 										"Bhindi Sambar",
 										"Semiya Payasam",
 										"Mix Veg Pickle"
@@ -3054,7 +3054,7 @@
 									"Dinner": [
 										"Plain Rice",
 										"Plain Chapathi",
-										"Roasted Boiled Egg Masala",
+										"*Roasted Boiled Egg Masala*",
 										"Lemon Rasam",
 										"Pineapple Fruit",
 										"Lemon pickle"
@@ -3071,7 +3071,7 @@
 									],
 									"Lunch": [
 										"Plain Chapati",
-										"Mutter Paneer",
+										"*Mutter Paneer*",
 										"Raw banana fry (Dry)",
 										"Tomato Rasam",
 										"Moong Dal",
@@ -3094,7 +3094,7 @@
 										"Chocos",
 										"Mango Jam",
 										"Boiled mixed pulses",
-										"Maggi",
+										"*Maggi*",
 										"Tomato Sauce",
 										"Tamarind pulihora"
 									],
@@ -3130,7 +3130,7 @@
 									],
 									"Lunch": [
 										"Plain Chapathi",
-										"Hyderabadi Chicken Dum Biryani",
+										"*Hyderabadi Chicken Dum Biryani*",
 										"Raita",
 										"Cut Onion",
 										"Mysore Pak"
@@ -3233,7 +3233,7 @@
 										"Rice",
 										"Phulka",
 										"Moong Dal",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Seasonal Fruit (Papaya, Orange, etc.)",
 										"Lemon Juice"
 									]
@@ -3327,7 +3327,7 @@
 										"Dal (Toor Dal)",
 										"Raita",
 										"Onion + Lemon salad",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Ice Cream"
 									],
 									"Snacks": ["Chana chaat"],
@@ -3417,7 +3417,7 @@
 										"Rice",
 										"Phulka",
 										"Masoor Dal",
-										"Shahi Paneer",
+										"*Shahi Paneer*",
 										"Seasonal Fruit",
 										"Lemon Juice"
 									]
@@ -3459,8 +3459,8 @@
 										"Rice",
 										"Phulka",
 										"Chana dal",
-										"Mushroom Peas Aloo masala",
-										"Chilli Paneer dry",
+										"*Mushroom Peas Aloo masala*",
+										"*Chilli Paneer dry*",
 										"Kadai Mix Veg Curry"
 									],
 									"Snacks": ["Butter salted Popcorn"],
@@ -3515,7 +3515,7 @@
 										"Raita",
 										"Onion + Lemon salad",
 										"Dal (Toor Dal)",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Gulab Jamun"
 									],
 									"Snacks": ["Chana chaat"],
@@ -3606,7 +3606,7 @@
 										"Rice",
 										"Phulka",
 										"Moong Dal",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Seasonal Fruit (Papaya, Orange, etc.)",
 										"Lemon Juice"
 									]
@@ -3700,7 +3700,7 @@
 										"Dal (Toor Dal)",
 										"Raita",
 										"Onion + Lemon salad",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Sahi Tukda"
 									],
 									"Snacks": ["Crispy soya chunks"],
@@ -3790,7 +3790,7 @@
 										"Rice",
 										"Phulka",
 										"Masoor Dal",
-										"Shahi Paneer",
+										"*Shahi Paneer*",
 										"Seasonal Fruit",
 										"Lemon Juice"
 									]
@@ -3832,8 +3832,8 @@
 										"Rice",
 										"Phulka",
 										"Chana dal",
-										"Mushroom Peas Aloo masala",
-										"Chilli Paneer dry",
+										"*Mushroom Peas Aloo masala*",
+										"*Chilli Paneer dry*",
 										"Kadai Mix Veg Curry"
 									],
 									"Snacks": ["Banana bajji"],
@@ -3888,7 +3888,7 @@
 										"Raita",
 										"Onion + Lemon salad",
 										"Dal (Toor Dal)",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Double ka Meetha"
 									],
 									"Snacks": ["Crispy soya chunks"],
@@ -3927,7 +3927,7 @@
 										"Chapathi",
 										"Dal Makhani",
 										"Gobi Capsicum Masala (dry)",
-										"Egg curry (1pc)"
+										"*Egg curry (1pc)*"
 									],
 									"Snacks": ["Masala corn & Lemon"],
 									"Dinner": [
@@ -3986,7 +3986,7 @@
 										"Rice",
 										"Phulka",
 										"Moong Dal",
-										"Chicken tikka masala",
+										"*Chicken tikka masala*",
 										"Seasonal Fruit (Papaya, Orange, etc.)",
 										"Lemon Juice"
 									]
@@ -4073,7 +4073,7 @@
 										"Onion Tomato Chutney"
 									],
 									"Lunch": [
-										"Hyderabadi chicken dum biryani",
+										"*Hyderabadi chicken dum biryani*",
 										"Rice",
 										"Phulka",
 										"Dal (Toor)",
@@ -4117,7 +4117,7 @@
 										"Rice",
 										"Phulka",
 										"Channa dal",
-										"Egg Curry (1pc)",
+										"*Egg Curry (1pc)*",
 										"Rice Kheer"
 									]
 								},
@@ -4168,7 +4168,7 @@
 										"Rice",
 										"Phulka",
 										"Masoor Dal",
-										"Punjabi Chicken Curry",
+										"*Punjabi Chicken Curry*",
 										"Seasonal Fruit",
 										"Lemon Juice"
 									]
@@ -4210,8 +4210,8 @@
 										"Rice",
 										"Phulka",
 										"Chana dal",
-										"Mushroom Peas Aloo masala",
-										"Chilli Paneer dry",
+										"*Mushroom Peas Aloo masala*",
+										"*Chilli Paneer dry*",
 										"Kadai Mix Veg Curry"
 									],
 									"Snacks": ["Butter salted Popcorn"],
@@ -4262,7 +4262,7 @@
 									],
 									"Lunch": [
 										"Toor Dal",
-										"Hyderabadi Chicken Dum Biryani",
+										"*Hyderabadi Chicken Dum Biryani*",
 										"Raita",
 										"Onion + Lemon salad",
 										"Gulab Jamun"
@@ -4295,7 +4295,7 @@
 										"Chapathi",
 										"Dal Makhani",
 										"Gobi Capsicum Masala (dry)",
-										"Egg curry (1pc)"
+										"*Egg curry (1pc)*"
 									],
 									"Snacks": ["Sambar vada"],
 									"Dinner": [
@@ -4354,7 +4354,7 @@
 										"Rice",
 										"Phulka",
 										"Moong Dal",
-										"Chicken tikka masala",
+										"*Chicken tikka masala*",
 										"Seasonal Fruit (Papaya, Orange, etc.)",
 										"Lemon Juice"
 									]
@@ -4441,7 +4441,7 @@
 										"Onion Tomato Chutney"
 									],
 									"Lunch": [
-										"Hyderabadi chicken dum biryani",
+										"*Hyderabadi chicken dum biryani*",
 										"Rice",
 										"Phulka",
 										"Dal (Toor)",
@@ -4485,7 +4485,7 @@
 										"Rice",
 										"Phulka",
 										"Channa dal",
-										"Egg Curry (1pc)",
+										"*Egg Curry (1pc)*",
 										"Rice Kheer"
 									]
 								},
@@ -4536,7 +4536,7 @@
 										"Rice",
 										"Phulka",
 										"Masoor Dal",
-										"Punjabi Chicken Curry",
+										"*Punjabi Chicken Curry*",
 										"Seasonal Fruit",
 										"Lemon Juice"
 									]
@@ -4578,8 +4578,8 @@
 										"Rice",
 										"Phulka",
 										"Chana dal",
-										"Mushroom Peas Aloo masala",
-										"Chilli Paneer dry",
+										"*Mushroom Peas Aloo masala*",
+										"*Chilli Paneer dry*",
 										"Kadai Mix Veg Curry"
 									],
 									"Snacks": ["Banana bajji"],
@@ -4630,7 +4630,7 @@
 									],
 									"Lunch": [
 										"Toor Dal",
-										"Hyderabadi Chicken Dum Biryani",
+										"*Hyderabadi Chicken Dum Biryani*",
 										"Raita",
 										"Onion + Lemon salad",
 										"Double ka meeta"
@@ -4736,7 +4736,7 @@
 										"Ghee rice",
 										"Roti",
 										"Masoor Dal",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Seasonal Fruit (Papaya, Orange, etc.)",
 										"Lemon Juice"
 									]
@@ -4833,7 +4833,7 @@
 										"Roti",
 										"Dal (Toor Dal)",
 										"Onion/Cucumber raita",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Ice Cream"
 									],
 									"Snacks": ["Chana chaat"],
@@ -4931,7 +4931,7 @@
 										"Rice",
 										"Roti",
 										"Masoor Dal",
-										"Shahi Paneer",
+										"*Shahi Paneer*",
 										"Muskmelon",
 										"Lemon Juice"
 									]
@@ -4949,7 +4949,7 @@
 										"Rice",
 										"Roti",
 										"Dal (Rajma)",
-										"Mushroom Peas Aloo masala",
+										"*Mushroom Peas Aloo masala*",
 										"Peas Masala",
 										"Tindly Fry"
 									],
@@ -4976,7 +4976,7 @@
 										"Rice",
 										"Roti",
 										"Chana dal",
-										"Paneer chetpet dry",
+										"*Paneer chetpet dry*",
 										"Kadai Mix Veg Curry"
 									],
 									"Snacks": ["Butter salted Popcorn"],
@@ -5031,7 +5031,7 @@
 										"Roti",
 										"Raita",
 										"Dal (Toor Dal)",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Mirchi Ka Salan Onion",
 										"Tomato+ Lemon Salad",
 										"Gulab Jamun"
@@ -5129,7 +5129,7 @@
 										"Ghee rice",
 										"Roti",
 										"Masoor Dal",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Seasonal Fruit (Papaya, Orange, etc.)",
 										"Lemon Juice"
 									]
@@ -5226,7 +5226,7 @@
 										"Roti",
 										"Dal (Toor Dal)",
 										"Onion/Cucumber raita",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Sahi Tukda"
 									],
 									"Snacks": ["Crispy soyachunks"],
@@ -5324,7 +5324,7 @@
 										"Rice",
 										"Roti",
 										"Masoor Dal",
-										"Shahi Paneer",
+										"*Shahi Paneer*",
 										"Muskmelon",
 										"Lemon Juice"
 									]
@@ -5342,7 +5342,7 @@
 										"Rice",
 										"Roti",
 										"Dal (Rajma)",
-										"Mushroom Peas Aloo masala",
+										"*Mushroom Peas Aloo masala*",
 										"Peas Masala",
 										"Tindly Fry"
 									],
@@ -5369,7 +5369,7 @@
 										"Rice",
 										"Roti",
 										"Chana dal",
-										"Paneer chetpet dry",
+										"*Paneer chetpet dry*",
 										"Kadai Mix Veg Curry"
 									],
 									"Snacks": ["Banana bajji"],
@@ -5424,7 +5424,7 @@
 										"Roti",
 										"Raita",
 										"Dal (Toor Dal)",
-										"Kadai Paneer",
+										"*Kadai Paneer*",
 										"Mirchi Ka Salan Onion",
 										"Tomato+ Lemon Salad",
 										"Double Ka Meetha"
@@ -5520,7 +5520,7 @@
 									"Dinner": [
 										"Methi Chapathi",
 										"Jeera Rice",
-										"Palak paneer",
+										"*Palak paneer*",
 										"Garlic Rasam",
 										"Pineapple rava kesari",
 										"Lemon water",
@@ -5531,7 +5531,7 @@
 									"Breakfast": [
 										"Boiled egg / Cornflakes",
 										"Boiled Black Chana",
-										"Maggi",
+										"*Maggi*",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -5618,7 +5618,7 @@
 									"Lunch": [
 										"Onion lemon Cucumber salad",
 										"Bagara rice & Sherva",
-										"Kadai Peas Mushroom curry",
+										"*Kadai Peas Mushroom curry*",
 										"Tomato Rasam",
 										"Boondi Raita",
 										"Gulab Jamun - 2 pieces"
@@ -5705,7 +5705,7 @@
 									"Snacks": ["Masala boiled chana"],
 									"Dinner": [
 										"Pudina Chapathi",
-										"Kadai paneer",
+										"*Kadai paneer*",
 										"Garlic Rasam",
 										"Carrot halwa",
 										"Lemon water",
@@ -5802,7 +5802,7 @@
 									],
 									"Lunch": [
 										"Onion lemon Cucumber salad",
-										"Paneer Dum biryani",
+										"*Paneer Dum biryani*",
 										"Tomato Rasam",
 										"Mix veg Raita",
 										"Custard bread"
@@ -5831,7 +5831,7 @@
 									"Lunch": [
 										"Cucumber carrot salad",
 										"Aloo Beans sabzi (dry)",
-										"Palak paneer (gravy)",
+										"*Palak paneer (gravy)*",
 										"Radish Sambar",
 										"Gongura thoviyal"
 									],
@@ -5890,7 +5890,7 @@
 									"Dinner": [
 										"Phulka",
 										"Jeera Rice",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Garlic Rasam",
 										"Pineapple rava kesari",
 										"Lemon water",
@@ -5985,7 +5985,7 @@
 									"Lunch": [
 										"Onion lemon Cucumber salad",
 										"Bagara rice & Sherva",
-										"Paneer Butter Masala",
+										"*Paneer Butter Masala*",
 										"Tomato Rasam",
 										"Onion Tomato Raita",
 										"Kala Jamun - 2 pieces"
@@ -6073,7 +6073,7 @@
 									"Dinner": [
 										"Pudina chapathi",
 										"Jeera Rice",
-										"Tawa Paneer",
+										"*Tawa Paneer*",
 										"Tomato Rasam",
 										"Semiya payasam",
 										"Lemon water",
@@ -6213,7 +6213,7 @@
 									"Dinner": [
 										"Corn peas pulao",
 										"Pudina chapathi",
-										"Roasted egg masala",
+										"*Roasted egg masala*",
 										"Mix veg Sambar",
 										"Sabudana Kheer",
 										"Lemon Water",
@@ -6263,7 +6263,7 @@
 									"Dinner": [
 										"Methi chapathi",
 										"Jeera Rice",
-										"Kadai Chicken Curry",
+										"*Kadai Chicken Curry*",
 										"Garlic Rasam",
 										"Seasonal Fruit",
 										"rava kesari",
@@ -6275,7 +6275,7 @@
 									"Breakfast": [
 										"Boiled egg / Cornflakes",
 										"Boiled Black Chana",
-										"Maggi",
+										"*Maggi*",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -6361,7 +6361,7 @@
 									],
 									"Lunch": [
 										"Onion lemon Cucumber salad",
-										"Hyderabadi Chicken Dum biryani",
+										"*Hyderabadi Chicken Dum biryani*",
 										"Salan",
 										"Tomato Rasam",
 										"Boondi Raita",
@@ -6399,7 +6399,7 @@
 									"Snacks": ["Biscuit Packet"],
 									"Dinner": [
 										"Veg pulao",
-										"Chettinad egg curry",
+										"*Chettinad egg curry*",
 										"Roti",
 										"Dal",
 										"Rava kesari",
@@ -6451,7 +6451,7 @@
 									"Snacks": ["Masala boiled Chana"],
 									"Dinner": [
 										"Pudina Chapathi",
-										"Andhra Chicken",
+										"*Andhra Chicken*",
 										"Garlic Rasam",
 										"Carrot halwa",
 										"Lemon water",
@@ -6479,7 +6479,7 @@
 									"Snacks": ["Veg puff/Bread Pakora"],
 									"Dinner": [
 										"Ghee Rice",
-										"Roasted egg masala",
+										"*Roasted egg masala*",
 										"Roti",
 										"Dal",
 										"Boiled Sweet corn",
@@ -6549,7 +6549,7 @@
 									],
 									"Lunch": [
 										"Onion lemon Cucumber salad",
-										"Chicken fry piece biryani",
+										"*Chicken fry piece biryani*",
 										"Salan",
 										"Tomato Rasam Mix veg Raita Custard"
 									],
@@ -6576,14 +6576,14 @@
 									"Lunch": [
 										"Cucumber carrot salad",
 										"Aloo Beans sabzi (dry)",
-										"Palak paneer (gravy)",
+										"*Palak paneer (gravy)*",
 										"Radish Sambar",
 										"Gongura thoviyal"
 									],
 									"Snacks": ["Sambar vada"],
 									"Dinner": [
 										"Methi chapathi",
-										"Masala egg bhurji",
+										"*Masala egg bhurji*",
 										"Mix veg Sambar",
 										"Toor dal",
 										"Rice kheer",
@@ -6636,7 +6636,7 @@
 									"Dinner": [
 										"Phulka",
 										"Jeera Rice",
-										"Pepper Chicken",
+										"*Pepper Chicken*",
 										"Garlic Rasam",
 										"Pineapple rava kesari",
 										"Lemon water",
@@ -6732,7 +6732,7 @@
 									"Lunch": [
 										"Onion lemon Cucumber salad",
 										"Bagara rice & Sherva",
-										"Butter Chicken masala",
+										"*Butter Chicken masala*",
 										"Tomato Rasam",
 										"Onion Tomato Raita",
 										"Kala Jamun - 2 pieces"
@@ -6820,7 +6820,7 @@
 									"Dinner": [
 										"Pudina chapathi",
 										"Jeera Rice",
-										"Chettinad chicken masala",
+										"*Chettinad chicken masala*",
 										"Tomato Rasam",
 										"Semiya payasam",
 										"Lemon water",
@@ -6912,7 +6912,7 @@
 									],
 									"Lunch": [
 										"Onion lemon Cucumber salad",
-										"Hyderabadi Chicken Dum Biryani",
+										"*Hyderabadi Chicken Dum Biryani*",
 										"Salan",
 										"Tomato Rasam",
 										"Cucumber Raita",
