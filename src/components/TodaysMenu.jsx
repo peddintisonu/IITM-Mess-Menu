@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { getTodaysMenu, getContextForDate } from "../api/menuApi"; // We can use the simpler API again
+import { getTodaysMenu, getContextForDate } from "../api/menuApi";
 import { getCurrentWeek, getUserCategory } from "../utils/weekManager";
 import { MENUS } from "../api/constants";
 import MealCard from "./MealCard";
-import { Settings } from "lucide-react";
+import { Settings, Sparkles } from "lucide-react";
 
 /**
- * A component that displays the menu for the current day, along with global
- * info like the current cycle and week.
+ * A component that displays the menu for the CURRENT day.
+ * It detects and displays a banner for special, temporary event menus,
+ * including a custom description if available.
  */
 const TodaysMenu = () => {
 	const [menu, setMenu] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	// State is now an object to hold both name and description
+	const [activeEvent, setActiveEvent] = useState({
+		name: null,
+		description: null,
+	});
 
-	// --- Static data for the top info bar (always reflects TODAY) ---
+	// --- Static data for the top info bar ---
 	const userMessPreference = getUserCategory();
 	const currentWeek = getCurrentWeek();
 	const currentCycle = getContextForDate(new Date())?.cycleName || "Loading...";
@@ -22,11 +28,21 @@ const TodaysMenu = () => {
 		MENUS.find((menu) => menu.value === userMessPreference)?.label || "Not Set";
 
 	useEffect(() => {
-		const fetchTodaysMenu = async () => {
+		const fetchTodaysData = async () => {
 			setLoading(true);
 			setError(null);
+			setActiveEvent({ name: null, description: null }); // Reset on each fetch
 
-			// Using the simple getTodaysMenu API is sufficient now
+			// First, get today's context to check for an event.
+			const context = getContextForDate(new Date());
+			if (context && context.eventName) {
+				setActiveEvent({
+					name: context.eventName,
+					description: context.eventDescription,
+				});
+			}
+
+			// Then, fetch the final, merged menu for today.
 			const response = await getTodaysMenu();
 
 			if (response.success) {
@@ -39,12 +55,12 @@ const TodaysMenu = () => {
 		};
 
 		if (userMessPreference) {
-			fetchTodaysMenu();
+			fetchTodaysData();
 		} else {
 			setLoading(false);
 			setError("Please select your mess in the settings to get started.");
 		}
-	}, [userMessPreference]); // Re-fetch only if the user's preference changes
+	}, [userMessPreference]);
 
 	const formattedDate = new Intl.DateTimeFormat("en-US", {
 		weekday: "long",
@@ -58,7 +74,7 @@ const TodaysMenu = () => {
 		}
 		if (error) {
 			return (
-				  <div className="alert alert-destructive" role="alert">
+				<div className="alert alert-destructive">
 					<div className="alert-title">Oops!</div>
 					<div className="alert-description">{error}</div>
 				</div>
@@ -109,17 +125,16 @@ const TodaysMenu = () => {
 			className="w-full max-w-7xl mx-auto px-4 py-6 sm:py-8"
 		>
 			<div className="mb-8">
-				{/* Settings and Global Info Bar */}
 				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">
 					<div>
 						<span className="font-medium">Current Cycle:</span>
 						<span className="ml-2 badge badge-primary">{currentCycle}</span>
 					</div>
-					<div className="mt-2 sm:mt-0">
+					<div className="mt-1 sm:mt-0">
 						<span className="font-medium">Current Week:</span>
 						<span className="ml-2 badge badge-primary">Week {currentWeek}</span>
 					</div>
-					<div className="mt-2 sm:mt-0">
+					<div className="mt-1 sm:mt-0">
 						<span className="font-medium">Your Mess:</span>
 						<span className="ml-2 badge badge-primary">{menuLabel}</span>
 					</div>
@@ -129,14 +144,27 @@ const TodaysMenu = () => {
 					<span>You can change your mess in the settings.</span>
 				</div>
 
-				{/* Main Heading */}
 				<div className="flex items-center gap-4 mt-4">
 					<h1 className="m-0">
 						Today's Menu <span className="text-primary">{formattedDate}</span>
 					</h1>
 				</div>
-			</div>
 
+				{/* The new, more informative event banner */}
+				{activeEvent.name && (
+					<div className="event-banner mt-4">
+						<div className="event-banner-title">
+							<Sparkles size={16} />
+							{activeEvent.name}
+						</div>
+						{activeEvent.description && (
+							<div className="event-banner-description">
+								{activeEvent.description}
+							</div>
+						)}
+					</div>
+				)}
+			</div>
 			{renderContent()}
 		</section>
 	);

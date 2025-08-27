@@ -1,5 +1,4 @@
 {
-	"currentVersionKey": "2025-07-28",
 	"versions": {
 		"2025-07-28": {
 			"Messmenu": {
@@ -79,18 +78,19 @@
 									],
 									"Snacks": ["Rusk (4 pieces)"],
 									"Dinner": [
-										"Chole Bhature",
-										"Drumstick sambar",
-										"Tomato rasam",
-										"Papaya",
-										"Ragi drink"
+										"Methi Chapathi",
+										"Jeera Rice",
+										"*Palak paneer*",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
 									]
 								},
 								"Thursday": {
 									"Breakfast": [
 										"Scrambled egg / Cornflakes",
 										"Boiled Black Chana",
-										"*Maggi*",
+										"Maggi",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -103,12 +103,11 @@
 									],
 									"Snacks": ["Bhel puri"],
 									"Dinner": [
-										"Methi Chapathi",
-										"Jeera Rice",
-										"*Palak paneer*",
-										"Garlic Rasam",
-										"Pineapple rava kesari",
-										"Lemon water"
+										"Vegetable Pulao",
+										"Sherva",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
 									]
 								},
 								"Friday": {
@@ -128,11 +127,11 @@
 									],
 									"Snacks": ["Butter salted Popcorn"],
 									"Dinner": [
-										"*Vegetable Pulao*",
-										"Sherva",
-										"Mix Veg Sambar",
-										"Boiled Sweet corn",
-										"Buttermilk"
+										"Chole Bhature",
+										"Drumstick sambar",
+										"Tomato rasam",
+										"Papaya",
+										"Ragi drink"
 									]
 								},
 								"Saturday": {
@@ -171,7 +170,7 @@
 									],
 									"Lunch": [
 										"Bagara rice & Sherva",
-										"*Kadai Mushroom curry*",
+										"Kadai Mushroom curry",
 										"Tomato Rasam",
 										"Boondi Raita ",
 										"Gulab Jamun - 2 pieces",
@@ -792,18 +791,19 @@
 									],
 									"Snacks": ["Rusk (4 pieces)"],
 									"Dinner": [
-										"Chole Bhature ",
-										"Drumstick sambar",
-										"Tomato Raasam ",
-										"Papaya",
-										"Ragi drink"
+										"Methi chapathi",
+										"Jeera Rice",
+										"Kadai Chicken Curry",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
 									]
 								},
 								"Thursday": {
 									"Breakfast": [
 										"Scrambled egg / Cornflakes",
 										"Boiled Black Chana",
-										"*Maggi*",
+										"Maggi",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -816,12 +816,11 @@
 									],
 									"Snacks": ["Bhel puri"],
 									"Dinner": [
-										"Methi chapathi",
-										"Jeera Rice",
-										"*Kadai Chicken Curry*",
-										"Garlic Rasam",
-										"Pineapple rava kesari",
-										"Lemon water"
+										"Boiled Egg pulao",
+										"Sherva",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
 									]
 								},
 								"Friday": {
@@ -841,11 +840,11 @@
 									],
 									"Snacks": ["Butter salted Popcorn"],
 									"Dinner": [
-										"*Boiled Egg pulao*",
-										"Sherva",
-										"Mix Veg Sambar",
-										"Boiled Sweet corn",
-										"Buttermilk"
+										"Chole Bhature ",
+										"Drumstick sambar",
+										"Tomato Raasam ",
+										"Papaya",
+										"Ragi drink"
 									]
 								},
 								"Saturday": {
@@ -884,7 +883,7 @@
 									],
 									"Lunch": [
 										"Bagara rice & Sherva",
-										"*Chicken masala*",
+										"Chicken masala",
 										"Tomato Rasam",
 										"Boondi Raita ",
 										"Gulab Jamun - 2 pieces",
@@ -6946,6 +6945,36 @@
 			"name": "Sep 01, 2025 to Oct 11, 2025",
 			"startDate": "2025-09-01",
 			"endDate": "2025-10-11"
+		}
+	],
+	"overrides": {},
+	"eventOverrides": [
+		{
+			"eventName": "Ganesh Chaturthi Celebration",
+			"description": "The dinner menu has been reshuffled for the festival.",
+			"startDate": "2025-08-27",
+			"endDate": "2025-08-29",
+			"rules": [
+				{
+					"type": "remap",
+					"onDate": "2025-08-27",
+					"targetMeal": "Dinner",
+					"sourceDay": "Friday",
+					"description": "Happy Ganesh Chaturthi! Dinner is rescheduled: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu."
+				},
+				{
+					"type": "remap",
+					"onDate": "2025-08-28",
+					"targetMeal": "Dinner",
+					"sourceDay": "Wednesday"
+				},
+				{
+					"type": "remap",
+					"onDate": "2025-08-29",
+					"targetMeal": "Dinner",
+					"sourceDay": "Thursday"
+				}
+			]
 		}
 	]
 }

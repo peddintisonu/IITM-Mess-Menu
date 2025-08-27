@@ -8,7 +8,7 @@ import {
 import { WEEKS, DAY_SHORTCUTS } from "../api/constants";
 import MealCard from "./MealCard";
 import SelectDropdown from "./SelectDropdown";
-import data from "../database/messMenu.json"; // Import data directly for cycle lookup
+import data from "../database/messMenu.json"; // Import data for direct cycle object lookup
 
 /**
  * A component to explore the full menu for any cycle, mess, week, and day.
@@ -19,11 +19,9 @@ const MenuExplorer = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	// State for dropdown options
 	const [allCycles, setAllCycles] = useState([]);
 	const [availableMenus, setAvailableMenus] = useState([]);
 
-	// State for user's selections
 	const [selectedCycle, setSelectedCycle] = useState(null);
 	const [selectedCategory, setSelectedCategory] = useState(
 		() => getUserCategory() || ""
@@ -39,7 +37,6 @@ const MenuExplorer = () => {
 		setAllCycles(cyclesForDropdown);
 
 		const today = new Date();
-		// Find the last cycle that has started based on today's date
 		const currentCycleData = data.cycles
 			.slice()
 			.reverse()
@@ -48,7 +45,9 @@ const MenuExplorer = () => {
 		if (currentCycleData) {
 			setSelectedCycle(currentCycleData);
 		} else if (data.cycles.length > 0) {
-			setSelectedCycle(data.cycles[0]); // Fallback to the very first cycle
+			setSelectedCycle(data.cycles[0]);
+		} else {
+			setLoading(false);
 		}
 	}, []);
 
@@ -61,30 +60,25 @@ const MenuExplorer = () => {
 		if (context && context.availableCategories) {
 			setAvailableMenus(context.availableCategories);
 
-			// Validate the currently selected category against the new list.
 			const isCurrentCategoryValid = context.availableCategories.some(
 				(menu) => menu.value === selectedCategory
 			);
 
-			// If the current selection is invalid, auto-correct to the first available option.
 			if (!isCurrentCategoryValid && context.availableCategories.length > 0) {
 				setSelectedCategory(context.availableCategories[0].value);
 			} else if (context.availableCategories.length === 0) {
-				setSelectedCategory(""); // Handle case where a cycle has no messes
+				setSelectedCategory("");
 			}
 		} else {
-			// Handle case where a cycle might not have a valid version
 			setAvailableMenus([]);
 			setSelectedCategory("");
 		}
 	}, [selectedCycle]);
 
-	// Effect 3: Fetch the final menu cards once all dependent selections are stable.
+	// Effect 3: Fetch the final menu cards once all selections are stable.
 	useEffect(() => {
-		// Guard clause: Do not fetch until all selections are valid.
 		if (!selectedCycle || !selectedCategory || !selectedWeek || !selectedDay) {
 			setMenu(null);
-			setLoading(false);
 			return;
 		}
 
@@ -106,7 +100,7 @@ const MenuExplorer = () => {
 		const dayMenu = weekData?.schedule[selectedDay];
 
 		if (!dayMenu) {
-			setMenu(null); // Normal case, e.g., no snacks served on this day.
+			setMenu(null);
 		} else {
 			const commonItems = categoryData.common_items || {};
 			const finalMenu = {
@@ -139,7 +133,7 @@ const MenuExplorer = () => {
 		}
 		if (error) {
 			return (
-				<div className="alert alert-destructive" role="alert">
+				<div className="alert alert-destructive">
 					<div className="alert-title">Oops!</div>
 					<div className="alert-description">{error}</div>
 				</div>
