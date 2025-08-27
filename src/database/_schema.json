@@ -7,11 +7,20 @@
 			"Messmenu": {
 				"Categories": {
 					"Category_Name": {
-						"common_items": {},
-						"A": {
+						"common_items": {
+							"Breakfast": "(e.g) Brown Bread, Butter, Jam, Tea, Coffee and Milk, Sugar",
+							"Lunch": "(e.g) Plain Rice, Phulka, Curd, Salt, Sugar, Papad/ Fryums",
+							"Snacks": "(e.g) Tea, Coffee & Milk",
+							"Dinner": "(e.g) Plain Rice, Sugar, Salt, Papad/ Fryums"
+						},
+						"Week_Letter": {
 							"schedule": {
 								"DayOfWeek": {
-									"Meal": ["Item 1", "Item 2"]
+									"Meal": [
+										"Item 1",
+										"Item 2",
+										"Don't forget to add *Item 3* * to spcl items like non veg"
+									]
 								}
 							}
 						}
