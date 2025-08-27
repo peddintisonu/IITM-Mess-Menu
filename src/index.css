@@ -175,6 +175,12 @@
 		@apply dark:bg-yellow-900/20 dark:border-yellow-900/50 dark:text-yellow-300;
 	}
 
+	/* Info Style */
+	.alert-info {
+		@apply bg-blue-50 border-blue-200 text-blue-800;
+		@apply dark:bg-blue-900/20 dark:border-blue-900/50 dark:text-blue-300;
+	}
+
 	/* Form Utilities */
 	.form-group {
 		@apply w-full flex flex-col gap-1.5;

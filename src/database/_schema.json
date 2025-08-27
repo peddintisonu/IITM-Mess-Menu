@@ -1,0 +1,80 @@
+{
+	"_comment": "This file is a template and schema guide for messMenu.json. DO NOT EDIT THE LIVE APP's DATA HERE. Copy these structures into the main file.",
+
+	"versions": {
+		"YYYY-MM-DD": {
+			"Messmenu": {
+				"Categories": {
+					"Category_Name": {
+						"common_items": {},
+						"A": {
+							"schedule": {
+								"DayOfWeek": {
+									"Meal": ["Item 1", "Item 2"]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"cycles": [
+		{
+			"name": "User-friendly name (e.g., July 28, 2025 to Sep 14, 2025)",
+			"startDate": "YYYY-MM-DD",
+			"endDate": "YYYY-MM-DD"
+		}
+	],
+
+	"overrides": {
+		"YYYY-MM-DD": {
+			"_comment": "Permanent change from this date onwards. Use this for small, official menu patches. This will NOT carry over to a new base version.",
+			"Category_Name": {
+				"Week_Letter": {
+					"schedule": {
+						"DayOfWeek": {
+							"Meal": ["New Item 1", "New Item 2"]
+						}
+					}
+				}
+			}
+		}
+	},
+
+	"eventOverrides": [
+		{
+			"eventName": "Name of the event (e.g., Ganesh Chaturthi)",
+			"description": "Optional: A brief, general description of the event if needed.",
+			"startDate": "YYYY-MM-DD",
+			"endDate": "YYYY-MM-DD",
+			"rules": [
+				{
+					"type": "remap",
+					"onDate": "YYYY-MM-DD",
+					"targetMeal": "The meal to be changed (e.g., Dinner)",
+					"sourceDay": "The day to copy the menu FROM (e.g., Friday)",
+					"description": "Optional: A specific message for this day's banner."
+				},
+				{
+					"type": "override",
+					"onDate": "YYYY-MM-DD",
+					"targetMeal": "The meal to be changed (e.g., Lunch)",
+					"description": "Optional: A specific message for this day's banner.",
+					"newMenu": {
+						"Category_Name": {
+							"Week_Letter": {
+								"schedule": {
+									"DayOfWeek": {
+										"Meal": ["Special Item 1", "Special Item 2"]
+									}
+								}
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}
