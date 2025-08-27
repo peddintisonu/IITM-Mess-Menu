@@ -79,19 +79,18 @@
 									],
 									"Snacks": ["Rusk (4 pieces)"],
 									"Dinner": [
-										"Methi Chapathi",
-										"Jeera Rice",
-										"*Palak paneer*",
-										"Garlic Rasam",
-										"Pineapple rava kesari",
-										"Lemon water"
+										"Chole Bhature",
+										"Drumstick sambar",
+										"Tomato rasam",
+										"Papaya",
+										"Ragi drink"
 									]
 								},
 								"Thursday": {
 									"Breakfast": [
 										"Scrambled egg / Cornflakes",
 										"Boiled Black Chana",
-										"Maggi",
+										"*Maggi*",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -104,11 +103,12 @@
 									],
 									"Snacks": ["Bhel puri"],
 									"Dinner": [
-										"Vegetable Pulao",
-										"Sherva",
-										"Mix Veg Sambar",
-										"Boiled Sweet corn",
-										"Buttermilk"
+										"Methi Chapathi",
+										"Jeera Rice",
+										"*Palak paneer*",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
 									]
 								},
 								"Friday": {
@@ -128,11 +128,11 @@
 									],
 									"Snacks": ["Butter salted Popcorn"],
 									"Dinner": [
-										"Chole Bhature",
-										"Drumstick sambar",
-										"Tomato rasam",
-										"Papaya",
-										"Ragi drink"
+										"*Vegetable Pulao*",
+										"Sherva",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
 									]
 								},
 								"Saturday": {
@@ -171,7 +171,7 @@
 									],
 									"Lunch": [
 										"Bagara rice & Sherva",
-										"Kadai Mushroom curry",
+										"*Kadai Mushroom curry*",
 										"Tomato Rasam",
 										"Boondi Raita ",
 										"Gulab Jamun - 2 pieces",
@@ -792,19 +792,18 @@
 									],
 									"Snacks": ["Rusk (4 pieces)"],
 									"Dinner": [
-										"Methi chapathi",
-										"Jeera Rice",
-										"Kadai Chicken Curry",
-										"Garlic Rasam",
-										"Pineapple rava kesari",
-										"Lemon water"
+										"Chole Bhature ",
+										"Drumstick sambar",
+										"Tomato Raasam ",
+										"Papaya",
+										"Ragi drink"
 									]
 								},
 								"Thursday": {
 									"Breakfast": [
 										"Scrambled egg / Cornflakes",
 										"Boiled Black Chana",
-										"Maggi",
+										"*Maggi*",
 										"Tomato sauce"
 									],
 									"Lunch": [
@@ -817,11 +816,12 @@
 									],
 									"Snacks": ["Bhel puri"],
 									"Dinner": [
-										"Boiled Egg pulao",
-										"Sherva",
-										"Mix Veg Sambar",
-										"Boiled Sweet corn",
-										"Buttermilk"
+										"Methi chapathi",
+										"Jeera Rice",
+										"*Kadai Chicken Curry*",
+										"Garlic Rasam",
+										"Pineapple rava kesari",
+										"Lemon water"
 									]
 								},
 								"Friday": {
@@ -841,11 +841,11 @@
 									],
 									"Snacks": ["Butter salted Popcorn"],
 									"Dinner": [
-										"Chole Bhature ",
-										"Drumstick sambar",
-										"Tomato Raasam ",
-										"Papaya",
-										"Ragi drink"
+										"*Boiled Egg pulao*",
+										"Sherva",
+										"Mix Veg Sambar",
+										"Boiled Sweet corn",
+										"Buttermilk"
 									]
 								},
 								"Saturday": {
@@ -884,7 +884,7 @@
 									],
 									"Lunch": [
 										"Bagara rice & Sherva",
-										"Chicken masala",
+										"*Chicken masala*",
 										"Tomato Rasam",
 										"Boondi Raita ",
 										"Gulab Jamun - 2 pieces",
