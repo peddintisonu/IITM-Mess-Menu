@@ -6965,7 +6965,7 @@
 				{
 					"type": "remap",
 					"onDate": "2025-08-28",
-					"targetMeal": "Dinner",
+					"targetMeal": "Lunch",
 					"sourceDay": "Wednesday"
 				},
 				{
