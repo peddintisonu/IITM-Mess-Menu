@@ -12,6 +12,7 @@ import SetupModal from "./components/SetupModal";
 import TodaysMenu from "./components/TodaysMenu";
 import MenuExplorer from "./components/MenuExplorer";
 import Footer from "./components/Footer";
+import UpdatePrompt from "./components/UpdatePrompt";
 
 function App() {
 	const [isSetupDoneState, setIsSetupDoneState] = useState(() =>
@@ -68,6 +69,7 @@ function App() {
 			</div>
 
 			<Tooltip id="navbar-tooltip" className="tooltip-style" />
+			<UpdatePrompt />
 		</ThemeProvider>
 	);
 }
