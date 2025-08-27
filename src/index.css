@@ -176,10 +176,44 @@
 	}
 
 	/* Info Style */
-	.alert-info {
-		@apply bg-blue-50 border-blue-200 text-blue-800;
-		@apply dark:bg-blue-900/20 dark:border-blue-900/50 dark:text-blue-300;
-	}
+    .alert-info {
+        /* Light Mode: A very light blue background with dark, saturated blue text */
+        @apply bg-blue-100 border-blue-200 text-blue-800;
+        
+        /* Dark Mode: A very dark, transparent blue background with bright, light blue text */
+        @apply dark:bg-blue-900/30 dark:border-blue-800/40 dark:text-blue-200;
+    }
+    
+    .event-banner {
+        @apply w-full p-3 rounded-lg text-sm;
+        
+        /* Light Mode: A light orange background with dark orange text. */
+        background-color: var(--color-primary-100);
+    }
+    .event-banner-title {
+        @apply mb-1 flex items-center gap-2 font-semibold;
+        color: var(--color-primary-900); /* Darkest orange for high-contrast title */
+    }
+    .event-banner-description {
+        color: var(--color-primary-800); /* Slightly lighter orange for body text */
+    }
+
+    /* Dark Mode: A semi-transparent dark orange background with bright orange text. */
+    /* This is the crucial fix that matches your successful badge style. */
+    .dark .event-banner {
+        background-color: hsla(var(--color-primary-900-hsl, 27 87% 33%) / 0.3); /* Using HSL for reliable transparency */
+        /* If you have a Tailwind class: dark:bg-primary-900/30 */
+    }
+    .dark .event-banner-title {
+        color: var(--color-primary-200); /* Bright, prominent orange for the title */
+    }
+    .dark .event-banner-description {
+        color: var(--color-primary-300); /* Slightly less bright orange for the body */
+    }
+    /* Ensure the title within the alert gets a slightly bolder color */
+    .alert-info .alert-title {
+        @apply text-blue-900 dark:text-blue-100;
+    }
 
 	/* Form Utilities */
 	.form-group {

@@ -29,10 +29,10 @@ export const DAYS = [
 ];
 
 export const MEALS = [
-	{ value: "Breakfast", label: "Breakfast" },
-	{ value: "Lunch", label: "Lunch" },
-	{ value: "Snacks", label: "Snacks" },
-	{ value: "Dinner", label: "Dinner" },
+	{ value: "Breakfast", label: "Breakfast", timing: "7:00 AM - 9:30 AM" },
+	{ value: "Lunch", label: "Lunch", timing: "12:00 PM - 2:30 PM" },
+	{ value: "Snacks", label: "Snacks", timing: "4:30 PM - 5:30 PM" },
+	{ value: "Dinner", label: "Dinner", timing: "7:00 PM - 9:30 PM" },
 ];
 
 export const DAY_SHORTCUTS = [

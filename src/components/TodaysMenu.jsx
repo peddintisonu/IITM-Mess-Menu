@@ -152,14 +152,15 @@ const TodaysMenu = () => {
 
 				{/* The new, more informative event banner */}
 				{activeEvent.name && (
-					<div className="alert alert-info mt-4">
-						<div className="alert-title flex items-center gap-2">
+					<div className="event-banner mt-4">
+						<div className="event-banner-title">
 							<Sparkles size={16} />
 							{activeEvent.name}
 						</div>
-						{/* Only render the description if it exists */}
 						{activeEvent.description && (
-							<div className="alert-description">{activeEvent.description}</div>
+							<div className="event-banner-description">
+								{activeEvent.description}
+							</div>
 						)}
 					</div>
 				)}
