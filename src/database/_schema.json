@@ -2,6 +2,7 @@
 	"_comment": "This file is a template and schema guide for messMenu.json. DO NOT EDIT THE LIVE APP's DATA HERE. Copy these structures into the main file.",
 
 	"versions": {
+		"_comment": "Each version is an independent snapshot of the menu. It should contain all relevant data for that version. It does not depend on previous versions. It should follow below structure. Each and every meal should be listed under its respective day and category. If you want to do patches use the 'overrides' section.",
 		"YYYY-MM-DD": {
 			"Messmenu": {
 				"Categories": {
@@ -57,21 +58,15 @@
 					"sourceDay": "The day to copy the menu FROM (e.g., Friday)",
 					"description": "Optional: A specific message for this day's banner."
 				},
+
 				{
 					"type": "override",
 					"onDate": "YYYY-MM-DD",
-					"targetMeal": "The meal to be changed (e.g., Lunch)",
-					"description": "Optional: A specific message for this day's banner.",
-					"newMenu": {
-						"Category_Name": {
-							"Week_Letter": {
-								"schedule": {
-									"DayOfWeek": {
-										"Meal": ["Special Item 1", "Special Item 2"]
-									}
-								}
-							}
-						}
+					"targetMeal": "Lunch",
+					"description": "A special festival lunch is being served.",
+					"items": {
+						"Category_Name_1": ["Item 1", "Item 2"],
+						"Category_Name_2": ["Item 1", "Item 2"]
 					}
 				}
 			]
