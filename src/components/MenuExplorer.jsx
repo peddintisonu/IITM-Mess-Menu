@@ -74,7 +74,7 @@ const MenuExplorer = () => {
 			setAvailableMenus([]);
 			setSelectedCategory("");
 		}
-	}, [selectedCycle]);
+	}, [selectedCycle, selectedCategory]);
 
 	// Effect 3: Fetch the final menu cards once all selections are stable.
 	useEffect(() => {

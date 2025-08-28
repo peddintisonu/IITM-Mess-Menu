@@ -11,7 +11,7 @@ import {
 } from "../utils/weekManager";
 import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
-import TodaysMenuSkeleton from "./skeletons/TodaysMenuSkeleton";
+import MealCardSkeleton from "./skeletons/MealCardSkeleton";
 
 /**
  * A dynamic component that displays the menu for a selected date.
@@ -124,7 +124,22 @@ const TodaysMenu = () => {
 
 	const renderContent = () => {
 		if (loading) {
-			return <TodaysMenuSkeleton />;
+			return (
+				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+				</div>
+			);
 		}
 		if (error) {
 			return (
