@@ -6951,7 +6951,7 @@
 	"eventOverrides": [
 		{
 			"eventName": "Ganesh Chaturthi Celebration",
-			"description": "The dinner menu has been reshuffled for the festival.",
+			"description": "Dinner is rescheduled temporarily: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu.",
 			"startDate": "2025-08-27",
 			"endDate": "2025-08-29",
 			"rules": [

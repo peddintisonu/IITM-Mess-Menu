@@ -9,9 +9,9 @@ export default defineConfig({
 		react(),
 		tailwindcss(),
 		VitePWA({
-			registerType: "autoUpdate",
+			registerType: "prompt",
 			devOptions: {
-				enabled: true, // Enable PWA in development mode
+				enabled: true, // Enable PWA in development mode also
 			},
 			includeAssets: [
 				"/logo.svg",

@@ -5,18 +5,13 @@ import {
 	getUserCategory,
 	getCurrentDay,
 	getWeekForDate,
+	getIndianTime, // Import the new helpers
+	toLocalDateString, // Import the new helpers
 } from "../utils/weekManager";
 import { MENUS } from "./constants";
 
 // --- Core Helper Functions ---
 
-/**
- * A deep-merging utility to apply overrides. It recursively merges objects and
- * replaces arrays and other types. This version is secure against prototype pollution.
- * @param {object} base The base object to merge into.
- * @param {object} override The override object to apply.
- * @returns {object} The new, merged object.
- */
 const deepMerge = (base, override) => {
 	const merged = { ...base };
 	for (const key in override) {
@@ -39,11 +34,6 @@ const deepMerge = (base, override) => {
 	return merged;
 };
 
-/**
- * Finds the cycle object that a given date falls within.
- * @param {Date} targetDate The date to check.
- * @returns {object | null} The cycle object.
- */
 const getCycleForDate = (targetDate) => {
 	const sortedCycles = [...data.cycles].sort(
 		(a, b) => new Date(a.startDate) - new Date(b.startDate)
@@ -60,15 +50,8 @@ const getCycleForDate = (targetDate) => {
 	);
 };
 
-/**
- * The core logic engine. It chronologically builds the official menu state for a given date,
- * correctly applying the base version and any subsequent permanent overrides.
- * @param {Date} date The target date.
- * @returns {{ menuContent: object, versionId: string } | null} The final menu content and the base version it came from.
- */
 const getMenuContentForDate = (date) => {
 	date.setHours(0, 0, 0, 0);
-
 	const versionDates = Object.keys(data.versions).map((d) => new Date(d));
 	const overrideDates = Object.keys(data.overrides || {}).map(
 		(d) => new Date(d)
@@ -82,7 +65,7 @@ const getMenuContentForDate = (date) => {
 
 	let baseVersionKey = null;
 	for (let i = applicableDates.length - 1; i >= 0; i--) {
-		const dateKey = applicableDates[i].toISOString().split("T")[0];
+		const dateKey = toLocalDateString(applicableDates[i]);
 		if (data.versions[dateKey]) {
 			baseVersionKey = dateKey;
 			break;
@@ -97,12 +80,12 @@ const getMenuContentForDate = (date) => {
 	const baseVersionDate = new Date(baseVersionKey);
 
 	const applicableOverrides = applicableDates.filter((d) => {
-		const dateKey = d.toISOString().split("T")[0];
+		const dateKey = toLocalDateString(d);
 		return (data.overrides || {})[dateKey] && d > baseVersionDate;
 	});
 
 	for (const overrideDate of applicableOverrides) {
-		const overrideKey = overrideDate.toISOString().split("T")[0];
+		const overrideKey = toLocalDateString(overrideDate);
 		finalMenuContent = deepMerge(finalMenuContent, data.overrides[overrideKey]);
 	}
 
@@ -114,22 +97,14 @@ const getMenuContentForDate = (date) => {
 
 // --- Exported API Functions ---
 
-/**
- * Provides a complete context for a given date, including all data layers
- * (versions, permanent overrides, and temporary event overrides).
- * This is used by the "Daily Menu Viewer" (TodaysMenu.jsx).
- * @param {Date} date The date for which to get the context.
- * @returns {object | null} An object with all necessary info, or null on failure.
- */
 export const getContextForDate = (date) => {
 	const cycle = getCycleForDate(date);
-	const menuData = getMenuContentForDate(new Date(date));
+	const baseMenuData = getMenuContentForDate(new Date(date));
 
-	if (!menuData) return null;
+	if (!baseMenuData) return null;
 
-	let { menuContent, versionId } = menuData;
+	let { menuContent, versionId } = baseMenuData;
 
-	// Find any temporary event that is active for the given date
 	const activeEvent = (data.eventOverrides || []).find((event) => {
 		const startDate = new Date(event.startDate);
 		const endDate = new Date(event.endDate);
@@ -143,66 +118,70 @@ export const getContextForDate = (date) => {
 
 	if (activeEvent) {
 		eventName = activeEvent.eventName;
-		const dateString = date.toISOString().split("T")[0];
-
-		// Find all rules within the event that apply to the specific date
+		const dateString = toLocalDateString(date);
 		const activeRules = activeEvent.rules.filter(
 			(rule) => rule.onDate === dateString
 		);
 
 		if (activeRules.length > 0) {
-			// Create a clean snapshot of the base menu before applying any event changes
-			// This is crucial for ensuring remaps always use original, unmodified data
 			const baseMenuSnapshot = JSON.parse(JSON.stringify(menuContent));
 			const weekForEventDate = getWeekForDate(date);
-
+			const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 			let descriptions = [];
 
-			// Process all active rules for the day
 			for (const rule of activeRules) {
+				// Remap logic remains the same, using the clean snapshot
 				if (rule.type === "remap" && rule.targetMeal && rule.sourceDay) {
 					const { targetMeal, sourceDay } = rule;
-					// Apply the remap to every category in the menu
 					for (const category in menuContent) {
-						// Get the source data from the clean snapshot
 						const sourceMenu =
 							baseMenuSnapshot[category]?.[weekForEventDate]?.schedule?.[
 								sourceDay
 							]?.[targetMeal];
 						if (sourceMenu) {
-							const dayOfWeek = date.toLocaleString("en-US", {
-								weekday: "long",
-							});
-							// Ensure the nested structure exists before assigning
 							if (!menuContent[category][weekForEventDate])
 								menuContent[category][weekForEventDate] = { schedule: {} };
 							if (!menuContent[category][weekForEventDate].schedule[dayOfWeek])
 								menuContent[category][weekForEventDate].schedule[dayOfWeek] =
 									{};
-							// Apply the remapped menu
 							menuContent[category][weekForEventDate].schedule[dayOfWeek][
 								targetMeal
 							] = sourceMenu;
 						}
 					}
-				} else if (rule.type === "override" && rule.newMenu) {
-					// Apply a content override by deep merging
-					menuContent = deepMerge(menuContent, rule.newMenu);
+				}
+				// --- THE NEW, SMARTER OVERRIDE LOGIC ---
+				else if (rule.type === "override" && rule.targetMeal && rule.items) {
+					const { targetMeal, items } = rule;
+					// Iterate through the categories specified in the rule's 'items' object
+					for (const category in items) {
+						// Check if this category exists in our main menu data
+						if (Object.prototype.hasOwnProperty.call(menuContent, category)) {
+							// Ensure the nested structure exists before assigning the new items
+							if (!menuContent[category][weekForEventDate])
+								menuContent[category][weekForEventDate] = { schedule: {} };
+							if (!menuContent[category][weekForEventDate].schedule[dayOfWeek])
+								menuContent[category][weekForEventDate].schedule[dayOfWeek] =
+									{};
+
+							// Directly replace the meal's item list with the new one from the rule
+							menuContent[category][weekForEventDate].schedule[dayOfWeek][
+								targetMeal
+							] = items[category];
+						}
+					}
 				}
 
-				// Collect any descriptions from the processed rules
 				if (rule.description) {
 					descriptions.push(rule.description);
 				}
 			}
 
-			// Combine all collected descriptions into a single string
 			if (descriptions.length > 0) {
 				eventDescription = descriptions.join(" ");
 			}
 		}
 
-		// If no specific rule had a description, fall back to the main event description
 		if (eventName && !eventDescription && activeEvent.description) {
 			eventDescription = activeEvent.description;
 		}
@@ -222,12 +201,7 @@ export const getContextForDate = (date) => {
 		availableCategories: availableCategories,
 	};
 };
-/**
- * Provides a complete context for a given CYCLE, including permanent overrides
- * but ignoring temporary events. This is used by the MenuExplorer.
- * @param {object} cycle The cycle object containing startDate and endDate.
- * @returns {object | null} A context object for that cycle.
- */
+
 export const getContextForCycle = (cycle) => {
 	if (!cycle) return null;
 	const context = getMenuContentForDate(new Date(cycle.endDate));
@@ -247,10 +221,6 @@ export const getContextForCycle = (cycle) => {
 	};
 };
 
-/**
- * Gets a list of all defined cycles, formatted for use in a dropdown.
- * @returns {{value: string, label: string}[]}
- */
 export const getAllCycles = () => {
 	return data.cycles.map((cycle) => ({
 		value: cycle.startDate,
@@ -258,19 +228,12 @@ export const getAllCycles = () => {
 	}));
 };
 
-/**
- * Gets a list of messes available in the CURRENT active menu version.
- * @returns {{value: string, label: string}[]}
- */
 export const getAvailableCategoriesForCurrentVersion = () => {
-	const context = getContextForDate(new Date());
+	const todayInIndia = getIndianTime();
+	const context = getContextForDate(todayInIndia);
 	return context ? context.availableCategories : [];
 };
 
-/**
- * A convenience function to get the menu for the current day.
- * @returns {Promise<ApiResponse>}
- */
 export const getTodaysMenu = async () => {
 	try {
 		const category = getUserCategory();
@@ -281,7 +244,8 @@ export const getTodaysMenu = async () => {
 			throw new Error("User context is not fully set up.");
 		}
 
-		const context = getContextForDate(new Date());
+		const todayInIndia = getIndianTime();
+		const context = getContextForDate(todayInIndia);
 		if (!context) {
 			throw new Error("Could not load menu context for today.");
 		}

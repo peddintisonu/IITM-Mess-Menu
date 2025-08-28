@@ -16,80 +16,75 @@ const REFERENCE_WEEK = "A";
 const SETUP_COMPLETE_KEY = "isSetupComplete";
 const USER_CATEGORY_KEY = "userPreferredCategory";
 
+// --- Core Utility Functions ---
+
 /**
- * Checks if the user has completed the initial setup (i.e., chosen their mess).
- * @returns {boolean} True if setup is complete, false otherwise.
+ * Creates a new Date object representing the current time in India (IST, GMT+5:30).
+ * This ensures all calculations based on "now" are consistent for all users.
+ * @returns {Date} A new Date object for the current time in India.
  */
+export const getIndianTime = () => {
+	const now = new Date();
+	const utcTime = now.getTime() + now.getTimezoneOffset() * 60000;
+	const istOffset = 330 * 60000;
+	return new Date(utcTime + istOffset);
+};
+
+/**
+ * Securely converts a Date object to a 'YYYY-MM-DD' string in its local timezone.
+ * This is crucial for avoiding off-by-one-day errors caused by UTC conversion.
+ * @param {Date} date The date to convert.
+ * @returns {string} The formatted date string.
+ */
+export const toLocalDateString = (date) => {
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, "0");
+	const day = String(date.getDate()).padStart(2, "0");
+	return `${year}-${month}-${day}`;
+};
+
+// --- Exported App Logic Functions ---
+
 export function isSetupComplete() {
 	return localStorage.getItem(SETUP_COMPLETE_KEY) === "true";
 }
 
-/**
- * Marks the initial setup as complete and saves the user's mess category.
- * @param {string} initialCategory The category selected by the user.
- */
 export function completeSetup(initialCategory) {
 	localStorage.setItem(USER_CATEGORY_KEY, initialCategory);
 	localStorage.setItem(SETUP_COMPLETE_KEY, "true");
 }
 
-/**
- * A reusable function to calculate the A/B/C/D week for any given date.
- * This is the new core logic.
- * @param {Date} targetDate The date for which to calculate the week.
- * @returns {'A' | 'B' | 'C' | 'D'} The calculated week.
- */
 export function getWeekForDate(targetDate) {
-	const referenceDate = new Date(REFERENCE_DATE_STRING);
-	// Use a copy of the targetDate to avoid modifying the original
+	const referenceDate = new Date(`${REFERENCE_DATE_STRING}T00:00:00+05:30`);
 	const dateToCalculate = new Date(targetDate);
-
-	// Normalize dates to the start of the day for accurate calculations
 	referenceDate.setHours(0, 0, 0, 0);
 	dateToCalculate.setHours(0, 0, 0, 0);
 
 	const timeDifference = dateToCalculate.getTime() - referenceDate.getTime();
-	const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+	const daysDifference = Math.round(timeDifference / (1000 * 60 * 60 * 24));
 	const weeksPassed = Math.floor(daysDifference / 7);
 
 	const referenceIndex = WEEKS.indexOf(REFERENCE_WEEK);
-	// Use Math.abs and handle negative weeksPassed for dates before the reference
 	const newIndex = (referenceIndex + weeksPassed) % WEEKS.length;
 
-	// Handle negative results from the modulo operator
 	return WEEKS[(newIndex + WEEKS.length) % WEEKS.length];
 }
 
-
-/**
- * Calculates the current week (A, B, C, or D) based on today's date.
- * This function now uses the more generic getWeekForDate.
- * @returns {'A' | 'B' | 'C' | 'D'} The calculated current week.
- */
 export function getCurrentWeek() {
-	return getWeekForDate(new Date());
+	const todayInIndia = getIndianTime();
+	return getWeekForDate(todayInIndia);
 }
-/**
- * Sets the user's preferred menu category in localStorage. Used for settings updates.
- * @param {string} category The category to save.
- */
+
 export function setUserCategory(category) {
 	localStorage.setItem(USER_CATEGORY_KEY, category);
 }
 
-/**
- * Gets the user's preferred menu category from localStorage.
- * @returns {string | null} The saved category, or null if not set.
- */
 export function getUserCategory() {
 	return localStorage.getItem(USER_CATEGORY_KEY);
 }
 
-/**
- * Gets the current day of the week as a string.
- * @returns {string} The name of the current day (e.g., "Monday").
- */
 export const getCurrentDay = () => {
-	const dayIndex = new Date().getDay();
+	const todayInIndia = getIndianTime();
+	const dayIndex = todayInIndia.getDay();
 	return DAYS_OF_WEEK[dayIndex];
 };
