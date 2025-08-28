@@ -30,7 +30,7 @@ const MealCardSkeleton = () => {
 			{/* Menu Items Skeleton */}
 			<ul className="flex-grow space-y-2 text-muted">
 				{/* We create a dummy array of 4 items to render skeleton list items */}
-				{Array.from({ length: 4 }).map((_, index) => (
+				{Array.from({ length: 7 }).map((_, index) => (
 					<li key={index} className="flex gap-2 items-center">
 						{/* Use a placeholder Circle to maintain spacing, or a Skeleton circle */}
 						<Circle

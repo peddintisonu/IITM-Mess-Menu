@@ -5,14 +5,16 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useMemo } from "react";
 import { getCalendarDateRange } from "../api/menuApi";
 
+import { enGB } from "date-fns/locale";
+
 /**
  * A themed, accessible, and centered modal for selecting a date.
  * It dynamically restricts the selectable date range based on the available menu data.
  * @param {{
- *   isOpen: boolean;
- *   onClose: () => void;
- *   selectedDate: Date;
- *   onDateSelect: (date: Date) => void;
+ * isOpen: boolean;
+ * onClose: () => void;
+ * selectedDate: Date;
+ * onDateSelect: (date: Date) => void;
  * }} props
  */
 const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
@@ -23,7 +25,6 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 	const isDarkMode = document.documentElement.classList.contains("dark");
 	const primaryColor = "#f97316"; // Your app's primary orange
 
-	// Create a custom MUI theme that perfectly matches the app's branding.
 	const muiTheme = createTheme({
 		palette: {
 			mode: isDarkMode ? "dark" : "light",
@@ -31,7 +32,6 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 				main: primaryColor,
 			},
 			background: {
-				// Use a subtle background for the calendar paper itself
 				paper: isDarkMode ? "#1f2937" : "#ffffff",
 			},
 		},
@@ -50,15 +50,14 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 				styleOverrides: {
 					root: {
 						borderRadius: "9999px",
-						// Refined hover colors for both themes
 						"&:hover": {
 							backgroundColor: isDarkMode
 								? "rgba(249, 115, 22, 0.1)"
-								: "#ffedd5", // A light, transparent orange
+								: "#ffedd5",
 						},
 					},
 					today: {
-						borderColor: primaryColor, // Use the primary color variable
+						borderColor: primaryColor,
 						borderWidth: "2px",
 					},
 				},
@@ -66,7 +65,6 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 			MuiPickersArrowSwitcher: {
 				styleOverrides: {
 					button: {
-						// Refined hover colors for navigation arrows
 						"&:hover": {
 							backgroundColor: isDarkMode
 								? "rgba(255, 255, 255, 0.08)"
@@ -87,17 +85,18 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 
 	return (
 		<div
-			// Reduced backdrop blur from md to sm
 			className="fixed inset-0 z-50 flex items-center justify-center bg-bg/80 backdrop-blur-sm animate-fade-in"
 			onClick={onClose}
 		>
 			<div
-				// The calendar's container now uses your main background color
 				className="rounded-xl shadow-2xl border border-border overflow-hidden bg-bg"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<ThemeProvider theme={muiTheme}>
-					<LocalizationProvider dateAdapter={AdapterDateFns}>
+					<LocalizationProvider
+						dateAdapter={AdapterDateFns}
+						adapterLocale={enGB}
+					>
 						<DateCalendar
 							value={selectedDate}
 							onChange={handleDateChange}
