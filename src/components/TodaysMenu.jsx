@@ -1,72 +1,125 @@
-import React, { useState, useEffect } from "react";
-import { getTodaysMenu, getContextForDate } from "../api/menuApi";
-import { getCurrentWeek, getUserCategory } from "../utils/weekManager";
+import { format } from "date-fns";
+import { CalendarDays, RotateCcw, Settings, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+
 import { MENUS } from "../api/constants";
+import { getContextForDate } from "../api/menuApi";
+import {
+	getCurrentWeek,
+	getUserCategory,
+	getWeekForDate,
+} from "../utils/weekManager";
+import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
-import { Settings, Sparkles } from "lucide-react";
 
 /**
- * A component that displays the menu for the CURRENT day.
- * It detects and displays a banner for special, temporary event menus,
- * including a custom description if available.
+ * A dynamic component that displays the menu for a selected date.
+ * Features a custom calendar modal for date selection.
  */
 const TodaysMenu = () => {
 	const [menu, setMenu] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	// State is now an object to hold both name and description
 	const [activeEvent, setActiveEvent] = useState({
 		name: null,
 		description: null,
 	});
+	const [fallbackMessage, setFallbackMessage] = useState(null);
 
-	// --- Static data for the top info bar ---
+	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
 	const userMessPreference = getUserCategory();
 	const currentWeek = getCurrentWeek();
 	const currentCycle = getContextForDate(new Date())?.cycleName || "Loading...";
 	const menuLabel =
 		MENUS.find((menu) => menu.value === userMessPreference)?.label || "Not Set";
 
+	const isViewingToday =
+		new Date().toDateString() === selectedDate.toDateString();
+
 	useEffect(() => {
-		const fetchTodaysData = async () => {
+		const fetchMenuForDate = async () => {
 			setLoading(true);
 			setError(null);
-			setActiveEvent({ name: null, description: null }); // Reset on each fetch
+			setFallbackMessage(null);
+			setActiveEvent({ name: null, description: null });
 
-			// First, get today's context to check for an event.
-			const context = getContextForDate(new Date());
-			if (context && context.eventName) {
+			const context = getContextForDate(selectedDate);
+			if (!context) {
+				setError("No menu data found for the selected date.");
+				setMenu(null);
+				setLoading(false);
+				return;
+			}
+
+			if (context.eventName) {
 				setActiveEvent({
 					name: context.eventName,
 					description: context.eventDescription,
 				});
 			}
 
-			// Then, fetch the final, merged menu for today.
-			const response = await getTodaysMenu();
+			let categoryToDisplay = userMessPreference;
+			const isPreferenceValid = context.availableCategories.some(
+				(menu) => menu.value === userMessPreference
+			);
 
-			if (response.success) {
-				setMenu(response.data);
-			} else {
-				setError(response.message);
+			if (!isPreferenceValid && context.availableCategories.length > 0) {
+				categoryToDisplay = context.availableCategories[0].value;
+				const prefLabel =
+					MENUS.find((m) => m.value === userMessPreference)?.label ||
+					userMessPreference;
+				const fallbackLabel = context.availableCategories[0].label;
+				setFallbackMessage(
+					`Your preferred mess ('${prefLabel}') was not available. Showing '${fallbackLabel}' instead.`
+				);
+			} else if (context.availableCategories.length === 0) {
+				setError("No messes were available on this date.");
 				setMenu(null);
+				setLoading(false);
+				return;
+			}
+
+			const menuData = context.menuContent;
+			const categoryData = menuData[categoryToDisplay];
+			const weekForSelectedDate = getWeekForDate(selectedDate);
+			const dayOfWeek = selectedDate.toLocaleString("en-US", {
+				weekday: "long",
+			});
+			const weekData = categoryData[weekForSelectedDate];
+			const dayMenu = weekData?.schedule[dayOfWeek];
+
+			if (!dayMenu) {
+				setMenu(null);
+			} else {
+				const commonItems = categoryData.common_items || {};
+				const finalMenu = {
+					Breakfast: dayMenu.Breakfast || [],
+					Lunch: dayMenu.Lunch || [],
+					Snacks: dayMenu.Snacks || [],
+					Dinner: dayMenu.Dinner || [],
+					common: {
+						Breakfast: commonItems.Breakfast || "",
+						Lunch: commonItems.Lunch || "",
+						Snacks: commonItems.Snacks || "",
+						Dinner: commonItems.Dinner || "",
+					},
+				};
+				setMenu(finalMenu);
 			}
 			setLoading(false);
 		};
 
 		if (userMessPreference) {
-			fetchTodaysData();
+			fetchMenuForDate();
 		} else {
 			setLoading(false);
 			setError("Please select your mess in the settings to get started.");
 		}
-	}, [userMessPreference]);
+	}, [selectedDate, userMessPreference]);
 
-	const formattedDate = new Intl.DateTimeFormat("en-US", {
-		weekday: "long",
-		month: "long",
-		day: "numeric",
-	}).format(new Date());
+	const formattedDate = format(selectedDate, "EEEE, MMMM d");
 
 	const renderContent = () => {
 		if (loading) {
@@ -124,7 +177,15 @@ const TodaysMenu = () => {
 			id="todays-menu"
 			className="w-full max-w-7xl mx-auto px-4 py-6 sm:py-8"
 		>
+			<CalendarModal
+				isOpen={isCalendarOpen}
+				onClose={() => setIsCalendarOpen(false)}
+				selectedDate={selectedDate}
+				onDateSelect={setSelectedDate}
+			/>
+
 			<div className="mb-8">
+				{/* Top Info Bar */}
 				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">
 					<div>
 						<span className="font-medium">Current Cycle:</span>
@@ -144,13 +205,36 @@ const TodaysMenu = () => {
 					<span>You can change your mess in the settings.</span>
 				</div>
 
+				{/* Main Heading and Interactive Controls */}
 				<div className="flex items-center gap-4 mt-4">
 					<h1 className="m-0">
-						Today's Menu <span className="text-primary">{formattedDate}</span>
+						{isViewingToday ? "Today's Menu" : "Menu for"}{" "}
+						<span className="text-primary">{formattedDate}</span>
 					</h1>
+
+					{/* Calendar Icon Button to trigger the modal */}
+					<button
+						onClick={() => setIsCalendarOpen(true)}
+						className="p-2 rounded-full text-muted hover:text-primary hover:bg-input-bg transition-colors"
+						aria-label="Select a date"
+					>
+						<CalendarDays size={24} />
+					</button>
+
+					{/* "Back to Today" Refresh Button */}
+					{!isViewingToday && (
+						<button
+							onClick={() => setSelectedDate(new Date())}
+							className="flex items-center gap-2 text-sm btn-secondary"
+							aria-label="Back to today's menu"
+						>
+							<RotateCcw size={16} />
+							<span>Today</span>
+						</button>
+					)}
 				</div>
 
-				{/* The new, more informative event banner */}
+				{/* Banners for Events and Fallbacks */}
 				{activeEvent.name && (
 					<div className="event-banner mt-4">
 						<div className="event-banner-title">
@@ -162,6 +246,11 @@ const TodaysMenu = () => {
 								{activeEvent.description}
 							</div>
 						)}
+					</div>
+				)}
+				{fallbackMessage && (
+					<div className="alert alert-warning mt-4">
+						<div className="alert-description">{fallbackMessage}</div>
 					</div>
 				)}
 			</div>
