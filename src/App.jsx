@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
 import Footer from "./components/Footer";
@@ -69,6 +71,8 @@ function App() {
 
 			<Tooltip id="navbar-tooltip" className="tooltip-style" />
 			<UpdatePrompt />
+			<Analytics />
+			<SpeedInsights />
 		</ThemeProvider>
 	);
 }
