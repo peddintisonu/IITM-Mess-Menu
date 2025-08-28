@@ -1,6 +1,6 @@
-import React from "react";
+import { Circle } from "lucide-react"; // 1. Import a proper icon for the bullet point
+import { MEALS } from "../api/constants";
 import MenuIcon from "./MenuIcon";
-import { MEALS } from "../api/constants"; // 1. Import the MEALS constant
 
 /**
  * A small component to render a single menu item,
@@ -19,7 +19,6 @@ const MenuItem = ({ item }) => {
 };
 
 const MealCard = ({ title, items, commonItems }) => {
-	// 2. Find the corresponding meal info from the constants array
 	const mealInfo = MEALS.find((meal) => meal.value === title);
 	const timing = mealInfo ? mealInfo.timing : null;
 
@@ -35,19 +34,25 @@ const MealCard = ({ title, items, commonItems }) => {
 		<div className="bg-input-bg border border-border rounded-xl p-5 flex flex-col h-full shadow-sm">
 			<div className="flex items-center gap-3 mb-4">
 				<MenuIcon meal={title} className="text-primary" />
-
-				{/* 3. Update the JSX to display the timing */}
 				<div>
 					<h3 className="text-xl font-semibold text-fg m-0">{title}</h3>
 					{timing && <p className="text-xs text-muted m-0">{timing}</p>}
 				</div>
 			</div>
 
-			<ul className="flex-grow space-y-2 text-muted list-inside">
+			<ul className="flex-grow space-y-2 text-muted">
 				{items.map((item, index) => (
-					<li key={index} className="flex items-start">
-						<span className="text-primary mr-2 mt-1">•</span>
-						<MenuItem item={item} />
+					// --- THE FIX IS HERE ---
+					<li key={index} className="flex items-start gap-2 items-center">
+						{/* Use the Dot icon, which is a perfect small solid circle */}
+						<Circle
+							className="text-primary flex-shrink-0 self-center"
+							size={6}
+							fill="currentColor"
+						/>
+						<div className="flex-grow ">
+							<MenuItem item={item} />
+						</div>
 					</li>
 				))}
 			</ul>
