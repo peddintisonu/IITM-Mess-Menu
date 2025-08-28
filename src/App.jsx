@@ -14,6 +14,7 @@ import {
 	isSetupComplete,
 	setUserCategory,
 } from "./utils/weekManager";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
 	const [isSetupDoneState, setIsSetupDoneState] = useState(() =>
@@ -39,40 +40,56 @@ function App() {
 	const openSettingsModal = () => setIsModalOpen(true);
 	const closeSettingsModal = () => setIsModalOpen(false);
 
+	const skeletonThemeLight = {
+		baseColor: "#f9fafb", // Your --color-input-bg in light mode
+		highlightColor: "#e5e7eb", // Your --color-border in light mode
+	};
+
+	const skeletonThemeDark = {
+		baseColor: "#1f2937", // Your --color-input-bg in dark mode
+		highlightColor: "#374151", // Your --color-border in dark mode
+	};
+
 	return (
 		<ThemeProvider>
-			{isModalOpen && (
-				<SetupModal
-					onComplete={handleSave}
-					onClose={closeSettingsModal}
-					isInitialSetup={!isSetupDoneState}
-				/>
-			)}
+			<SkeletonTheme
+				{...(document.documentElement.classList.contains("dark")
+					? skeletonThemeDark
+					: skeletonThemeLight)}
+			>
+				{isModalOpen && (
+					<SetupModal
+						onComplete={handleSave}
+						onClose={closeSettingsModal}
+						isInitialSetup={!isSetupDoneState}
+					/>
+				)}
 
-			<div className="min-h-screen bg-bg font-sans text-fg transition-colors">
-				<Navbar onOpenSettings={openSettingsModal} />
-				<main>
-					{isSetupDoneState ? (
-						<>
-							<TodaysMenu />
-							<div className="w-full max-w-7xl mx-auto px-4">
-								<div className="border-t border-border my-6 sm:my-8"></div>
+				<div className="min-h-screen bg-bg font-sans text-fg transition-colors">
+					<Navbar onOpenSettings={openSettingsModal} />
+					<main>
+						{isSetupDoneState ? (
+							<>
+								<TodaysMenu />
+								<div className="w-full max-w-7xl mx-auto px-4">
+									<div className="border-t border-border my-6 sm:my-8"></div>
+								</div>
+								<MenuExplorer />
+							</>
+						) : (
+							<div className="text-center py-20 text-muted">
+								<p>Please select your mess to view the menu.</p>
 							</div>
-							<MenuExplorer />
-						</>
-					) : (
-						<div className="text-center py-20 text-muted">
-							<p>Please select your mess to view the menu.</p>
-						</div>
-					)}
-				</main>
-				<Footer />
-			</div>
+						)}
+					</main>
+					<Footer />
+				</div>
 
-			<Tooltip id="navbar-tooltip" className="tooltip-style" />
-			<UpdatePrompt />
-			<Analytics />
-			<SpeedInsights />
+				<Tooltip id="navbar-tooltip" className="tooltip-style" />
+				<UpdatePrompt />
+				<Analytics />
+				<SpeedInsights />
+			</SkeletonTheme>
 		</ThemeProvider>
 	);
 }

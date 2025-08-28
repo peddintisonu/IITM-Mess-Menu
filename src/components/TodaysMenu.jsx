@@ -11,6 +11,7 @@ import {
 } from "../utils/weekManager";
 import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
+import TodaysMenuSkeleton from "./skeletons/TodaysMenuSkeleton";
 
 /**
  * A dynamic component that displays the menu for a selected date.
@@ -123,7 +124,7 @@ const TodaysMenu = () => {
 
 	const renderContent = () => {
 		if (loading) {
-			return <p className="text-center text-muted py-10">Loading menu...</p>;
+			return <TodaysMenuSkeleton />;
 		}
 		if (error) {
 			return (
@@ -183,7 +184,6 @@ const TodaysMenu = () => {
 				selectedDate={selectedDate}
 				onDateSelect={setSelectedDate}
 			/>
-
 			<div className="mb-8">
 				{/* Top Info Bar */}
 				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">

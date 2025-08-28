@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { getContextForCycle, getAllCycles } from "../api/menuApi";
+import { useEffect, useState } from "react";
+import { DAY_SHORTCUTS, WEEKS } from "../api/constants";
+import { getAllCycles, getContextForCycle } from "../api/menuApi";
+import data from "../database/messMenu.json"; // Import data for direct cycle object lookup
 import {
 	getCurrentDay,
 	getCurrentWeek,
 	getUserCategory,
 } from "../utils/weekManager";
-import { WEEKS, DAY_SHORTCUTS } from "../api/constants";
 import MealCard from "./MealCard";
 import SelectDropdown from "./SelectDropdown";
-import data from "../database/messMenu.json"; // Import data for direct cycle object lookup
+import MealCardSkeleton from "./skeletons/MealCardSkeleton";
 
 /**
  * A component to explore the full menu for any cycle, mess, week, and day.
@@ -129,7 +130,22 @@ const MenuExplorer = () => {
 
 	const renderContent = () => {
 		if (loading) {
-			return <p className="text-center text-muted py-10">Loading menu...</p>;
+			return (
+				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+					<div className="flex-shrink-0 w-[80%] sm:w-auto">
+						<MealCardSkeleton />
+					</div>
+				</div>
+			);
 		}
 		if (error) {
 			return (
