@@ -43,7 +43,7 @@ const MealCard = ({ title, items, commonItems }) => {
 			<ul className="flex-grow space-y-2 text-muted">
 				{items.map((item, index) => (
 					// --- THE FIX IS HERE ---
-					<li key={index} className="flex items-start gap-2 items-center">
+					<li key={index} className="flex gap-2 items-center">
 						{/* Use the Dot icon, which is a perfect small solid circle */}
 						<Circle
 							className="text-primary flex-shrink-0 self-center"
