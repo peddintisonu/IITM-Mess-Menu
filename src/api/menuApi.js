@@ -5,8 +5,8 @@ import {
 	getUserCategory,
 	getCurrentDay,
 	getWeekForDate,
-	getIndianTime, // Import the new helpers
-	toLocalDateString, // Import the new helpers
+	getIndianTime,
+	toLocalDateString,
 } from "../utils/weekManager";
 import { MENUS } from "./constants";
 
@@ -51,14 +51,21 @@ const getCycleForDate = (targetDate) => {
 };
 
 const getMenuContentForDate = (date) => {
-	date.setHours(0, 0, 0, 0);
+	// 1. Normalize the input date to the start of the day to ensure consistent comparisons
+	const targetDate = new Date(date);
+	targetDate.setHours(0, 0, 0, 0);
+
 	const versionDates = Object.keys(data.versions).map((d) => new Date(d));
 	const overrideDates = Object.keys(data.overrides || {}).map(
 		(d) => new Date(d)
 	);
 
 	const applicableDates = [...versionDates, ...overrideDates]
-		.filter((d) => d <= date)
+		.filter((d) => {
+			const checkDate = new Date(d);
+			checkDate.setHours(0, 0, 0, 0);
+			return checkDate <= targetDate;
+		})
 		.sort((a, b) => a - b);
 
 	if (applicableDates.length === 0) return null;
@@ -78,10 +85,15 @@ const getMenuContentForDate = (date) => {
 		JSON.stringify(data.versions[baseVersionKey].Messmenu.Categories)
 	);
 	const baseVersionDate = new Date(baseVersionKey);
+	baseVersionDate.setHours(0, 0, 0, 0);
 
+	// 2. The crucial fix for the override logic
 	const applicableOverrides = applicableDates.filter((d) => {
-		const dateKey = toLocalDateString(d);
-		return (data.overrides || {})[dateKey] && d > baseVersionDate;
+		const overrideDate = new Date(d);
+		overrideDate.setHours(0, 0, 0, 0);
+		const dateKey = toLocalDateString(overrideDate);
+		// An override is valid if its date is ON OR AFTER the base version's start date
+		return (data.overrides || {})[dateKey] && overrideDate >= baseVersionDate;
 	});
 
 	for (const overrideDate of applicableOverrides) {
@@ -94,7 +106,6 @@ const getMenuContentForDate = (date) => {
 		versionId: baseVersionKey,
 	};
 };
-
 // --- Exported API Functions ---
 
 export const getContextForDate = (date) => {
@@ -291,4 +302,31 @@ export const getTodaysMenu = async () => {
 	} catch (error) {
 		return new ApiResponse(500, error.message, null);
 	}
+};
+
+/**
+ * Scans all defined cycles to find the earliest start date and latest end date.
+ * This provides the valid date range for the entire menu database.
+ * @returns {{minDate: Date, maxDate: Date} | null} An object with the date range, or null.
+ */
+export const getCalendarDateRange = () => {
+	if (!data.cycles || data.cycles.length === 0) {
+		return null;
+	}
+
+	let minDate = new Date(data.cycles[0].startDate);
+	let maxDate = new Date(data.cycles[0].endDate);
+
+	for (const cycle of data.cycles) {
+		const startDate = new Date(cycle.startDate);
+		const endDate = new Date(cycle.endDate);
+		if (startDate < minDate) {
+			minDate = startDate;
+		}
+		if (endDate > maxDate) {
+			maxDate = endDate;
+		}
+	}
+
+	return { minDate, maxDate };
 };

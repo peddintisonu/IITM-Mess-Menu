@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { ThemeProvider } from "./context/ThemeContext";
-import {
-	isSetupComplete,
-	completeSetup,
-	setUserCategory,
-} from "./utils/weekManager";
+import { useState } from "react";
 import { Tooltip } from "react-tooltip";
-
+import Footer from "./components/Footer";
+import MenuExplorer from "./components/MenuExplorer";
 import Navbar from "./components/Navbar";
 import SetupModal from "./components/SetupModal";
 import TodaysMenu from "./components/TodaysMenu";
-import MenuExplorer from "./components/MenuExplorer";
-import Footer from "./components/Footer";
 import UpdatePrompt from "./components/UpdatePrompt";
+import { ThemeProvider } from "./context/ThemeContext";
+import {
+	completeSetup,
+	isSetupComplete,
+	setUserCategory,
+} from "./utils/weekManager";
 
 function App() {
 	const [isSetupDoneState, setIsSetupDoneState] = useState(() =>
