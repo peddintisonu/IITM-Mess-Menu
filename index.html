@@ -1,38 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	    <meta charset="UTF-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	    
-	    <!-- Core App Information -->
-	    <title>IITM Mess Menu</title>
-	    <meta name="description" content="The easiest way for IIT Madras students to check their mess menu without hunting for PDFs.">
-	    
-	    <!-- Core Favicons -->
-	    <link rel="icon" href="/favicon.ico" sizes="any">
-	    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-	    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-	    
-	    <!-- PWA Manifest & Theme Color -->
-	    <link rel="manifest" href="/manifest.json" />
-	    <meta name="theme-color" content="#111827" />
-	
-	    <!-- ==========================================================================
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ==========================================================================
+         ANTI-FLASH SCRIPT (MUST BE PLACED HERE, BEFORE CSS AND JS)
+         ========================================================================== -->
+		<script>
+			(function () {
+				try {
+					const theme = localStorage.getItem("theme");
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)"
+					).matches;
+					if (theme === "dark" || (!theme && prefersDark)) {
+						document.documentElement.classList.add("dark");
+					}
+				} catch (e) {
+					// In case of any error (e.g., localStorage is disabled), do nothing.
+				}
+			})();
+		</script>
+
+		<!-- Core App Information -->
+		<title>IITM Mess Menu</title>
+		<meta
+			name="description"
+			content="The easiest way for IIT Madras students to check their mess menu without hunting for PDFs."
+		/>
+
+		<!-- Core Favicons -->
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<!-- PWA Manifest & Theme Color -->
+		<link rel="manifest" href="/manifest.json" />
+		<meta name="theme-color" content="#111827" />
+
+		<!-- ==========================================================================
 	         SOCIAL MEDIA & SEO TAGS (OPEN GRAPH / TWITTER CARDS)
 	         ========================================================================== -->
-	    
-	    <!-- Open Graph (Facebook, WhatsApp, Discord, etc.) -->
-	    <meta property="og:title" content="IITM Mess Menu" />
-	    <meta property="og:description" content="The easiest way for IIT Madras students to check their mess menu without hunting for PDFs." />
-	    <meta property="og:image" content="https://iitm-mess-menu.vercel.app/social-card.png" />
-	    <meta property="og:url" content="https://iitm-mess-menu.vercel.app" />
-	    <meta property="og:type" content="website" />
-	
-	    <!-- Twitter Card -->
-	    <meta name="twitter:card" content="summary_large_image" />
-	    <meta name="twitter:title" content="IITM Mess Menu" />
-	    <meta name="twitter:description" content="The easiest way for IIT Madras students to check their mess menu without hunting for PDFs." />
-	    <meta name="twitter:image" content="https://iitm-mess-menu.vercel.app/social-card.png" />
+
+		<!-- Open Graph (Facebook, WhatsApp, Discord, etc.) -->
+		<meta property="og:title" content="IITM Mess Menu" />
+		<meta
+			property="og:description"
+			content="The easiest way for IIT Madras students to check their mess menu without hunting for PDFs."
+		/>
+		<meta
+			property="og:image"
+			content="https://iitm-mess-menu.vercel.app/social-card.png"
+		/>
+		<meta property="og:url" content="https://iitm-mess-menu.vercel.app" />
+		<meta property="og:type" content="website" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="IITM Mess Menu" />
+		<meta
+			name="twitter:description"
+			content="The easiest way for IIT Madras students to check their mess menu without hunting for PDFs."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://iitm-mess-menu.vercel.app/social-card.png"
+		/>
 	</head>
 	<body>
 		<div id="root"></div>
