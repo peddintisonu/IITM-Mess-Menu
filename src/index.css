@@ -20,6 +20,33 @@
 	--color-primary-800: #9a3412;
 	--color-primary-900: #7c2d12;
 	--color-primary: var(--color-primary-500);
+	--color-badge-primary-bg: var(--color-primary-100);
+	--color-badge-primary-fg: var(--color-primary-800);
+	--color-badge-red-bg: #fee2e2;
+	--color-badge-red-fg: #991b1b;
+	--color-badge-yellow-bg: #fef3c7;
+	--color-badge-yellow-fg: #92400e;
+	--color-badge-green-bg: #dcfce7;
+	--color-badge-green-fg: #166534;
+	--color-badge-gray-bg: #e5e7eb;
+	--color-badge-gray-fg: #374151;
+	--color-badge-blue-bg: #dbeafe;
+	--color-badge-blue-fg: #1e40af;
+	--color-badge-purple-bg: #ede9fe;
+	--color-badge-purple-fg: #5b21b6;
+	--color-alert-destructive-bg: #fef2f2;
+	--color-alert-destructive-fg: #991b1b;
+	--color-alert-destructive-border: #fecaca;
+	--color-alert-destructive-title: #111827;
+	--color-alert-warning-bg: #fffbeb;
+	--color-alert-warning-fg: #78350f;
+	--color-alert-warning-border: #fde68a;
+	--color-alert-info-bg: #dbeafe;
+	--color-alert-info-fg: #1e40af;
+	--color-alert-info-border: #bfdbfe;
+	--color-event-banner-bg: var(--color-primary-100);
+	--color-event-banner-title: var(--color-primary-900);
+	--color-event-banner-desc: var(--color-primary-800);
 }
 
 .dark {
@@ -29,6 +56,33 @@
 	--color-border: #374151;
 	--color-input-bg: #1f2937;
 	--color-primary: var(--color-primary-500);
+	--color-badge-primary-bg: rgba(124, 45, 18, 0.3);
+	--color-badge-primary-fg: #fdba74;
+	--color-badge-red-bg: rgba(127, 29, 29, 0.3);
+	--color-badge-red-fg: #fca5a5;
+	--color-badge-yellow-bg: rgba(146, 64, 14, 0.2);
+	--color-badge-yellow-fg: #fcd34d;
+	--color-badge-green-bg: rgba(20, 83, 45, 0.3);
+	--color-badge-green-fg: #86efac;
+	--color-badge-gray-bg: #374151;
+	--color-badge-gray-fg: #d1d5db;
+	--color-badge-blue-bg: rgba(30, 58, 138, 0.3);
+	--color-badge-blue-fg: #93c5fd;
+	--color-badge-purple-bg: rgba(76, 29, 149, 0.3);
+	--color-badge-purple-fg: #c4b5fd;
+	--color-alert-destructive-bg: rgba(127, 29, 29, 0.2);
+	--color-alert-destructive-fg: #fca5a5;
+	--color-alert-destructive-border: rgba(127, 29, 29, 0.4);
+	--color-alert-destructive-title: #fef2f2;
+	--color-alert-warning-bg: rgba(120, 53, 15, 0.2);
+	--color-alert-warning-fg: #fcd34d;
+	--color-alert-warning-border: rgba(120, 53, 15, 0.5);
+	--color-alert-info-bg: rgba(30, 58, 138, 0.3);
+	--color-alert-info-fg: #bfdbfe;
+	--color-alert-info-border: rgba(30, 64, 175, 0.4);
+	--color-event-banner-bg: rgba(124, 45, 18, 0.3);
+	--color-event-banner-title: #fed7aa;
+	--color-event-banner-desc: #fdba74;
 }
 
 @theme {
@@ -38,6 +92,7 @@
 	--color-muted: var(--color-muted);
 	--color-border: var(--color-border);
 	--color-input-bg: var(--color-input-bg);
+
 	--color-primary-50: var(--color-primary-50);
 	--color-primary-100: var(--color-primary-100);
 	--color-primary-200: var(--color-primary-200);
@@ -48,44 +103,50 @@
 	--color-primary-700: var(--color-primary-700);
 	--color-primary-800: var(--color-primary-800);
 	--color-primary-900: var(--color-primary-900);
-	--color-primary: var(--color-primary);
+	--color-primary: var(--color-primary); /* Default primary */
+
+
+	--color-badge-primary-bg: var(--color-badge-primary-bg);
+	--color-badge-primary-fg: var(--color-badge-primary-fg);
+	--color-badge-red-bg: var(--color-badge-red-bg);
+	--color-badge-red-fg: var(--color-badge-red-fg);
+	--color-badge-yellow-bg: var(--color-badge-yellow-bg);
+	--color-badge-yellow-fg: var(--color-badge-yellow-fg);
+	--color-badge-green-bg: var(--color-badge-green-bg);
+	--color-badge-green-fg: var(--color-badge-green-fg);
+	--color-badge-gray-bg: var(--color-badge-gray-bg);
+	--color-badge-gray-fg: var(--color-badge-gray-fg);
+	--color-badge-blue-bg: var(--color-badge-blue-bg);
+	--color-badge-blue-fg: var(--color-badge-blue-fg);
+	--color-badge-purple-bg: var(--color-badge-purple-bg);
+	--color-badge-purple-fg: var(--color-badge-purple-fg);
+	--color-alert-destructive-bg: var(--color-alert-destructive-bg);
+	--color-alert-destructive-fg: var(--color-alert-destructive-fg);
+	--color-alert-destructive-border: var(--color-alert-destructive-border);
+	--color-alert-destructive-title: var(--color-alert-destructive-title);
+	--color-alert-warning-bg: var(--color-alert-warning-bg);
+	--color-alert-warning-fg: var(--color-alert-warning-fg);
+	--color-alert-warning-border: var(--color-alert-warning-border);
+	--color-alert-info-bg: var(--color-alert-info-bg);
+	--color-alert-info-fg: var(--color-alert-info-fg);
+	--color-alert-info-border: var(--color-alert-info-border);
+	--color-event-banner-bg: var(--color-event-banner-bg);
+	--color-event-banner-title: var(--color-event-banner-title);
+	--color-event-banner-desc: var(--color-event-banner-desc);
 }
 
 /* --- Base Element Styles --- */
 @layer base {
-	html {
-		@apply scroll-smooth;
-	}
-	body {
-		@apply bg-bg text-fg;
-	}
-	h1 {
-		@apply text-3xl md:text-4xl font-bold text-fg tracking-tight leading-tight;
-	}
-	h2 {
-		@apply text-2xl md:text-3xl font-semibold text-fg mt-6 mb-2 tracking-tight;
-	}
-	h3 {
-		@apply text-xl md:text-2xl font-medium text-fg mt-4 mb-1;
-	}
-	button {
-		@apply cursor-pointer;
-	}
+	html { @apply scroll-smooth; }
+	body { @apply bg-bg text-fg; }
+	h1 { @apply text-3xl md:text-4xl font-bold text-fg tracking-tight leading-tight; }
+	h2 { @apply text-2xl md:text-3xl font-semibold text-fg mt-6 mb-2 tracking-tight; }
+	h3 { @apply text-xl md:text-2xl font-medium text-fg mt-4 mb-1; }
+	button { @apply cursor-pointer; }
 
-	/* For Firefox */
-	* {
-		scrollbar-width: none;
-	}
-
-	/* For Internet Explorer and Edge (pre-Chromium) */
-	* {
-		-ms-overflow-style: none;
-	}
-
-	/* For Webkit-based browsers (Chrome, Safari, Edge) */
-	::-webkit-scrollbar {
-		display: none;
-	}
+	/* Scrollbar styles */
+	* { scrollbar-width: none; -ms-overflow-style: none; }
+	::-webkit-scrollbar { display: none; }
 }
 
 /* --- Reusable Component Classes --- */
@@ -97,140 +158,47 @@
 	.btn-secondary {
 		@apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed border border-border text-fg hover:bg-primary-50 dark:hover:bg-primary-900/20;
 	}
+	
+	/* Focus Reset for Mobile */
+    .focus-reset {
+        @apply focus:outline-none focus:ring-0;
+        @apply focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-bg;
+    }
 
 	/* Inputs */
 	.input {
-		@apply w-full px-3 py-2 rounded-lg border border-border bg-input-bg text-fg transition-colors;
-		@apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary;
-		@apply placeholder:text-muted/70;
+		@apply w-full px-3 py-2 rounded-lg border border-border bg-input-bg text-fg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary placeholder:text-muted/70;
+	}
+	select.input {
+		@apply cursor-pointer;
 	}
 
 	/* Badges */
-	.badge {
-		@apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
-	}
-	.badge-primary {
-		@apply bg-primary-100 text-primary-800;
-	}
-	.dark .badge-primary {
-		@apply bg-primary-900/30 text-primary-300;
-	}
-	.badge-red {
-		@apply bg-red-100 text-red-800;
-	}
-	.dark .badge-red {
-		@apply bg-red-900/30 text-red-300;
-	}
-	.badge-yellow {
-		@apply bg-yellow-100 text-yellow-800;
-	}
-	.dark .badge-yellow {
-		@apply bg-yellow-800/20 text-yellow-300;
-	}
-	.badge-green {
-		@apply bg-green-100 text-green-800;
-	}
-	.dark .badge-green {
-		@apply bg-green-900/30 text-green-300;
-	}
-	.badge-gray {
-		@apply bg-gray-200 text-gray-800;
-	}
-	.dark .badge-gray {
-		@apply bg-gray-700 text-gray-300;
-	}
-	.badge-blue {
-		@apply bg-blue-100 text-blue-800;
-	}
-	.dark .badge-blue {
-		@apply bg-blue-900/30 text-blue-300;
-	}
-	.badge-purple {
-		@apply bg-purple-100 text-purple-800;
-	}
-	.dark .badge-purple {
-		@apply bg-purple-900/30 text-purple-300;
-	}
+	.badge { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold; }
+	.badge-primary { @apply bg-badge-primary-bg text-badge-primary-fg; }
+	.badge-red { @apply bg-badge-red-bg text-badge-red-fg; }
+	.badge-yellow { @apply bg-badge-yellow-bg text-badge-yellow-fg; }
+	.badge-green { @apply bg-badge-green-bg text-badge-green-fg; }
+	.badge-gray { @apply bg-badge-gray-bg text-badge-gray-fg; }
+	.badge-blue { @apply bg-badge-blue-bg text-badge-blue-fg; }
+	.badge-purple { @apply bg-badge-purple-bg text-badge-purple-fg; }
 
-	/* ALERT STYLES */
-	.alert {
-		@apply w-full p-4 rounded-lg border text-sm;
-	}
-	.alert-title {
-		@apply mb-1 font-medium leading-none tracking-tight;
-	}
-	.alert-description {
-		@apply text-muted;
-	}
+	/* Alerts */
+	.alert { @apply w-full p-4 rounded-lg border text-sm; }
+	.alert-title { @apply mb-1 font-medium leading-none tracking-tight; }
+	.alert-description { @apply text-inherit; }
+	.alert-destructive { @apply bg-alert-destructive-bg text-alert-destructive-fg border-alert-destructive-border; }
+	.alert-destructive .alert-title { @apply font-semibold text-alert-destructive-title; }
+	.alert-warning { @apply bg-alert-warning-bg text-alert-warning-fg border-alert-warning-border; }
+	.alert-info { @apply bg-alert-info-bg text-alert-info-fg border-alert-info-border; }
 
-	/* Destructive/Error Style */
-	.alert-destructive {
-		@apply bg-red-50 border-red-200 text-red-800;
-		@apply dark:bg-red-900/20 dark:border-red-900/50 dark:text-red-300;
-	}
-
-	/* Warning Style (for the fallback message) */
-	.alert-warning {
-		@apply bg-yellow-50 border-yellow-200 text-yellow-800;
-		@apply dark:bg-yellow-900/20 dark:border-yellow-900/50 dark:text-yellow-300;
-	}
-
-	/* Info Style */
-	.alert-info {
-		/* Light Mode: A very light blue background with dark, saturated blue text */
-		@apply bg-blue-100 border-blue-200 text-blue-800;
-
-		/* Dark Mode: A very dark, transparent blue background with bright, light blue text */
-		@apply dark:bg-blue-900/30 dark:border-blue-800/40 dark:text-blue-200;
-	}
-
-	.event-banner {
-		@apply w-full p-3 rounded-lg text-sm;
-
-		/* Light Mode: A light orange background with dark orange text. */
-		background-color: var(--color-primary-100);
-	}
-	.event-banner-title {
-		@apply mb-1 flex items-center gap-2 font-semibold;
-		color: var(
-			--color-primary-900
-		); /* Darkest orange for high-contrast title */
-	}
-	.event-banner-description {
-		color: var(--color-primary-800); /* Slightly lighter orange for body text */
-	}
-
-	/* Dark Mode: A semi-transparent dark orange background with bright orange text. */
-	/* This is the crucial fix that matches your successful badge style. */
-	.dark .event-banner {
-		background-color: hsla(
-			var(--color-primary-900-hsl, 27 87% 33%) / 0.3
-		); /* Using HSL for reliable transparency */
-		/* If you have a Tailwind class: dark:bg-primary-900/30 */
-	}
-	.dark .event-banner-title {
-		color: var(
-			--color-primary-200
-		); /* Bright, prominent orange for the title */
-	}
-	.dark .event-banner-description {
-		color: var(
-			--color-primary-300
-		); /* Slightly less bright orange for the body */
-	}
-	/* Ensure the title within the alert gets a slightly bolder color */
-	.alert-info .alert-title {
-		@apply text-blue-900 dark:text-blue-100;
-	}
+	/* Event Banner */
+	.event-banner { @apply w-full p-3 rounded-lg text-sm bg-event-banner-bg; }
+	.event-banner-title { @apply mb-1 flex items-center gap-2 font-semibold text-event-banner-title; }
+	.event-banner-description { @apply text-event-banner-desc; }
 
 	/* Form Utilities */
-	.form-group {
-		@apply w-full flex flex-col gap-1.5;
-	}
-	.form-label {
-		@apply font-medium text-fg text-sm;
-	}
-	.form-error {
-		@apply text-sm text-red-500;
-	}
+	.form-group { @apply w-full flex flex-col gap-1.5; }
+	.form-label { @apply font-medium text-fg text-sm; }
+	.form-error { @apply text-sm text-red-500; }
 }

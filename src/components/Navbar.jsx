@@ -20,8 +20,6 @@ const Navbar = ({ onOpenSettings }) => {
 						onClick={onOpenSettings}
 						className="p-2 rounded-full text-muted transition-colors hover:text-fg hover:bg-input-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
 						aria-label="Open settings"
-						data-tooltip-id="navbar-tooltip"
-						data-tooltip-content="Settings"
 					>
 						<Settings size={20} />
 					</button>

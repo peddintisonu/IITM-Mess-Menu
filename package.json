@@ -23,7 +23,6 @@
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
 		"react-loading-skeleton": "^3.5.0",
-		"react-tooltip": "^5.29.1",
 		"tailwindcss": "^4.1.12"
 	},
 	"devDependencies": {

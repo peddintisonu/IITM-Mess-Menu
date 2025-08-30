@@ -2,7 +2,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useMemo, useState } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
-import { Tooltip } from "react-tooltip";
 import { ThemeProvider } from "./context/ThemeContext";
 
 import { getContextForDate } from "./api/menuApi";
@@ -118,7 +117,6 @@ function App() {
 					<Footer />
 				</div>
 
-				<Tooltip id="navbar-tooltip" className="tooltip-style" />
 				<UpdatePrompt />
 				<Analytics />
 				<SpeedInsights />
