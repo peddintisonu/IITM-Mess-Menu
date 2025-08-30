@@ -1,3 +1,4 @@
+import { MEALS } from "../api/constants";
 import { getCycleForDate } from "../api/menuApi";
 
 // --- Configuration ---
@@ -194,3 +195,50 @@ export function clearAllUserData() {
 	// Reload the page to force the initial setup prompt
 	window.location.reload();
 }
+
+/**
+ * Determines the current status of each meal (past, active, or future)
+ * based on the current time in the Indian Standard Timezone.
+ * "Active" is defined as the meal currently being served, or the next
+ * meal that is scheduled to be served.
+ * 
+ * @returns {{ [key: string]: 'past' | 'active' | 'future' }} An object mapping meal names to their status.
+ */
+export const getMealStates = () => {
+    const todayInIndia = getIndianTime();
+    const currentTime = todayInIndia.getHours() * 60 + todayInIndia.getMinutes(); // Current time in total minutes from midnight
+
+    const mealStatuses = {};
+    let nextMealFound = false;
+
+    // First, map each meal to its status based on time comparison
+    MEALS.forEach(meal => {
+        const [startHour, startMinute] = meal.start.split(':').map(Number);
+        const [endHour, endMinute] = meal.end.split(':').map(Number);
+        
+        const startTime = startHour * 60 + startMinute;
+        const endTime = endHour * 60 + endMinute;
+
+        if (currentTime >= startTime && currentTime <= endTime) {
+            mealStatuses[meal.value] = 'active';
+            nextMealFound = true; // An active meal is also the "next" meal
+        } else if (currentTime > endTime) {
+            mealStatuses[meal.value] = 'past';
+        } else {
+            mealStatuses[meal.value] = 'future';
+        }
+    });
+
+    // If no meal is currently active (i.e., we are between meal times),
+    // find the *first* upcoming "future" meal and mark it as "active".
+    if (!nextMealFound) {
+        for (const meal of MEALS) {
+            if (mealStatuses[meal.value] === 'future') {
+                mealStatuses[meal.value] = 'active';
+                break; // Stop after finding the first one
+            }
+        }
+    }
+    
+    return mealStatuses;
+};

@@ -1,23 +1,22 @@
+import React, { useState, useEffect, useRef } from "react";
 import { format } from "date-fns";
 import { CalendarDays, RotateCcw, Settings, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
 
 import { MENUS } from "../api/constants";
 import { getContextForDate } from "../api/menuApi";
 import {
 	getCurrentWeek,
 	getPreferenceForCycle,
-	getUserCategory,
 	getWeekForDate,
+	getMealStates, // Import the new utility
 } from "../utils/weekManager";
 import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
-import MealCardSkeleton from "./skeletons/MealCardSkeleton";
+import TodaysMenuSkeleton from "./skeletons/TodaysMenuSkeleton";
 
 /**
  * A dynamic component that displays the menu for a selected date.
- * It now handles cases where a user has not set a preference for a specific cycle
- * by prompting them to open the settings.
+ * It intelligently highlights the current/next meal and scrolls it into view.
  */
 const TodaysMenu = ({ onOpenSettings }) => {
 	const [menu, setMenu] = useState(null);
@@ -27,14 +26,18 @@ const TodaysMenu = ({ onOpenSettings }) => {
 		name: null,
 		description: null,
 	});
-	const [fallbackMessage, setFallbackMessage] = useState(null);
 	const [missingPreferenceCycle, setMissingPreferenceCycle] = useState(null);
 
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+	const [mealStates, setMealStates] = useState({});
 
-	// Static Info Bar Data - uses the global getUserCategory for today's preference
-	const userPreferenceForToday = getUserCategory();
+	// Ref to hold the DOM elements of the meal cards for scrolling
+	const mealCardRefs = useRef({});
+
+	const userPreferenceForToday = getPreferenceForCycle(
+		getContextForDate(new Date())?.cycleName
+	);
 	const currentWeek = getCurrentWeek();
 	const currentCycle = getContextForDate(new Date())?.cycleName || "Loading...";
 	const menuLabel =
@@ -44,13 +47,20 @@ const TodaysMenu = ({ onOpenSettings }) => {
 	const isViewingToday =
 		new Date().toDateString() === selectedDate.toDateString();
 
+	// Effect to fetch menu data when the selected date changes
 	useEffect(() => {
 		const fetchMenuForDate = () => {
 			setLoading(true);
 			setError(null);
-			setFallbackMessage(null);
 			setActiveEvent({ name: null, description: null });
 			setMissingPreferenceCycle(null);
+
+			// Determine meal states only if viewing today's menu
+			if (isViewingToday) {
+				setMealStates(getMealStates());
+			} else {
+				setMealStates({}); // Reset states if not viewing today
+			}
 
 			const context = getContextForDate(selectedDate);
 			if (!context) {
@@ -67,11 +77,9 @@ const TodaysMenu = ({ onOpenSettings }) => {
 				});
 			}
 
-			// Check for a preference specifically for the cycle of the selectedDate
 			const preferenceForSelectedCycle = getPreferenceForCycle(
 				context.cycleName
 			);
-
 			if (!preferenceForSelectedCycle) {
 				setMissingPreferenceCycle(context.cycleName);
 				setMenu(null);
@@ -79,32 +87,21 @@ const TodaysMenu = ({ onOpenSettings }) => {
 				return;
 			}
 
-			let categoryToDisplay = preferenceForSelectedCycle;
 			const isPreferenceValid = context.availableCategories.some(
 				(menu) => menu.value === preferenceForSelectedCycle
 			);
 
 			if (!isPreferenceValid) {
-				const prefLabel =
-					MENUS.find((m) => m.value === preferenceForSelectedCycle)?.label ||
-					preferenceForSelectedCycle;
 				setError(
-					`Your preferred mess ('${prefLabel}') is not available in the "${context.cycleName}" cycle. Please choose a different one in the settings.`
+					`Your preferred mess is not available in the "${context.cycleName}" cycle. Please choose another in settings.`
 				);
 				setMenu(null);
 				setLoading(false);
 				return;
 			}
 
-			if (context.availableCategories.length === 0) {
-				setError("No messes were available on this date.");
-				setMenu(null);
-				setLoading(false);
-				return;
-			}
-
 			const menuData = context.menuContent;
-			const categoryData = menuData[categoryToDisplay];
+			const categoryData = menuData[preferenceForSelectedCycle];
 			const weekForSelectedDate = getWeekForDate(selectedDate);
 			const dayOfWeek = selectedDate.toLocaleString("en-US", {
 				weekday: "long",
@@ -134,28 +131,36 @@ const TodaysMenu = ({ onOpenSettings }) => {
 		};
 
 		fetchMenuForDate();
-	}, [selectedDate]);
+	}, [selectedDate, isViewingToday]);
+
+	// Effect to handle the smart scroll after data has loaded
+	useEffect(() => {
+		// Only run this effect if not loading, viewing today, and menu is available
+		if (loading || !isViewingToday || !menu) return;
+
+		const activeMeal = Object.keys(mealStates).find(
+			(key) => mealStates[key] === "active"
+		);
+		if (activeMeal) {
+			const activeCardElement = mealCardRefs.current[activeMeal];
+			if (activeCardElement) {
+				// Use a timeout to ensure the browser has painted the elements before scrolling
+				setTimeout(() => {
+					activeCardElement.scrollIntoView({
+						behavior: "smooth",
+						block: "nearest",
+						inline: "center",
+					});
+				}, 100); // A small delay is often needed
+			}
+		}
+	}, [loading, isViewingToday, menu, mealStates]);
 
 	const formattedDate = format(selectedDate, "EEEE, MMMM d");
 
 	const renderContent = () => {
 		if (loading) {
-			return (
-				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
-				</div>
-			);
+			return <TodaysMenuSkeleton />;
 		}
 		if (missingPreferenceCycle) {
 			return (
@@ -175,53 +180,41 @@ const TodaysMenu = ({ onOpenSettings }) => {
 				</div>
 			);
 		}
-		// Render the new "invalid preference" error message
 		if (error) {
 			return (
 				<div className="alert alert-destructive text-center">
-					<div className="alert-title">Invalid Preference!</div>
+					<div className="alert-title">Error!</div>
 					<div className="alert-description">{error}</div>
 					<button
 						onClick={onOpenSettings}
 						className="btn-secondary mt-4 inline-flex items-center gap-2"
 					>
 						<Settings size={16} />
-						Open Settings to Fix
+						Open Settings
 					</button>
 				</div>
 			);
 		}
 		if (menu) {
+			const mealsToRender = ["Breakfast", "Lunch", "Snacks", "Dinner"];
 			return (
 				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCard
-							title="Breakfast"
-							items={menu.Breakfast}
-							commonItems={menu.common.Breakfast}
-						/>
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCard
-							title="Lunch"
-							items={menu.Lunch}
-							commonItems={menu.common.Lunch}
-						/>
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCard
-							title="Snacks"
-							items={menu.Snacks}
-							commonItems={menu.common.Snacks}
-						/>
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCard
-							title="Dinner"
-							items={menu.Dinner}
-							commonItems={menu.common.Dinner}
-						/>
-					</div>
+					{mealsToRender.map((mealTitle) => (
+						<div
+							key={mealTitle}
+							// Assign a ref to each card's container
+							ref={(el) => (mealCardRefs.current[mealTitle] = el)}
+							className="flex-shrink-0 w-[80%] sm:w-auto"
+						>
+							<MealCard
+								title={mealTitle}
+								items={menu[mealTitle]}
+								commonItems={menu.common[mealTitle]}
+								// Pass the status, default to 'future' if not viewing today
+								status={isViewingToday ? mealStates[mealTitle] : "future"}
+							/>
+						</div>
+					))}
 				</div>
 			);
 		}
@@ -260,7 +253,6 @@ const TodaysMenu = ({ onOpenSettings }) => {
 					<Settings size={12} />
 					<span>You can change your mess preference in the settings.</span>
 				</div>
-
 				<div className="flex items-center gap-4 mt-4">
 					<h1 className="m-0">
 						{isViewingToday ? "Today's Menu" : "Menu for"}{" "}
@@ -284,7 +276,6 @@ const TodaysMenu = ({ onOpenSettings }) => {
 						</button>
 					)}
 				</div>
-
 				{activeEvent.name && (
 					<div className="event-banner mt-4">
 						<div className="event-banner-title">
@@ -296,11 +287,6 @@ const TodaysMenu = ({ onOpenSettings }) => {
 								{activeEvent.description}
 							</div>
 						)}
-					</div>
-				)}
-				{fallbackMessage && (
-					<div className="alert alert-warning mt-4">
-						<div className="alert-description">{fallbackMessage}</div>
 					</div>
 				)}
 			</div>
