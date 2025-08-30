@@ -2,35 +2,9 @@ import React from "react";
 import { Circle } from "lucide-react";
 import { MEALS } from "../api/constants";
 import MenuIcon from "./MenuIcon";
+import MenuItem from "./MenuItem";
 
-/**
- * A small component to render a single menu item,
- * correctly handling both string and object formats.
- */
-const MenuItem = ({ item }) => {
-	const isSpecialByObject =
-		typeof item === "object" && item !== null && item.isSpecial;
-	const isSpecialByString =
-		typeof item === "string" && item.startsWith("*") && item.endsWith("*");
-	const isSpecial = isSpecialByObject || isSpecialByString;
 
-	let itemName = "";
-	if (typeof item === "object" && item !== null) {
-		itemName = item.name;
-	} else if (isSpecialByString) {
-		itemName = item.slice(1, -1);
-	} else {
-		itemName = item;
-	}
-
-	if (!itemName) return null;
-
-	return (
-		<span className={isSpecial ? "font-bold text-primary" : ""}>
-			{itemName}
-		</span>
-	);
-};
 
 const MealCard = ({ title, items, commonItems, status }) => {
 	const mealInfo = MEALS.find((meal) => meal.value === title);

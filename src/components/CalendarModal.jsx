@@ -1,20 +1,19 @@
+import React, { useMemo } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { useMemo } from "react";
 import { getCalendarDateRange } from "../api/menuApi";
-
-import { enGB } from "date-fns/locale";
+import { enGB } from "date-fns/locale"; // locale for week start day
 
 /**
  * A themed, accessible, and centered modal for selecting a date.
- * It dynamically restricts the selectable date range based on the available menu data.
+ * It dynamically restricts the selectable date range and shows outside days.
  * @param {{
- * isOpen: boolean;
- * onClose: () => void;
- * selectedDate: Date;
- * onDateSelect: (date: Date) => void;
+ *   isOpen: boolean;
+ *   onClose: () => void;
+ *   selectedDate: Date;
+ *   onDateSelect: (date: Date) => void;
  * }} props
  */
 const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
@@ -23,27 +22,19 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 	if (!isOpen) return null;
 
 	const isDarkMode = document.documentElement.classList.contains("dark");
-	const primaryColor = "#f97316"; // Your app's primary orange
+	const primaryColor = "#f97316";
 
 	const muiTheme = createTheme({
 		palette: {
 			mode: isDarkMode ? "dark" : "light",
-			primary: {
-				main: primaryColor,
-			},
-			background: {
-				paper: isDarkMode ? "#1f2937" : "#ffffff",
-			},
+			primary: { main: primaryColor },
+			background: { paper: isDarkMode ? "#1f2937" : "#ffffff" },
 		},
-		typography: {
-			fontFamily: '"Poppins", sans-serif',
-		},
+		typography: { fontFamily: '"Poppins", sans-serif' },
 		components: {
 			MuiDateCalendar: {
 				styleOverrides: {
-					root: {
-						backgroundColor: "transparent",
-					},
+					root: { backgroundColor: "transparent" },
 				},
 			},
 			MuiPickersDay: {
@@ -55,10 +46,16 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 								? "rgba(249, 115, 22, 0.1)"
 								: "#ffedd5",
 						},
+						// --- NEW STYLE FOR OUTSIDE DAYS ---
+						"&.MuiDayPicker-DayOutsideMonth": {
+							color: isDarkMode
+								? "rgba(156, 163, 175, 0.4)"
+								: "rgba(107, 114, 128, 0.4)", // Muted color with opacity
+						},
 					},
 					today: {
 						borderColor: primaryColor,
-						borderWidth: "2px",
+						borderWidth: "1px", // Changed to 1px for a more subtle look
 					},
 				},
 			},
@@ -80,7 +77,7 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 		if (newDate) {
 			onDateSelect(newDate);
 		}
-		onClose();
+		-onClose();
 	};
 
 	return (
@@ -95,15 +92,17 @@ const CalendarModal = ({ isOpen, onClose, selectedDate, onDateSelect }) => {
 				<ThemeProvider theme={muiTheme}>
 					<LocalizationProvider
 						dateAdapter={AdapterDateFns}
-						adapterLocale={enGB}
+						adapterLocale={enGB} // Sets week start to Monday
 					>
 						<DateCalendar
 							value={selectedDate}
 							onChange={handleDateChange}
-							fixedWeekNumber={6}
+							fixedWeekNumber={5}
 							views={["day"]}
 							minDate={dateRange?.minDate}
 							maxDate={dateRange?.maxDate}
+							// --- THE FIX IS HERE ---
+							showDaysOutsideCurrentMonth
 						/>
 					</LocalizationProvider>
 				</ThemeProvider>

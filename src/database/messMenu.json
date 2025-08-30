@@ -40,7 +40,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Green Gram Sprouts",
 										"Vegetable rava upma",
 										"Coconut chutney"
@@ -112,7 +112,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg / Chocos",
+										"Boiled egg / *Chocos*",
 										"Boiled white chana",
 										"Masala Dosa",
 										"Mint chutney",
@@ -136,7 +136,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette / Oats",
+										"*Omelette* / Oats",
 										"Boiled green gram",
 										"Poha",
 										"Tamarind chutney",
@@ -239,7 +239,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled peas",
 										"Kachori",
 										"Aloo sabji",
@@ -313,7 +313,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled white chana",
 										"Pesarattu-Upma",
 										"Sambar",
@@ -391,7 +391,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Green Gram Sprouts",
 										"Idli",
 										"Ghee & Podi ",
@@ -491,7 +491,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled green gram",
 										"Moong dal chilla",
 										"Tomato sauce"
@@ -568,7 +568,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled Peanut",
 										"Puttu ",
 										"Kadala curry"
@@ -666,7 +666,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled rajma",
 										"Idiyappam",
 										"Veg Kurma"
@@ -753,7 +753,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Green Gram Sprouts",
 										"Vegetable rava upma",
 										"Coconut chutney"
@@ -825,7 +825,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg / Chocos",
+										"Boiled egg / *Chocos*",
 										"Boiled white chana",
 										"Masala Dosa",
 										"Mint chutney",
@@ -849,7 +849,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette / Oats",
+										"*Omelette* / Oats",
 										"Boiled green gram",
 										"Poha",
 										"Tamarind chutney",
@@ -952,7 +952,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled peas",
 										"Kachori",
 										"Aloo sabji",
@@ -1026,7 +1026,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled white chana",
 										"Pesarattu-Upma",
 										"Sambar",
@@ -1104,7 +1104,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Green Gram Sprouts",
 										"Idli",
 										"Ghee & Podi  ",
@@ -1204,7 +1204,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled green gram",
 										"Moong dal chilla",
 										"Tomato sauce"
@@ -1281,7 +1281,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled Peanut",
 										"Puttu  ",
 										"Kadala curry"
@@ -1379,7 +1379,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Boiled rajma",
 										"Idiyappam",
 										"Veg Kurma"
@@ -1476,8 +1476,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Green Gram Sprouts",
 										"Mango Jam",
 										"Mysore bonda (2 no)",
@@ -1569,7 +1569,7 @@
 								"Friday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Boiled white chana",
 										"Mango Jam",
 										"Masala Dosa",
@@ -1597,7 +1597,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Cornflakes",
 										"Boiled green gram",
 										"Pineapple Jam",
@@ -1689,8 +1689,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Mango Jam",
 										"Green Gram Sprouts",
 										"Punugulu (4 no)(small size)",
@@ -1809,7 +1809,7 @@
 								"Saturday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Mango Jam",
 										"Boiled mixed pulses",
 										"*Maggi*",
@@ -1902,8 +1902,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Green Gram Sprouts",
 										"Mango Jam",
 										"Mysore bonda (2 no)",
@@ -1995,7 +1995,7 @@
 								"Friday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Boiled white chana",
 										"Mango Jam",
 										"Masala Dosa",
@@ -2023,7 +2023,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Cornflakes",
 										"Boiled green gram",
 										"Pineapple Jam",
@@ -2115,8 +2115,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Mango Jam",
 										"Green Gram Sprouts",
 										"Punugulu (4 no)(small size)",
@@ -2235,7 +2235,7 @@
 								"Saturday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Mango Jam",
 										"Boiled mixed pulses",
 										"*Maggi*",
@@ -2335,8 +2335,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Green Gram Sprouts",
 										"Mango Jam",
 										"Mysore bonda (2 no)",
@@ -2428,7 +2428,7 @@
 								"Friday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Boiled white chana",
 										"Mango Jam",
 										"Masala Dosa",
@@ -2456,7 +2456,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Cornflakes",
 										"Boiled green gram",
 										"Pineapple Jam",
@@ -2549,8 +2549,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Mango Jam",
 										"Green Gram Sprouts",
 										"Punugulu (4 no)(small size)",
@@ -2667,7 +2667,7 @@
 								"Saturday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Mango Jam",
 										"Boiled mixed pulses",
 										"*Maggi*",
@@ -2759,8 +2759,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Green Gram Sprouts",
 										"Mango Jam",
 										"Mysore bonda (2 no)",
@@ -2852,7 +2852,7 @@
 								"Friday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Boiled white chana",
 										"Mango Jam",
 										"Masala Dosa",
@@ -2880,7 +2880,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette",
+										"*Omelette*",
 										"Cornflakes",
 										"Boiled green gram",
 										"Pineapple Jam",
@@ -2973,8 +2973,8 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette",
-										"Chocos",
+										"*Omelette*",
+										"*Chocos*",
 										"Mango Jam",
 										"Green Gram Sprouts",
 										"Punugulu (4 no)(small size)",
@@ -3091,7 +3091,7 @@
 								"Saturday": {
 									"Breakfast": [
 										"Boiled Egg",
-										"Chocos",
+										"*Chocos*",
 										"Mango Jam",
 										"Boiled mixed pulses",
 										"*Maggi*",
@@ -3163,7 +3163,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Chole",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Poha",
 										"Tamarind Chutney",
 										"Kachori",
@@ -3189,7 +3189,7 @@
 								"Tuesday": {
 									"Breakfast": [
 										"Boiled Green Gram",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Rava Upma",
 										"Aloo Sabji",
 										"Imli chutney"
@@ -3215,7 +3215,7 @@
 									"Breakfast": [
 										"Mango jam",
 										"Boiled Black Chana",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Pav Bhaji",
 										"Pav bhaji masala",
 										"Aloo Bonda"
@@ -3292,7 +3292,7 @@
 									"Breakfast": [
 										"Pineapple Jam",
 										"Boiled Peanut",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Aloo Paratha",
 										"Plain curd",
 										"Green Chutney"
@@ -3426,7 +3426,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Macaroni",
 										"Tomato sauce",
 										"Cutlet"
@@ -3450,7 +3450,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Chole",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Onion Utthappam",
 										"Groundnut chutney",
 										"Drumstick Sambar"
@@ -3503,7 +3503,7 @@
 									"Breakfast": [
 										"Mango Jam",
 										"Boiled Black Channa",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Plain Dosa",
 										"Aloo Masala",
 										"Mix Veg Sambhar",
@@ -3536,7 +3536,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Chole",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Poha",
 										"Tamarind Chutney",
 										"Kachori",
@@ -3562,7 +3562,7 @@
 								"Tuesday": {
 									"Breakfast": [
 										"Boiled Green Gram",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Rava Upma",
 										"Aloo Sabji",
 										"Imli chutney"
@@ -3588,7 +3588,7 @@
 									"Breakfast": [
 										"Mango jam",
 										"Boiled Black Chana",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Pav Bhaji",
 										"Pav bhaji masala",
 										"Aloo Bonda"
@@ -3665,7 +3665,7 @@
 									"Breakfast": [
 										"Pineapple Jam",
 										"Boiled Peanut",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Aloo Paratha",
 										"Plain curd",
 										"Green Chutney"
@@ -3799,7 +3799,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Macaroni",
 										"Tomato sauce",
 										"Cutlet"
@@ -3823,7 +3823,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Chole",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Onion Utthappam",
 										"Groundnut chutney",
 										"Drumstick Sambar"
@@ -3876,7 +3876,7 @@
 									"Breakfast": [
 										"Mango Jam",
 										"Boiled Black Channa",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Plain Dosa",
 										"Aloo Masala",
 										"Mix Veg Sambhar",
@@ -3917,7 +3917,7 @@
 									"Breakfast": [
 										"Mango jam",
 										"Boiled Chole",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Poha",
 										"Tamarind Chutney",
 										"Jalebi"
@@ -3942,7 +3942,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Rava Upma",
 										"Aloo Sabji",
 										"Imli chutney"
@@ -3968,7 +3968,7 @@
 									"Breakfast": [
 										"Mango jam",
 										"Boiled Black Chana",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Pav Bhaji",
 										"Pav bhaji masala",
 										"Aloo Bonda"
@@ -4044,7 +4044,7 @@
 									"Breakfast": [
 										"Pineapple Jam",
 										"Boiled Peanut",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Aloo Paratha",
 										"Plain curd",
 										"Green chutney"
@@ -4177,7 +4177,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Macaroni",
 										"Tomato sauce",
 										"Cutlet"
@@ -4201,7 +4201,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Chole",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Onion Utthappam",
 										"Groundnut chutney",
 										"Drumstick Sambar"
@@ -4254,7 +4254,7 @@
 									"Breakfast": [
 										"Mango Jam",
 										"Boiled Black Channa",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Plain Dosa",
 										"Aloo Masala",
 										"Mix Veg Sambhar",
@@ -4285,7 +4285,7 @@
 									"Breakfast": [
 										"Mango jam",
 										"Boiled Chole",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Poha",
 										"Tamarind Chutney",
 										"Jalebi"
@@ -4310,7 +4310,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Rava Upma",
 										"Aloo Sabji",
 										"Imli chutney"
@@ -4336,7 +4336,7 @@
 									"Breakfast": [
 										"Mango jam",
 										"Boiled Black Chana",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Pav Bhaji",
 										"Pav bhaji masala",
 										"Aloo Bonda"
@@ -4412,7 +4412,7 @@
 									"Breakfast": [
 										"Pineapple Jam",
 										"Boiled Peanut",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Aloo Paratha",
 										"Plain curd",
 										"Green chutney"
@@ -4545,7 +4545,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Macaroni",
 										"Tomato sauce",
 										"Cutlet"
@@ -4569,7 +4569,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Chole",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Onion Utthappam",
 										"Groundnut chutney",
 										"Drumstick Sambar"
@@ -4622,7 +4622,7 @@
 									"Breakfast": [
 										"Mango Jam",
 										"Boiled Black Channa",
-										"Boiled Egg/Chocos",
+										"Boiled Egg/*Chocos*",
 										"Plain Dosa",
 										"Aloo Masala",
 										"Mix Veg Sambhar",
@@ -4686,7 +4686,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Kachori",
 										"Imli chutney",
 										"Aloo Sabji",
@@ -4795,7 +4795,7 @@
 									"Breakfast": [
 										"Pineapple Jam",
 										"Boiled green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Aloo Paratha",
 										"Cabbage Paratha",
 										"Curd",
@@ -4940,7 +4940,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Macaroni",
 										"Aloo bonda",
 										"Sause"
@@ -4967,7 +4967,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Chole, Green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Plain Utthappam",
 										"Coconut chutney",
 										"Mix Veg Sambhar"
@@ -5079,7 +5079,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Kachori",
 										"Imli chutney",
 										"Aloo Sabji",
@@ -5188,7 +5188,7 @@
 									"Breakfast": [
 										"Pineapple Jam",
 										"Boiled green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Aloo Paratha",
 										"Cabbage Paratha",
 										"Curd",
@@ -5333,7 +5333,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Boiled Green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Macaroni",
 										"Aloo bonda",
 										"Sause"
@@ -5360,7 +5360,7 @@
 									"Breakfast": [
 										"Mixed Fruit Jam",
 										"Chole, Green Gram",
-										"Chocos",
+										"*Chocos*",
 										"Plain Utthappam",
 										"Coconut chutney",
 										"Mix Veg Sambhar"
@@ -5504,7 +5504,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"Omelette / Chocos",
+										"*Omelette* / *Chocos*",
 										"Green Gram Sprouts",
 										"Vegetable rava upma",
 										"Coconut chutney"
@@ -5555,7 +5555,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg/ Chocos",
+										"Boiled egg/ *Chocos*",
 										"Boiled white chana",
 										"Masala Dosa",
 										"Mint chutney",
@@ -5581,7 +5581,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Boiled green gram",
 										"Poha",
 										"Aloo Channa Curry",
@@ -5663,7 +5663,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Full fried Egg / Chocos",
+										"Full fried Egg / *Chocos*",
 										"Boiled Black Chana",
 										"Semiya upma",
 										"Groundnut chutney"
@@ -5689,7 +5689,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"Omelette / Oats",
+										"*Omelette* / Oats",
 										"Boiled peas",
 										"Masala Dosa",
 										"Sambar",
@@ -5743,7 +5743,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg / Chocos",
+										"Boiled egg / *Chocos*",
 										"Boiled peanut",
 										"Macaroni Cutlet",
 										"Tomato Sauce"
@@ -5766,7 +5766,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette/ Oats",
+										"*Omelette*/ Oats",
 										"Boiled white chana",
 										"Pesarattu-Upma",
 										"Sambar",
@@ -5847,7 +5847,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette/Chocos",
+										"*Omelette*/*Chocos*",
 										"Green Gram Sprouts",
 										"Idli",
 										"Ghee & Podi",
@@ -5925,7 +5925,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg/Chocos",
+										"Boiled egg/*Chocos*",
 										"Boiled white chana",
 										"Puffed rice upma",
 										"Mint chutney",
@@ -5950,7 +5950,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Boiled green gram",
 										"Moong dal chilla",
 										"Tomato sauce"
@@ -6007,7 +6007,7 @@
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
-										"Omelette / Oats",
+										"*Omelette* / Oats",
 										"Boiled rajma",
 										"Aloo Poha",
 										"Tamarind chutney"
@@ -6031,7 +6031,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette/Chocos",
+										"*Omelette*/*Chocos*",
 										"Boiled Peanut",
 										"Semiya Kichdi",
 										"Coconut Chutney"
@@ -6107,7 +6107,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg / Chocos",
+										"Boiled egg / *Chocos*",
 										"Boiled Rajma",
 										"Rava Idli",
 										"Groundnut chutney Sambar"
@@ -6247,7 +6247,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"Omelette / Chocos",
+										"*Omelette* / *Chocos*",
 										"Green Gram Sprouts",
 										"Vegetable rava upma",
 										"Coconut chutney"
@@ -6299,7 +6299,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg/ Chocos",
+										"Boiled egg/ *Chocos*",
 										"Boiled white chana",
 										"Masala Dosa",
 										"Mint chutney",
@@ -6325,7 +6325,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Boiled green gram",
 										"Poha",
 										"Aloo Channa Curry",
@@ -6409,7 +6409,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Full fried Egg/Chocos",
+										"Full fried Egg/*Chocos*",
 										"Boiled Black Chana",
 										"Semiya upma",
 										"Groundnut chutney"
@@ -6435,7 +6435,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"Omelette / Oats",
+										"*Omelette* / Oats",
 										"Boiled peas",
 										"Masala Dosa",
 										"Sambar",
@@ -6489,7 +6489,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg/Chocos",
+										"Boiled egg/*Chocos*",
 										"Boiled peanut",
 										"Macaroni",
 										"Cutlet",
@@ -6513,7 +6513,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Boiled white chana",
 										"Pesarattu-Upma",
 										"Sambar",
@@ -6593,7 +6593,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette/Chocos",
+										"*Omelette*/*Chocos*",
 										"Green Gram Sprouts",
 										"Idli",
 										"Ghee & Podi",
@@ -6671,7 +6671,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg/Chocos",
+										"Boiled egg/*Chocos*",
 										"Boiled white chana",
 										"Puffed rice upma",
 										"Mint chutney",
@@ -6696,7 +6696,7 @@
 								},
 								"Saturday": {
 									"Breakfast": [
-										"Omelette/Oats",
+										"*Omelette*/Oats",
 										"Boiled green gram",
 										"Moong dal chilla",
 										"Tomato sauce"
@@ -6754,7 +6754,7 @@
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
-										"Omelette / Oats",
+										"*Omelette* / Oats",
 										"Boiled rajma",
 										"Aloo Poha",
 										"Tamarind chutney"
@@ -6778,7 +6778,7 @@
 								},
 								"Tuesday": {
 									"Breakfast": [
-										"Omelette/Chocos",
+										"*Omelette*/*Chocos*",
 										"Boiled Peanut",
 										"Semiya Kichdi",
 										"Coconut Chutney"
@@ -6854,7 +6854,7 @@
 								},
 								"Friday": {
 									"Breakfast": [
-										"Boiled egg / Chocos",
+										"Boiled egg / *Chocos*",
 										"Boiled Rajma",
 										"Rava Idli",
 										"Groundnut chutney Sambar"
