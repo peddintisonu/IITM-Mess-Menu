@@ -1,54 +1,81 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { SkeletonTheme } from "react-loading-skeleton";
 import { Tooltip } from "react-tooltip";
+import { ThemeProvider } from "./context/ThemeContext";
+
+import { getContextForDate } from "./api/menuApi";
+import {
+	completeSetup,
+	getPreferenceForCycle,
+	isSetupComplete,
+	setPreferenceForCycle,
+	updateLastSeenCycle,
+} from "./utils/weekManager";
+
 import Footer from "./components/Footer";
 import MenuExplorer from "./components/MenuExplorer";
 import Navbar from "./components/Navbar";
+import SettingsModal from "./components/SettingsModal";
 import SetupModal from "./components/SetupModal";
 import TodaysMenu from "./components/TodaysMenu";
 import UpdatePrompt from "./components/UpdatePrompt";
-import { ThemeProvider } from "./context/ThemeContext";
-import {
-	completeSetup,
-	isSetupComplete,
-	setUserCategory,
-} from "./utils/weekManager";
-import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
-	const [isSetupDoneState, setIsSetupDoneState] = useState(() =>
-		isSetupComplete()
-	);
-	const [isModalOpen, setIsModalOpen] = useState(() => !isSetupComplete());
 
-	const handleSave = (category) => {
-		// The modal is only for initial setup if setup is not done yet.
-		if (!isSetupDoneState) {
-			completeSetup(category);
-		} else {
-			setUserCategory(category);
+
+	const [modalToShow, setModalToShow] = useState(null); // 'initialSetup', 'newCyclePrompt', 'confirmNewCycle', 'settings'
+	const [prefilledPreference, setPrefilledPreference] = useState(null);
+
+	// This effect runs once on startup to determine if a modal should be shown.
+	useMemo(() => {
+		const setupDone = isSetupComplete();
+		if (!setupDone) {
+			setModalToShow("initialSetup");
+			return;
 		}
 
-		setIsSetupDoneState(true);
-		setIsModalOpen(false);
+		const todayContext = getContextForDate(new Date());
+		const lastSeenCycle = localStorage.getItem("lastSeenCycleName");
+		const currentCycleName = todayContext?.cycleName;
 
-		// Reload to apply changes consistently across the app
+		if (currentCycleName && currentCycleName !== lastSeenCycle) {
+			const preferenceForNewCycle = getPreferenceForCycle(currentCycleName);
+
+			if (preferenceForNewCycle) {
+				// A preference exists for the new cycle, so show the confirmation prompt.
+				setModalToShow("confirmNewCycle");
+				setPrefilledPreference(preferenceForNewCycle);
+			} else {
+				// No preference exists, show the standard "new cycle" prompt.
+				setModalToShow("newCyclePrompt");
+			}
+		}
+	}, []);
+
+	const handleOnboardingSave = (cycleName, category) => {
+		// For initial setup, we also need to set the completion flag.
+		if (modalToShow === "initialSetup") {
+			completeSetup(cycleName, category);
+		}
+
+		// For all onboarding flows, we save the preference and update the "last seen" stamp.
+		setPreferenceForCycle(cycleName, category);
+		updateLastSeenCycle(cycleName);
+
+		setModalToShow(null);
 		window.location.reload();
 	};
 
-	const openSettingsModal = () => setIsModalOpen(true);
-	const closeSettingsModal = () => setIsModalOpen(false);
+	const openSettingsModal = () => setModalToShow("settings");
+	const closeAllModals = () => setModalToShow(null);
 
 	const skeletonThemeLight = {
-		baseColor: "#f9fafb", // Your --color-input-bg in light mode
-		highlightColor: "#e5e7eb", // Your --color-border in light mode
+		baseColor: "#f9fafb",
+		highlightColor: "#e5e7eb",
 	};
-
-	const skeletonThemeDark = {
-		baseColor: "#1f2937", // Your --color-input-bg in dark mode
-		highlightColor: "#374151", // Your --color-border in dark mode
-	};
+	const skeletonThemeDark = { baseColor: "#1f2937", highlightColor: "#374151" };
 
 	return (
 		<ThemeProvider>
@@ -57,20 +84,26 @@ function App() {
 					? skeletonThemeDark
 					: skeletonThemeLight)}
 			>
-				{isModalOpen && (
+				{(modalToShow === "initialSetup" ||
+					modalToShow === "newCyclePrompt" ||
+					modalToShow === "confirmNewCycle") && (
 					<SetupModal
-						onComplete={handleSave}
-						onClose={closeSettingsModal}
-						isInitialSetup={!isSetupDoneState}
+						onSave={handleOnboardingSave}
+						context={modalToShow}
+						prefilledPreference={prefilledPreference}
 					/>
+				)}
+
+				{modalToShow === "settings" && (
+					<SettingsModal isOpen={true} onClose={closeAllModals} />
 				)}
 
 				<div className="min-h-screen bg-bg font-sans text-fg transition-colors">
 					<Navbar onOpenSettings={openSettingsModal} />
 					<main>
-						{isSetupDoneState ? (
+						{isSetupComplete() ? (
 							<>
-								<TodaysMenu />
+								<TodaysMenu onOpenSettings={openSettingsModal} />
 								<div className="w-full max-w-7xl mx-auto px-4">
 									<div className="border-t border-border my-6 sm:my-8"></div>
 								</div>
@@ -78,7 +111,7 @@ function App() {
 							</>
 						) : (
 							<div className="text-center py-20 text-muted">
-								<p>Please select your mess to view the menu.</p>
+								<p>Please complete the initial setup to view the menu.</p>
 							</div>
 						)}
 					</main>

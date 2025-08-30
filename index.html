@@ -67,6 +67,15 @@
 			name="twitter:image"
 			content="https://iitm-mess-menu.vercel.app/social-card.png"
 		/>
+
+		<script src="/appName.js"></script>
+		<script>
+			(function () {
+				if (window.APP_NAME) {
+					document.title = window.APP_NAME;
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>

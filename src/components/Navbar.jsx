@@ -1,6 +1,7 @@
 import React from "react";
 import { Settings } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { APP_NAME } from "../api/constants";
 
 const Navbar = ({ onOpenSettings }) => {
 	return (
@@ -9,7 +10,7 @@ const Navbar = ({ onOpenSettings }) => {
 				{/* Left side: Logo */}
 				<div className="flex items-center gap-2">
 					<img src="/logo.svg" alt="IITM Mess Logo" className="h-8 w-8" />
-					<span className="text-xl font-bold text-fg">IITM Mess Menu</span>
+					<span className="text-xl font-bold text-fg">{APP_NAME}</span>
 				</div>
 
 				{/* Right side: Icons */}

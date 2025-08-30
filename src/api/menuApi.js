@@ -1,13 +1,13 @@
 import data from "../database/messMenu.json";
-import ApiResponse from "./ApiResponse";
 import {
-	getCurrentWeek,
-	getUserCategory,
 	getCurrentDay,
-	getWeekForDate,
+	getCurrentWeek,
 	getIndianTime,
+	getUserCategory,
+	getWeekForDate,
 	toLocalDateString,
 } from "../utils/weekManager";
+import ApiResponse from "./ApiResponse";
 import { MENUS } from "./constants";
 
 // --- Core Helper Functions ---
@@ -32,22 +32,6 @@ const deepMerge = (base, override) => {
 		}
 	}
 	return merged;
-};
-
-const getCycleForDate = (targetDate) => {
-	const sortedCycles = [...data.cycles].sort(
-		(a, b) => new Date(a.startDate) - new Date(b.startDate)
-	);
-	return (
-		sortedCycles
-			.slice()
-			.reverse()
-			.find((cycle) => {
-				const startDate = new Date(cycle.startDate);
-				startDate.setHours(0, 0, 0, 0);
-				return startDate <= targetDate;
-			}) || null
-	);
 };
 
 const getMenuContentForDate = (date) => {
@@ -106,7 +90,24 @@ const getMenuContentForDate = (date) => {
 		versionId: baseVersionKey,
 	};
 };
+
 // --- Exported API Functions ---
+
+export const getCycleForDate = (targetDate) => {
+	const sortedCycles = [...data.cycles].sort(
+		(a, b) => new Date(a.startDate) - new Date(b.startDate)
+	);
+	return (
+		sortedCycles
+			.slice()
+			.reverse()
+			.find((cycle) => {
+				const startDate = new Date(cycle.startDate);
+				startDate.setHours(0, 0, 0, 0);
+				return startDate <= targetDate;
+			}) || null
+	);
+};
 
 export const getContextForDate = (date) => {
 	const cycle = getCycleForDate(date);
@@ -305,28 +306,69 @@ export const getTodaysMenu = async () => {
 };
 
 /**
- * Scans all defined cycles to find the earliest start date and latest end date.
- * This provides the valid date range for the entire menu database.
- * @returns {{minDate: Date, maxDate: Date} | null} An object with the date range, or null.
+ * Finds the current cycle and its immediate previous and next neighbors.
+ * This is the single source of truth for the settings modal and calendar range.
+ * @returns {{previous: object | null, current: object | null, next: object | null}}
+ */
+export const getNeighboringCycles = () => {
+	const sortedCycles = [...data.cycles].sort(
+		(a, b) => new Date(a.startDate) - new Date(b.startDate)
+	);
+	const today = getIndianTime();
+
+	let currentIndex = -1;
+
+	// Find the index of the last cycle that has started. This is our "current" cycle.
+	for (let i = sortedCycles.length - 1; i >= 0; i--) {
+		if (new Date(sortedCycles[i].startDate) <= today) {
+			currentIndex = i;
+			break;
+		}
+	}
+
+	if (currentIndex === -1) {
+		// This case happens if the current date is before any defined cycles.
+		return {
+			previous: null,
+			current: sortedCycles[0] || null,
+			next: sortedCycles[1] || null,
+		};
+	}
+
+	const currentCycle = sortedCycles[currentIndex];
+	const previousCycle = sortedCycles[currentIndex - 1] || null;
+	const nextCycle = sortedCycles[currentIndex + 1] || null;
+
+	return {
+		previous: previousCycle,
+		current: currentCycle,
+		next: nextCycle,
+	};
+};
+
+/**
+ * Determines the valid date range for the calendar based on the neighboring cycles.
+ * The range spans from the start of the previous cycle (if it exists)
+ * to the end of the next cycle (if it exists).
+ * @returns {{minDate: Date, maxDate: Date} | null} An object with the date range.
  */
 export const getCalendarDateRange = () => {
-	if (!data.cycles || data.cycles.length === 0) {
+	const { previous, current, next } = getNeighboringCycles();
+
+	if (!current) {
+		// If there are no cycles at all, return null.
 		return null;
 	}
 
-	let minDate = new Date(data.cycles[0].startDate);
-	let maxDate = new Date(data.cycles[0].endDate);
+	// Determine the minimum selectable date.
+	// If a previous cycle exists, the range starts from its start date.
+	// Otherwise, it starts from the current cycle's start date.
+	const minDate = new Date(previous ? previous.startDate : current.startDate);
 
-	for (const cycle of data.cycles) {
-		const startDate = new Date(cycle.startDate);
-		const endDate = new Date(cycle.endDate);
-		if (startDate < minDate) {
-			minDate = startDate;
-		}
-		if (endDate > maxDate) {
-			maxDate = endDate;
-		}
-	}
+	// Determine the maximum selectable date.
+	// If a next cycle exists, the range ends at its end date.
+	// Otherwise, it ends at the current cycle's end date.
+	const maxDate = new Date(next ? next.endDate : current.endDate);
 
 	return { minDate, maxDate };
 };
