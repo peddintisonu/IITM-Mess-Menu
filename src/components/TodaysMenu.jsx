@@ -6,18 +6,20 @@ import { MENUS } from "../api/constants";
 import { getContextForDate } from "../api/menuApi";
 import {
 	getCurrentWeek,
+	getPreferenceForCycle,
 	getUserCategory,
 	getWeekForDate,
 } from "../utils/weekManager";
 import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
-import MealCardSkeleton from "./skeletons/MealCardSkeleton";
+import TodaysMenuSkeleton from "./skeletons/TodaysMenuSkeleton";
 
 /**
  * A dynamic component that displays the menu for a selected date.
- * Features a custom calendar modal for date selection.
+ * It now handles cases where a user has not set a preference for a specific cycle
+ * by prompting them to open the settings.
  */
-const TodaysMenu = () => {
+const TodaysMenu = ({ onOpenSettings }) => {
 	const [menu, setMenu] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -26,25 +28,29 @@ const TodaysMenu = () => {
 		description: null,
 	});
 	const [fallbackMessage, setFallbackMessage] = useState(null);
+	const [missingPreferenceCycle, setMissingPreferenceCycle] = useState(null);
 
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-	const userMessPreference = getUserCategory();
+	// Static Info Bar Data - uses the global getUserCategory for today's preference
+	const userPreferenceForToday = getUserCategory();
 	const currentWeek = getCurrentWeek();
 	const currentCycle = getContextForDate(new Date())?.cycleName || "Loading...";
 	const menuLabel =
-		MENUS.find((menu) => menu.value === userMessPreference)?.label || "Not Set";
+		MENUS.find((menu) => menu.value === userPreferenceForToday)?.label ||
+		"Not Set";
 
 	const isViewingToday =
 		new Date().toDateString() === selectedDate.toDateString();
 
 	useEffect(() => {
-		const fetchMenuForDate = async () => {
+		const fetchMenuForDate = () => {
 			setLoading(true);
 			setError(null);
 			setFallbackMessage(null);
 			setActiveEvent({ name: null, description: null });
+			setMissingPreferenceCycle(null);
 
 			const context = getContextForDate(selectedDate);
 			if (!context) {
@@ -61,16 +67,28 @@ const TodaysMenu = () => {
 				});
 			}
 
-			let categoryToDisplay = userMessPreference;
+			// Check for a preference specifically for the cycle of the selectedDate
+			const preferenceForSelectedCycle = getPreferenceForCycle(
+				context.cycleName
+			);
+
+			if (!preferenceForSelectedCycle) {
+				setMissingPreferenceCycle(context.cycleName);
+				setMenu(null);
+				setLoading(false);
+				return;
+			}
+
+			let categoryToDisplay = preferenceForSelectedCycle;
 			const isPreferenceValid = context.availableCategories.some(
-				(menu) => menu.value === userMessPreference
+				(menu) => menu.value === preferenceForSelectedCycle
 			);
 
 			if (!isPreferenceValid && context.availableCategories.length > 0) {
 				categoryToDisplay = context.availableCategories[0].value;
 				const prefLabel =
-					MENUS.find((m) => m.value === userMessPreference)?.label ||
-					userMessPreference;
+					MENUS.find((m) => m.value === preferenceForSelectedCycle)?.label ||
+					preferenceForSelectedCycle;
 				const fallbackLabel = context.availableCategories[0].label;
 				setFallbackMessage(
 					`Your preferred mess ('${prefLabel}') was not available. Showing '${fallbackLabel}' instead.`
@@ -112,32 +130,30 @@ const TodaysMenu = () => {
 			setLoading(false);
 		};
 
-		if (userMessPreference) {
-			fetchMenuForDate();
-		} else {
-			setLoading(false);
-			setError("Please select your mess in the settings to get started.");
-		}
-	}, [selectedDate, userMessPreference]);
+		fetchMenuForDate();
+	}, [selectedDate]);
 
 	const formattedDate = format(selectedDate, "EEEE, MMMM d");
 
 	const renderContent = () => {
 		if (loading) {
+			return <TodaysMenuSkeleton />;
+		}
+		if (missingPreferenceCycle) {
 			return (
-				<div className="flex space-x-4 overflow-x-auto pb-4 -mx-4 px-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:p-0 sm:m-0 lg:grid-cols-4">
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
+				<div className="alert alert-destructive text-center">
+					<div className="alert-title">Preference Not Set!</div>
+					<div className="alert-description">
+						You haven't selected a mess for the "{missingPreferenceCycle}"
+						cycle.
 					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
-					<div className="flex-shrink-0 w-[80%] sm:w-auto">
-						<MealCardSkeleton />
-					</div>
+					<button
+						onClick={onOpenSettings}
+						className="btn-secondary mt-4 inline-flex items-center gap-2"
+					>
+						<Settings size={16} />
+						Open Settings to Choose
+					</button>
 				</div>
 			);
 		}
@@ -200,7 +216,6 @@ const TodaysMenu = () => {
 				onDateSelect={setSelectedDate}
 			/>
 			<div className="mb-8">
-				{/* Top Info Bar */}
 				<div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 text-sm text-muted mb-1">
 					<div>
 						<span className="font-medium">Current Cycle:</span>
@@ -217,17 +232,14 @@ const TodaysMenu = () => {
 				</div>
 				<div className="flex items-center gap-1.5 text-xs text-muted/80">
 					<Settings size={12} />
-					<span>You can change your mess in the settings.</span>
+					<span>You can change your mess preference in the settings.</span>
 				</div>
 
-				{/* Main Heading and Interactive Controls */}
 				<div className="flex items-center gap-4 mt-4">
 					<h1 className="m-0">
 						{isViewingToday ? "Today's Menu" : "Menu for"}{" "}
 						<span className="text-primary">{formattedDate}</span>
 					</h1>
-
-					{/* Calendar Icon Button to trigger the modal */}
 					<button
 						onClick={() => setIsCalendarOpen(true)}
 						className="p-2 rounded-full text-muted hover:text-primary hover:bg-input-bg transition-colors"
@@ -235,8 +247,6 @@ const TodaysMenu = () => {
 					>
 						<CalendarDays size={24} />
 					</button>
-
-					{/* "Back to Today" Refresh Button */}
 					{!isViewingToday && (
 						<button
 							onClick={() => setSelectedDate(new Date())}
@@ -249,7 +259,6 @@ const TodaysMenu = () => {
 					)}
 				</div>
 
-				{/* Banners for Events and Fallbacks */}
 				{activeEvent.name && (
 					<div className="event-banner mt-4">
 						<div className="event-banner-title">

@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { DAY_SHORTCUTS, WEEKS } from "../api/constants";
-import { getAllCycles, getContextForCycle } from "../api/menuApi";
-import data from "../database/messMenu.json"; // Import data for direct cycle object lookup
+import React, { useState, useEffect } from "react";
+import { getNeighboringCycles, getContextForCycle } from "../api/menuApi";
 import {
 	getCurrentDay,
 	getCurrentWeek,
 	getUserCategory,
 } from "../utils/weekManager";
+import { WEEKS, DAY_SHORTCUTS } from "../api/constants";
 import MealCard from "./MealCard";
 import SelectDropdown from "./SelectDropdown";
-import MealCardSkeleton from "./skeletons/MealCardSkeleton";
+import MealCardSkeleton from "./skeletons/MealCardSkeleton"; // Ensure this path is correct
+import data from "../database/messMenu.json"; // Import data for direct cycle object lookup
 
 /**
- * A component to explore the full menu for any cycle, mess, week, and day.
+ * A component to explore the menu for the relevant neighboring cycles.
  * It dynamically updates selectors based on the chosen cycle to ensure valid options.
  */
 const MenuExplorer = () => {
@@ -20,9 +20,11 @@ const MenuExplorer = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	const [allCycles, setAllCycles] = useState([]);
+	// State for dynamic dropdown options
+	const [cycleOptions, setCycleOptions] = useState([]);
 	const [availableMenus, setAvailableMenus] = useState([]);
 
+	// State for user's selections
 	const [selectedCycle, setSelectedCycle] = useState(null);
 	const [selectedCategory, setSelectedCategory] = useState(
 		() => getUserCategory() || ""
@@ -32,21 +34,19 @@ const MenuExplorer = () => {
 	);
 	const [selectedDay, setSelectedDay] = useState(getCurrentDay);
 
-	// Effect 1: Initialize cycle list and set the current cycle as default on load.
+	// Effect 1: Initialize the list of neighboring cycles and set the current one as default.
 	useEffect(() => {
-		const cyclesForDropdown = getAllCycles();
-		setAllCycles(cyclesForDropdown);
+		const { previous, current, next } = getNeighboringCycles();
+		const neighboringCyclesForDropdown = [previous, current, next]
+			.filter(Boolean) // Remove null values (e.g., if there's no previous cycle)
+			.map((cycle) => ({ value: cycle.startDate, label: cycle.name }));
 
-		const today = new Date();
-		const currentCycleData = data.cycles
-			.slice()
-			.reverse()
-			.find((c) => new Date(c.startDate) <= today);
+		setCycleOptions(neighboringCyclesForDropdown);
 
-		if (currentCycleData) {
-			setSelectedCycle(currentCycleData);
+		if (current) {
+			setSelectedCycle(current);
 		} else if (data.cycles.length > 0) {
-			setSelectedCycle(data.cycles[0]);
+			setSelectedCycle(data.cycles[0]); // Fallback
 		} else {
 			setLoading(false);
 		}
@@ -80,6 +80,7 @@ const MenuExplorer = () => {
 	useEffect(() => {
 		if (!selectedCycle || !selectedCategory || !selectedWeek || !selectedDay) {
 			setMenu(null);
+			setLoading(false);
 			return;
 		}
 
@@ -212,7 +213,7 @@ const MenuExplorer = () => {
 					id="cycle-explorer"
 					value={selectedCycle ? selectedCycle.startDate : ""}
 					onChange={(e) => handleCycleChange(e.target.value)}
-					options={allCycles}
+					options={cycleOptions}
 				/>
 				<SelectDropdown
 					label="Select Mess"
