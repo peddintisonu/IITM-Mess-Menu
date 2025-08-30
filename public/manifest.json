@@ -1,6 +1,6 @@
 {
-	"name": "IITM Mess Menu",
-	"short_name": "IITM Mess",
+	"name": "DigiMess",
+	"short_name": "DigiMess",
 	"description": "A user-friendly web application to view and explore the daily mess menus at IIT Madras.",
 	"icons": [
 		{
