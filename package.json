@@ -1,7 +1,7 @@
 {
 	"name": "iitm-mess",
 	"private": true,
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"type": "module",
 	"description": "A user-friendly web application to view and explore the daily mess menus at IIT Madras",
 	"scripts": {
