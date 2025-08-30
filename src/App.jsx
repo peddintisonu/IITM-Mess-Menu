@@ -105,7 +105,7 @@ function App() {
 							<>
 								<TodaysMenu onOpenSettings={openSettingsModal} />
 								<div className="w-full max-w-7xl mx-auto px-4">
-									<div className="border-t border-border my-6 sm:my-8"></div>
+									<div className="border-t border-border my-4 sm:my-10"></div>
 								</div>
 								<MenuExplorer />
 							</>

@@ -218,7 +218,7 @@ const TodaysMenu = ({ onOpenSettings }) => {
 	return (
 		<section
 			id="todays-menu"
-			className="w-full max-w-7xl mx-auto px-4 py-6 sm:py-8"
+			className="w-full max-w-7xl mx-auto px-4 py-4 sm:py-8"
 		>
 			<CalendarModal
 				isOpen={isCalendarOpen}
