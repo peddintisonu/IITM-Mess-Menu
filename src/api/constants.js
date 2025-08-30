@@ -1,4 +1,4 @@
-export const APP_NAME = "IITM Mess Menu";
+export const APP_NAME = "DigiMess";
 
 export const MENUS = [
 	{ value: "South_Veg", label: "South Indian (Veg)" },
