@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getContextForDate } from "../api/menuApi";
-import { MENUS } from "../api/constants";
+import { APP_NAME, MENUS } from "../api/constants";
 import SelectDropdown from "./SelectDropdown";
 
 const SetupModal = ({ onSave, context, prefilledPreference }) => {
@@ -87,7 +87,7 @@ const SetupModal = ({ onSave, context, prefilledPreference }) => {
 	// Standard UI for initial setup and new cycle prompts where no preference exists
 	const content = {
 		initialSetup: {
-			title: "Welcome!",
+			title: `Welcome to ${APP_NAME}`,
 			// --- THE FIX IS HERE ---
 			description: `To get started, please select your mess for the current cycle: "${currentCycleName}".`,
 			buttonText: "Save & Continue",

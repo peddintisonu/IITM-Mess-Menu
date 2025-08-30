@@ -84,16 +84,19 @@ const TodaysMenu = ({ onOpenSettings }) => {
 				(menu) => menu.value === preferenceForSelectedCycle
 			);
 
-			if (!isPreferenceValid && context.availableCategories.length > 0) {
-				categoryToDisplay = context.availableCategories[0].value;
+			if (!isPreferenceValid) {
 				const prefLabel =
 					MENUS.find((m) => m.value === preferenceForSelectedCycle)?.label ||
 					preferenceForSelectedCycle;
-				const fallbackLabel = context.availableCategories[0].label;
-				setFallbackMessage(
-					`Your preferred mess ('${prefLabel}') was not available. Showing '${fallbackLabel}' instead.`
+				setError(
+					`Your preferred mess ('${prefLabel}') is not available in the "${context.cycleName}" cycle. Please choose a different one in the settings.`
 				);
-			} else if (context.availableCategories.length === 0) {
+				setMenu(null);
+				setLoading(false);
+				return;
+			}
+
+			if (context.availableCategories.length === 0) {
 				setError("No messes were available on this date.");
 				setMenu(null);
 				setLoading(false);
@@ -157,11 +160,19 @@ const TodaysMenu = ({ onOpenSettings }) => {
 				</div>
 			);
 		}
+		// Render the new "invalid preference" error message
 		if (error) {
 			return (
-				<div className="alert alert-destructive">
-					<div className="alert-title">Oops!</div>
+				<div className="alert alert-destructive text-center">
+					<div className="alert-title">Invalid Preference!</div>
 					<div className="alert-description">{error}</div>
+					<button
+						onClick={onOpenSettings}
+						className="btn-secondary mt-4 inline-flex items-center gap-2"
+					>
+						<Settings size={16} />
+						Open Settings to Fix
+					</button>
 				</div>
 			);
 		}

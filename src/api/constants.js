@@ -1,3 +1,5 @@
+export const APP_NAME = "IITM Mess Menu";
+
 export const MENUS = [
 	{ value: "South_Veg", label: "South Indian (Veg)" },
 	{ value: "South_Non_Veg", label: "South Indian (Non-Veg)" },

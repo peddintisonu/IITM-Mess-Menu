@@ -1,28 +1,30 @@
-import React, { useState, useMemo } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { useMemo, useState } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { Tooltip } from "react-tooltip";
 import { ThemeProvider } from "./context/ThemeContext";
 
 import { getContextForDate } from "./api/menuApi";
 import {
-	isSetupComplete,
-	getPreferenceForCycle,
 	completeSetup,
+	getPreferenceForCycle,
+	isSetupComplete,
 	setPreferenceForCycle,
 	updateLastSeenCycle,
 } from "./utils/weekManager";
 
-import Navbar from "./components/Navbar";
-import SetupModal from "./components/SetupModal";
-import SettingsModal from "./components/SettingsModal";
-import TodaysMenu from "./components/TodaysMenu";
-import MenuExplorer from "./components/MenuExplorer";
 import Footer from "./components/Footer";
+import MenuExplorer from "./components/MenuExplorer";
+import Navbar from "./components/Navbar";
+import SettingsModal from "./components/SettingsModal";
+import SetupModal from "./components/SetupModal";
+import TodaysMenu from "./components/TodaysMenu";
 import UpdatePrompt from "./components/UpdatePrompt";
 
 function App() {
+
+
 	const [modalToShow, setModalToShow] = useState(null); // 'initialSetup', 'newCyclePrompt', 'confirmNewCycle', 'settings'
 	const [prefilledPreference, setPrefilledPreference] = useState(null);
 
