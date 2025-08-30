@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/logo.svg" alt="IITM Mess Logo" width="120">
+  <img src="./public/logo.svg" alt="IITM Mess Menu Logo" width="120">
 </p>
 
 <h1 align="center">IITM Mess Menu Viewer</h1>
@@ -20,39 +20,43 @@
 
 ## 🎯 What is this?
 
-This project is a user-friendly web application designed to help students at
-**IIT Madras** easily view their daily and weekly mess menus. It takes all the
-different mess schedules and presents them in a clean, interactive, and always
-up-to-date interface.
+This project is a user-friendly web application designed to help students at **IIT Madras** easily view their daily and weekly mess menus. It takes all the different mess schedules and presents them in a clean, interactive, and always up-to-date interface.
 
-Simply open the app, and you'll instantly know what's for breakfast, lunch,
-snacks, and dinner.
+Simply open the app, and you'll instantly know what's for breakfast, lunch, snacks, and dinner.
 
 ## ✨ Key Features
 
-- **Today's Menu Instantly:** See the full menu for the current day as soon as
-  you open the app.
-- **Explore Any Day:** Use the menu explorer to check the schedule for any day
-  of the week, for any mess.
-- **Always in Sync:** The app automatically keeps track of the current mess week
-  (A, B, C, or D) and advances it every Monday.
-- **Personalized For You:** A quick one-time setup lets you choose your mess,
-  and the app will remember it for you.
-- **Light & Dark Modes:** A sleek interface that looks great day or night, with
-  a manual toggle to switch themes.
-- **Mobile Friendly:** Designed to work beautifully on your phone with a modern
-  horizontal scrolling view for meal cards.
+This app is packed with features designed for a seamless and intelligent user experience.
+
+### Smart & Personalized
+*   **🧠 Intelligent "Today" View:** Automatically highlights the current or next upcoming meal and smoothly scrolls it into view on load. Past meals are visually de-emphasized.
+*   **🔄 Cycle-Aware Preferences:** Set a different mess preference for each menu cycle. The app intelligently remembers your choice for the monsoon semester, winter break, and more.
+*   **🚀 Proactive Onboarding:** When a new mess cycle begins, the app automatically prompts you to set your preference, ensuring a seamless transition.
+*   **🎨 Light & Dark Modes:** A sleek interface that looks great day or night, with a manual toggle and respect for your system's theme.
+
+### Powerful Tools
+*   **📅 Historical Calendar:** Use the beautiful, themed calendar to view the menu for any past or future date within the available cycles.
+*   **Full Week Explorer:** Toggle between the standard single-day view and a compact "Full Week" view to see the entire week's menu at a glance.
+*   **🎉 Dynamic Event Menus:** The app automatically displays special, temporary menu changes for festivals and events, complete with a notification banner.
+*   **⚙️ Advanced Settings:** Manage your preferences for previous, current, and next cycles, see a privacy notice, and reset the app if needed.
+
+### Performance & Reliability
+*   **⚡ Blazing Fast Performance:** Built with a "Static Shell" architecture. Skeletons prevent layout shift, and an anti-flash script ensures a smooth dark mode loading experience.
+*   **📶 Full Offline Support:** As a Progressive Web App (PWA), the entire app and its menu data are cached, making it fully functional without an internet connection.
+*   **⬆️ Instant App Updates:** A toast notification appears right in the app when a new version is deployed, allowing you to reload and get the latest features immediately.
 
 ---
 
 ## 💻 Technologies Used
 
-This app was built using a modern frontend stack to ensure it's fast, reliable,
-and easy to use.
+This app was built using a modern frontend stack to ensure it's fast, reliable, and easy to use.
 
-- **React** (with Vite)
-- **Tailwind CSS**
-- **Lucide Icons**
+*   **React** (with Vite)
+*   **Tailwind CSS v4**
+*   **Lucide React** (Icons)
+*   **MUI X Date Pickers** (Calendar)
+*   **React Loading Skeleton** (Performance)
+*   **Vite PWA Plugin**
 
 ---
 
