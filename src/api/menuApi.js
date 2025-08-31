@@ -311,39 +311,55 @@ export const getTodaysMenu = async () => {
  * @returns {{previous: object | null, current: object | null, next: object | null}}
  */
 export const getNeighboringCycles = () => {
+	// Ensure cycles are sorted chronologically.
 	const sortedCycles = [...data.cycles].sort(
 		(a, b) => new Date(a.startDate) - new Date(b.startDate)
 	);
 	const today = getIndianTime();
+	today.setHours(0, 0, 0, 0); // Normalize today for accurate comparison
 
-	let currentIndex = -1;
+	// --- THE DEFINITIVE FIX IS HERE ---
 
-	// Find the index of the last cycle that has started. This is our "current" cycle.
-	for (let i = sortedCycles.length - 1; i >= 0; i--) {
-		if (new Date(sortedCycles[i].startDate) <= today) {
-			currentIndex = i;
-			break;
+	// 1. Find the index of the cycle that is TRULY active right now.
+	const trueCurrentIndex = sortedCycles.findIndex((cycle) => {
+		const startDate = new Date(cycle.startDate);
+		const endDate = new Date(cycle.endDate);
+		startDate.setHours(0, 0, 0, 0);
+		endDate.setHours(23, 59, 59, 999); // Cover the entire end day
+		return today >= startDate && today <= endDate;
+	});
+
+	// 2. Handle all possible scenarios based on the result.
+	if (trueCurrentIndex !== -1) {
+		// --- Happy Path: We are currently within an active cycle. ---
+		return {
+			previous: sortedCycles[trueCurrentIndex - 1] || null,
+			current: sortedCycles[trueCurrentIndex],
+			next: sortedCycles[trueCurrentIndex + 1] || null,
+		};
+	} else {
+		// --- Edge Case: We are in a "gap" between cycles. ---
+		// Find the next upcoming cycle and treat it as "current" for display.
+		const nextUpcomingIndex = sortedCycles.findIndex(
+			(cycle) => new Date(cycle.startDate) > today
+		);
+
+		if (nextUpcomingIndex !== -1) {
+			return {
+				previous: sortedCycles[nextUpcomingIndex - 1] || null,
+				current: sortedCycles[nextUpcomingIndex], // The next one is "current"
+				next: sortedCycles[nextUpcomingIndex + 1] || null,
+			};
+		} else {
+			// We are past all defined cycles. The last cycle is "current".
+			const lastIndex = sortedCycles.length - 1;
+			return {
+				previous: sortedCycles[lastIndex - 1] || null,
+				current: sortedCycles[lastIndex] || null,
+				next: null,
+			};
 		}
 	}
-
-	if (currentIndex === -1) {
-		// This case happens if the current date is before any defined cycles.
-		return {
-			previous: null,
-			current: sortedCycles[0] || null,
-			next: sortedCycles[1] || null,
-		};
-	}
-
-	const currentCycle = sortedCycles[currentIndex];
-	const previousCycle = sortedCycles[currentIndex - 1] || null;
-	const nextCycle = sortedCycles[currentIndex + 1] || null;
-
-	return {
-		previous: previousCycle,
-		current: currentCycle,
-		next: nextCycle,
-	};
 };
 
 /**
