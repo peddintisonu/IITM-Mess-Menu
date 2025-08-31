@@ -2268,7 +2268,6 @@
 							}
 						}
 					},
-
 					"South_Non_Veg": {
 						"common_items": {
 							"Breakfast": "Brown & White Bread, Bucter, Tea, Coffee and Milk, Sugar",
@@ -5448,7 +5447,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"*Omelette /*Chocos*",
+										"*Omelette* / *Chocos*",
 										"Green Gram Sprouts",
 										"Vegetable rava upma",
 										"Coconut chutney"
@@ -6191,7 +6190,7 @@
 								},
 								"Wednesday": {
 									"Breakfast": [
-										"*Omelette / Chocos*",
+										"*Omelette* / *Chocos*",
 										"Green Gram Sprouts",
 										"Vegetable rava upma",
 										"Coconut chutney"
@@ -6877,48 +6876,48 @@
 					}
 				}
 			}
+		}
+	},
+	"cycles": [
+		{
+			"name": "July 28, 2025 to Aug 31, 2025",
+			"startDate": "2025-07-28",
+			"endDate": "2025-08-31"
 		},
-		"cycles": [
-			{
-				"name": "July 28, 2025 to Aug 31, 2025",
-				"startDate": "2025-07-28",
-				"endDate": "2025-08-31"
-			},
-			{
-				"name": "Sep 01, 2025 to Oct 11, 2025",
-				"startDate": "2025-09-01",
-				"endDate": "2025-10-11"
-			}
-		],
-		"overrides": {},
-		"eventOverrides": [
-			{
-				"eventName": "Ganesh Chaturthi Celebration",
-				"description": "Dinner is rescheduled temporarily: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu.",
-				"startDate": "2025-08-27",
-				"endDate": "2025-08-29",
-				"rules": [
-					{
-						"type": "remap",
-						"onDate": "2025-08-27",
-						"targetMeal": "Dinner",
-						"sourceDay": "Friday",
-						"description": "Happy Ganesh Chaturthi! Dinner is rescheduled: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu."
-					},
-					{
-						"type": "remap",
-						"onDate": "2025-08-28",
-						"targetMeal": "Dinner",
-						"sourceDay": "Wednesday"
-					},
-					{
-						"type": "remap",
-						"onDate": "2025-08-29",
-						"targetMeal": "Dinner",
-						"sourceDay": "Thursday"
-					}
-				]
-			}
-		]
-	}
+		{
+			"name": "Sep 01, 2025 to Oct 11, 2025",
+			"startDate": "2025-09-01",
+			"endDate": "2025-10-11"
+		}
+	],
+	"overrides": {},
+	"eventOverrides": [
+		{
+			"eventName": "Ganesh Chaturthi Celebration",
+			"description": "Dinner is rescheduled temporarily: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu.",
+			"startDate": "2025-08-27",
+			"endDate": "2025-08-29",
+			"rules": [
+				{
+					"type": "remap",
+					"onDate": "2025-08-27",
+					"targetMeal": "Dinner",
+					"sourceDay": "Friday",
+					"description": "Happy Ganesh Chaturthi! Dinner is rescheduled: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu."
+				},
+				{
+					"type": "remap",
+					"onDate": "2025-08-28",
+					"targetMeal": "Dinner",
+					"sourceDay": "Wednesday"
+				},
+				{
+					"type": "remap",
+					"onDate": "2025-08-29",
+					"targetMeal": "Dinner",
+					"sourceDay": "Thursday"
+				}
+			]
+		}
+	]
 }
