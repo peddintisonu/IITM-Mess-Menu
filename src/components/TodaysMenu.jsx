@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { format } from "date-fns";
-import { CalendarDays, RotateCcw, Settings, Sparkles } from "lucide-react";
+import {
+	CalendarDays,
+	RotateCcw,
+	Settings,
+	Sparkles,
+	UtensilsCrossed,
+} from "lucide-react";
 
 import { MENUS } from "../api/constants";
 import { getContextForDate } from "../api/menuApi";
@@ -8,7 +14,7 @@ import {
 	getCurrentWeek,
 	getPreferenceForCycle,
 	getWeekForDate,
-	getMealStates, // Import the new utility
+	getMealStates,
 } from "../utils/weekManager";
 import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
@@ -16,7 +22,8 @@ import TodaysMenuSkeleton from "./skeletons/TodaysMenuSkeleton";
 
 /**
  * A dynamic component that displays the menu for a selected date.
- * It intelligently highlights the current/next meal and scrolls it into view.
+ * It intelligently highlights the current/next meal, scrolls it into view,
+ * and provides clear context when browsing historical dates.
  */
 const TodaysMenu = ({ onOpenSettings }) => {
 	const [menu, setMenu] = useState(null);
@@ -31,8 +38,11 @@ const TodaysMenu = ({ onOpenSettings }) => {
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 	const [mealStates, setMealStates] = useState({});
+	const [viewingContext, setViewingContext] = useState({
+		week: "",
+		categoryLabel: "",
+	});
 
-	// Ref to hold the DOM elements of the meal cards for scrolling
 	const mealCardRefs = useRef({});
 
 	const userPreferenceForToday = getPreferenceForCycle(
@@ -47,19 +57,18 @@ const TodaysMenu = ({ onOpenSettings }) => {
 	const isViewingToday =
 		new Date().toDateString() === selectedDate.toDateString();
 
-	// Effect to fetch menu data when the selected date changes
 	useEffect(() => {
 		const fetchMenuForDate = () => {
 			setLoading(true);
 			setError(null);
 			setActiveEvent({ name: null, description: null });
 			setMissingPreferenceCycle(null);
+			setViewingContext({ week: "", categoryLabel: "" });
 
-			// Determine meal states only if viewing today's menu
 			if (isViewingToday) {
 				setMealStates(getMealStates());
 			} else {
-				setMealStates({}); // Reset states if not viewing today
+				setMealStates({});
 			}
 
 			const context = getContextForDate(selectedDate);
@@ -100,9 +109,19 @@ const TodaysMenu = ({ onOpenSettings }) => {
 				return;
 			}
 
-			const menuData = context.menuContent;
-			const categoryData = menuData[preferenceForSelectedCycle];
 			const weekForSelectedDate = getWeekForDate(selectedDate);
+			const categoryToDisplay = preferenceForSelectedCycle;
+			const categoryLabelForDisplay =
+				MENUS.find((m) => m.value === categoryToDisplay)?.label ||
+				categoryToDisplay;
+
+			setViewingContext({
+				week: `Week ${weekForSelectedDate}`,
+				categoryLabel: categoryLabelForDisplay,
+			});
+
+			const menuData = context.menuContent;
+			const categoryData = menuData[categoryToDisplay];
 			const dayOfWeek = selectedDate.toLocaleString("en-US", {
 				weekday: "long",
 			});
@@ -133,9 +152,7 @@ const TodaysMenu = ({ onOpenSettings }) => {
 		fetchMenuForDate();
 	}, [selectedDate, isViewingToday]);
 
-	// Effect to handle the smart scroll after data has loaded
 	useEffect(() => {
-		// Only run this effect if not loading, viewing today, and menu is available
 		if (loading || !isViewingToday || !menu) return;
 
 		const activeMeal = Object.keys(mealStates).find(
@@ -144,14 +161,13 @@ const TodaysMenu = ({ onOpenSettings }) => {
 		if (activeMeal) {
 			const activeCardElement = mealCardRefs.current[activeMeal];
 			if (activeCardElement) {
-				// Use a timeout to ensure the browser has painted the elements before scrolling
 				setTimeout(() => {
 					activeCardElement.scrollIntoView({
 						behavior: "smooth",
 						block: "nearest",
 						inline: "center",
 					});
-				}, 100); // A small delay is often needed
+				}, 100);
 			}
 		}
 	}, [loading, isViewingToday, menu, mealStates]);
@@ -202,7 +218,6 @@ const TodaysMenu = ({ onOpenSettings }) => {
 					{mealsToRender.map((mealTitle) => (
 						<div
 							key={mealTitle}
-							// Assign a ref to each card's container
 							ref={(el) => (mealCardRefs.current[mealTitle] = el)}
 							className="flex-shrink-0 w-[80%] sm:w-auto"
 						>
@@ -210,7 +225,6 @@ const TodaysMenu = ({ onOpenSettings }) => {
 								title={mealTitle}
 								items={menu[mealTitle]}
 								commonItems={menu.common[mealTitle]}
-								// Pass the status, default to 'future' if not viewing today
 								status={isViewingToday ? mealStates[mealTitle] : "future"}
 							/>
 						</div>
@@ -253,27 +267,55 @@ const TodaysMenu = ({ onOpenSettings }) => {
 					<Settings size={12} />
 					<span>You can change your mess preference in the settings.</span>
 				</div>
-				<div className="flex items-center gap-4 mt-4">
-					<h1 className="m-0">
-						{isViewingToday ? "Today's Menu" : "Menu for"}{" "}
-						<span className="text-primary">{formattedDate}</span>
-					</h1>
-					<button
-						onClick={() => setIsCalendarOpen(true)}
-						className="p-2 rounded-full text-muted hover:text-primary hover:bg-input-bg transition-colors"
-						aria-label="Select a date"
-					>
-						<CalendarDays size={24} />
-					</button>
-					{!isViewingToday && (
+
+				<div className="mt-4">
+					<div className="flex items-center gap-4">
+						<h1 className="m-0">
+							{isViewingToday ? "Today's Menu" : "Menu for"}{" "}
+							<span className="text-primary">{formattedDate}</span>
+						</h1>
 						<button
-							onClick={() => setSelectedDate(new Date())}
-							className="flex items-center gap-2 text-sm btn-secondary"
-							aria-label="Back to today's menu"
+							onClick={() => setIsCalendarOpen(true)}
+							className="p-2 rounded-full text-muted hover:text-primary hover:bg-input-bg transition-colors"
+							aria-label="Select a date"
 						>
-							<RotateCcw size={16} />
-							<span>Today</span>
+							<CalendarDays size={24} />
 						</button>
+						{!isViewingToday && (
+							<button
+								onClick={() => setSelectedDate(new Date())}
+								className="flex items-center gap-2 text-sm btn-secondary"
+								aria-label="Back to today's menu"
+							>
+								<RotateCcw size={16} />
+								<span>Today</span>
+							</button>
+						)}
+					</div>
+
+					{/* The Historical Date Context Bar */}
+					{!isViewingToday && !loading && menu && (
+						// --- THE FIX IS HERE ---
+						// On small screens it's full-width, on larger screens it fits its content.
+						<div className="mt-4 p-3 rounded-lg bg-input-bg border border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-y-2 gap-x-4 text-sm sm:w-fit">
+							<p className="font-medium text-muted shrink-0">
+								Showing Menu For:
+							</p>
+							<div className="flex items-center gap-x-4 gap-y-1 flex-wrap">
+								<div className="flex items-center gap-1.5">
+									<UtensilsCrossed size={16} className="text-muted" />
+									<span className="font-semibold text-fg">
+										{viewingContext.categoryLabel}
+									</span>
+								</div>
+								<div className="flex items-center gap-1.5">
+									<CalendarDays size={16} className="text-muted" />
+									<span className="font-semibold text-fg">
+										{viewingContext.week}
+									</span>
+								</div>
+							</div>
+						</div>
 					)}
 				</div>
 				{activeEvent.name && (
