@@ -20,10 +20,9 @@ import SettingsModal from "./components/SettingsModal";
 import SetupModal from "./components/SetupModal";
 import TodaysMenu from "./components/TodaysMenu";
 import UpdatePrompt from "./components/UpdatePrompt";
+import { MigrationApp } from "./components/MigrationApp";
 
 function App() {
-
-
 	const [modalToShow, setModalToShow] = useState(null); // 'initialSetup', 'newCyclePrompt', 'confirmNewCycle', 'settings'
 	const [prefilledPreference, setPrefilledPreference] = useState(null);
 
@@ -75,6 +74,14 @@ function App() {
 		highlightColor: "#e5e7eb",
 	};
 	const skeletonThemeDark = { baseColor: "#1f2937", highlightColor: "#374151" };
+
+	// --- The Domain Check ---
+	const oldHostname = "iitm-mess-menu.vercel.app";
+
+	// If the app is running on the old domain, render the special migration component.
+	if (window.location.hostname === oldHostname) {
+		return <MigrationApp />;
+	}
 
 	return (
 		<ThemeProvider>
