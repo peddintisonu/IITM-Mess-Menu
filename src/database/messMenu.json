@@ -6913,9 +6913,9 @@
 			"endDate": "2025-08-31"
 		},
 		{
-			"name": "Sep 01, 2025 to Oct 11, 2025",
+			"name": "Sep 01, 2025 to Oct 21, 2025",
 			"startDate": "2025-09-01",
-			"endDate": "2025-10-11"
+			"endDate": "2025-10-21"
 		}
 	],
 	"overrides": {},
@@ -6946,20 +6946,6 @@
 					"sourceDay": "Thursday"
 				}
 			]
-		},
-		{
-			"eventName": "New Mess Cycle Registration",
-			"description": "Register for the next cycle (Oct 12 - Nov 22) between Oct 1, 10 am and Oct 8, 11:59 pm.",
-			"startDate": "2025-10-01",
-			"endDate": "2025-10-02",
-			"rules": []
-		},
-		{
-			"eventName": "New Mess Cycle Registration - Last Day",
-			"description": "Register for the next cycle (Oct 12 - Nov 22) by the end of today (Oct 8).",
-			"startDate": "2025-10-08",
-			"endDate": "2025-10-08",
-			"rules": []
 		}
 	]
 }
