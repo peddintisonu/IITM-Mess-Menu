@@ -6916,6 +6916,11 @@
 			"name": "Sep 01, 2025 to Oct 21, 2025",
 			"startDate": "2025-09-01",
 			"endDate": "2025-10-21"
+		},
+		{
+			"name": "Oct 22, 2025 to Nov 22, 2025",
+			"startDate": "2025-10-22",
+			"endDate": "2025-11-22"
 		}
 	],
 	"overrides": {},
