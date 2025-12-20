@@ -142,7 +142,7 @@ export const getContextForDate = (date) => {
 			let descriptions = [];
 
 			for (const rule of activeRules) {
-				// Remap logic remains the same, using the clean snapshot
+				// --- 1. REMAP LOGIC (Unchanged) ---
 				if (rule.type === "remap" && rule.targetMeal && rule.sourceDay) {
 					const { targetMeal, sourceDay } = rule;
 					for (const category in menuContent) {
@@ -162,24 +162,71 @@ export const getContextForDate = (date) => {
 						}
 					}
 				}
-				// --- THE NEW, SMARTER OVERRIDE LOGIC ---
+				// --- 2. OVERRIDE LOGIC (With "All_Categories" Support) ---
 				else if (rule.type === "override" && rule.targetMeal && rule.items) {
 					const { targetMeal, items } = rule;
-					// Iterate through the categories specified in the rule's 'items' object
-					for (const category in items) {
-						// Check if this category exists in our main menu data
-						if (Object.prototype.hasOwnProperty.call(menuContent, category)) {
-							// Ensure the nested structure exists before assigning the new items
-							if (!menuContent[category][weekForEventDate])
-								menuContent[category][weekForEventDate] = { schedule: {} };
-							if (!menuContent[category][weekForEventDate].schedule[dayOfWeek])
-								menuContent[category][weekForEventDate].schedule[dayOfWeek] =
-									{};
+					const globalItems = items["All_Categories"];
 
-							// Directly replace the meal's item list with the new one from the rule
-							menuContent[category][weekForEventDate].schedule[dayOfWeek][
-								targetMeal
-							] = items[category];
+					// If global items exist, we iterate ALL menu categories.
+					// Otherwise, we only iterate the specific categories listed in items.
+					const categoriesToProcess = globalItems
+						? Object.keys(menuContent)
+						: Object.keys(items);
+
+					for (const category of categoriesToProcess) {
+						if (Object.prototype.hasOwnProperty.call(menuContent, category)) {
+							// Determine which food list to use: Specific > Global
+							const foodList = items[category] || globalItems;
+
+							if (foodList) {
+								if (!menuContent[category][weekForEventDate])
+									menuContent[category][weekForEventDate] = { schedule: {} };
+								if (
+									!menuContent[category][weekForEventDate].schedule[dayOfWeek]
+								)
+									menuContent[category][weekForEventDate].schedule[dayOfWeek] =
+										{};
+
+								// REPLACE items
+								menuContent[category][weekForEventDate].schedule[dayOfWeek][
+									targetMeal
+								] = foodList;
+							}
+						}
+					}
+				}
+				// --- 3. ADDON LOGIC (With "All_Categories" Support) ---
+				else if (rule.type === "addon" && rule.targetMeal && rule.items) {
+					const { targetMeal, items } = rule;
+					const globalItems = items["All_Categories"];
+
+					const categoriesToProcess = globalItems
+						? Object.keys(menuContent)
+						: Object.keys(items);
+
+					for (const category of categoriesToProcess) {
+						if (Object.prototype.hasOwnProperty.call(menuContent, category)) {
+							const itemsToAdd = items[category] || globalItems;
+
+							if (itemsToAdd) {
+								if (!menuContent[category][weekForEventDate])
+									menuContent[category][weekForEventDate] = { schedule: {} };
+								if (
+									!menuContent[category][weekForEventDate].schedule[dayOfWeek]
+								)
+									menuContent[category][weekForEventDate].schedule[dayOfWeek] =
+										{};
+
+								const currentItems =
+									menuContent[category][weekForEventDate].schedule[dayOfWeek][
+										targetMeal
+									] || [];
+
+								// APPEND items
+								menuContent[category][weekForEventDate].schedule[dayOfWeek][
+									targetMeal
+								] = [...currentItems, ...itemsToAdd];
+							}
 						}
 					}
 				}

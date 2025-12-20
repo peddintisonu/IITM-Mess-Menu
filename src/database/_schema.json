@@ -2,25 +2,28 @@
 	"_comment": "This file is a template and schema guide for messMenu.json. DO NOT EDIT THE LIVE APP's DATA HERE. Copy these structures into the main file.",
 
 	"versions": {
-		"_comment": "Each version is an independent snapshot of the menu. It should contain all relevant data for that version. It does not depend on previous versions. It should follow below structure. Each and every meal should be listed under its respective day and category. If you want to do patches use the 'overrides' section.",
+		"_guide": [
+			"1. SNAPSHOTS: Each version is independent. It must contain FULL data (Common Items + Schedule). It does not inherit from previous versions.",
+			"2. NAMING: The key must be the Start Date (YYYY-MM-DD).",
+			"3. HIERARCHY: Categories -> Week Cycle (e.g., Week_A) -> Schedule -> Day -> Meal.",
+			"4. STYLING: Wrap text in *asterisks* to make it *Bold* (e.g., '*Chicken Biryani*')."
+		],
+
 		"YYYY-MM-DD": {
 			"Messmenu": {
 				"Categories": {
 					"Category_Name": {
 						"common_items": {
-							"Breakfast": "(e.g) Brown Bread, Butter, Jam, Tea, Coffee and Milk, Sugar",
-							"Lunch": "(e.g) Plain Rice, Phulka, Curd, Salt, Sugar, Papad/ Fryums",
-							"Snacks": "(e.g) Tea, Coffee & Milk",
-							"Dinner": "(e.g) Plain Rice, Sugar, Salt, Papad/ Fryums"
+							"_comment": "Items served DAILY for this specific meal type, regardless of the day.",
+							"Breakfast": "Brown Bread, Butter, Jam, Tea, Coffee, Milk",
+							"Lunch": "Plain Rice, Phulka, Curd, Pickle, Fryums",
+							"Snacks": "Tea, Coffee, Milk",
+							"Dinner": "Plain Rice, Curd, Pickle"
 						},
 						"Week_Letter": {
 							"schedule": {
 								"DayOfWeek": {
-									"Meal": [
-										"Item 1",
-										"Item 2",
-										"Don't forget to add *Item 3* * to spcl items like non veg"
-									]
+									"Meal": ["Item 1", "Item 2", "*Special Item 3*"]
 								}
 							}
 						}
@@ -39,13 +42,19 @@
 	],
 
 	"overrides": {
+		"_guide": [
+			"1. PURPOSE: Permanent patches to the current menu (e.g., Committee changes Tuesday Dinner forever).",
+			"2. SCOPE: Applies from the key Date (YYYY-MM-DD) onwards. Valid ONLY for the current Base Version.",
+			"3. LIMITATION: These do NOT carry over to a new Base Version. If a new version starts later, these are ignored.",
+			"4. STRUCTURE: Must mirror the exact path in 'versions' (Category -> Week -> Schedule -> Day -> Meal)."
+		],
+
 		"YYYY-MM-DD": {
-			"_comment": "Permanent change from this date onwards. Use this for small, official menu patches. This will NOT carry over to a new base version.",
 			"Category_Name": {
 				"Week_Letter": {
 					"schedule": {
 						"DayOfWeek": {
-							"Meal": ["New Item 1", "New Item 2"]
+							"Meal": ["New Item 1", "*New Special Item 2*"]
 						}
 					}
 				}
@@ -55,27 +64,48 @@
 
 	"eventOverrides": [
 		{
-			"eventName": "Name of the event (e.g., Ganesh Chaturthi)",
-			"description": "Optional: A brief, general description of the event if needed.",
+			"_guide": [
+				"1. HIERARCHY: Rules process Top-to-Bottom. Recommended Order: Remap -> Override -> Addon.",
+				"2. SYNTAX: Use 'All_Categories' to apply items to everyone. If a specific category (e.g. South_Veg) is also defined, it will IGNORE the global list and use the specific one.",
+				"3. STYLING: Wrap text in *asterisks* to make it *Bold* (e.g., '*Special Sweet*')."
+			],
+
+			"eventName": "TEMPLATE: Event Name (e.g., Diwali Special)",
+			"description": "Banner text shown to user (e.g., 'Happy Diwali! 🪔') (Optional description)",
 			"startDate": "YYYY-MM-DD",
 			"endDate": "YYYY-MM-DD",
 			"rules": [
 				{
+					"_comment": "TYPE 1: REMAP. Copies a menu from another day. Use this first (e.g., Sunday Menu on a Tuesday).",
 					"type": "remap",
 					"onDate": "YYYY-MM-DD",
-					"targetMeal": "The meal to be changed (e.g., Dinner)",
-					"sourceDay": "The day to copy the menu FROM (e.g., Friday)",
-					"description": "Optional: A specific message for this day's banner."
+					"targetMeal": "Breakfast",
+					"sourceDay": "Sunday",
+					"description": "Holiday Schedule: Sunday Menu served. (Optional description)"
 				},
-
 				{
+					"_comment": "TYPE 2: OVERRIDE. Completely deletes the old meal and replaces it with this list.",
 					"type": "override",
 					"onDate": "YYYY-MM-DD",
 					"targetMeal": "Lunch",
-					"description": "A special festival lunch is being served.",
+					"description": "Special Feast Menu (Optional description)",
 					"items": {
-						"Category_Name_1": ["Item 1", "Item 2"],
-						"Category_Name_2": ["Item 1", "Item 2"]
+						"All_Categories": ["*Item 1*", "Item 2"],
+						"North_Veg_No_Onion_Garlic": [
+							"*Item 1 (Special for North Veg No Onion Garlic)*",
+							"Item 2 (Special for North Veg No Onion Garlic)"
+						]
+					}
+				},
+				{
+					"_comment": "TYPE 3: ADDON. Appends these items to the END of the existing meal (doesn't delete anything).",
+					"type": "addon",
+					"onDate": "YYYY-MM-DD",
+					"targetMeal": "Dinner",
+					"description": "Sweet distributed with Dinner. (Optional description)",
+					"items": {
+						"All_Categories": ["*Item 1*"],
+						"Unified_Veg": ["Item 2 (Special for Unified Veg)"]
 					}
 				}
 			]

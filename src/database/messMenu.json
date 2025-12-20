@@ -6906,6 +6906,7 @@
 			}
 		}
 	},
+
 	"cycles": [
 		{
 			"name": "July 28, 2025 to Aug 31, 2025",
@@ -6933,7 +6934,9 @@
 			"endDate": "2026-01-15"
 		}
 	],
+
 	"overrides": {},
+
 	"eventOverrides": [
 		{
 			"eventName": "Ganesh Chaturthi Celebration",
@@ -6946,19 +6949,54 @@
 					"onDate": "2025-08-27",
 					"targetMeal": "Dinner",
 					"sourceDay": "Friday",
-					"description": "Happy Ganesh Chaturthi! Dinner is rescheduled: Wed -> Fri's Menu, Thu -> Wed's Menu, Fri -> Thu's Menu."
+					"description": "Happy Ganesh Chaturthi! Friday's dinner menu is served today."
 				},
 				{
 					"type": "remap",
 					"onDate": "2025-08-28",
 					"targetMeal": "Dinner",
-					"sourceDay": "Wednesday"
+					"sourceDay": "Wednesday",
+					"description": "Happy Ganesh Chaturthi! Wednesday's dinner menu is served today."
 				},
 				{
 					"type": "remap",
 					"onDate": "2025-08-29",
 					"targetMeal": "Dinner",
-					"sourceDay": "Thursday"
+					"sourceDay": "Thursday",
+					"description": "Happy Ganesh Chaturthi! Thursday's dinner menu is served today."
+				}
+			]
+		},
+		{
+			"eventName": "NIRF Rank 1 Celebration",
+			"description": "Special Dinner to celebrate IITM securing 1st Rank in NIRF 2025 🎉",
+			"startDate": "2025-09-08",
+			"endDate": "2025-09-08",
+			"rules": [
+				{
+					"type": "override",
+					"onDate": "2025-09-08",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Lemon with Sabja Seed",
+							"Mix Salad (Cucumber, Carrot, Cabbage)",
+							"Onion (Separately)",
+							"*Aloo 65*",
+							"Mix Veg Dry",
+							"*Mini Masala Vada*",
+							"*Veg Pulao*",
+							"Phulka",
+							"*Paneer Butter Masala*",
+							"Onion Raita",
+							"White Rice",
+							"Pepper Rasam",
+							"Curd",
+							"*Carrot Halwa*",
+							"*Vanilla Cup Ice Cream*",
+							"Fryums, Pickle"
+						]
+					}
 				}
 			]
 		}
