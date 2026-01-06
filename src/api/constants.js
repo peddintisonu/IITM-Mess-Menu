@@ -11,6 +11,8 @@ export const MENUS = [
 	},
 	{ value: "Unified_Veg", label: "Unified (Veg)" },
 	{ value: "Unified_Non_Veg", label: "Unified (Non-Veg)" },
+	{ value: "Protein_Veg", label: "Protein (Veg)" },
+	{ value: "Protein_Non_Veg", label: "Protein (Non-Veg)" },
 ];
 
 export const WEEKS = [
@@ -31,10 +33,34 @@ export const DAYS = [
 ];
 
 export const MEALS = [
-  { value: "Breakfast", label: "Breakfast", timing: "7:00 AM - 9:30 AM", start: "07:00", end: "09:30" },
-  { value: "Lunch", label: "Lunch", timing: "12:00 PM - 2:30 PM", start: "12:00", end: "14:30" },
-  { value: "Snacks", label: "Snacks", timing: "4:30 PM - 5:30 PM", start: "16:30", end: "17:30" },
-  { value: "Dinner", label: "Dinner", timing: "7:00 PM - 9:30 PM", start: "19:00", end: "21:30" },
+	{
+		value: "Breakfast",
+		label: "Breakfast",
+		timing: "7:00 AM - 9:30 AM",
+		start: "07:00",
+		end: "09:30",
+	},
+	{
+		value: "Lunch",
+		label: "Lunch",
+		timing: "12:00 PM - 2:30 PM",
+		start: "12:00",
+		end: "14:30",
+	},
+	{
+		value: "Snacks",
+		label: "Snacks",
+		timing: "4:30 PM - 5:30 PM",
+		start: "16:30",
+		end: "17:30",
+	},
+	{
+		value: "Dinner",
+		label: "Dinner",
+		timing: "7:00 PM - 9:30 PM",
+		start: "19:00",
+		end: "21:30",
+	},
 ];
 
 export const DAY_SHORTCUTS = [
