@@ -41,7 +41,7 @@ const getMenuContentForDate = (date) => {
 
 	const versionDates = Object.keys(data.versions).map((d) => new Date(d));
 	const overrideDates = Object.keys(data.overrides || {}).map(
-		(d) => new Date(d)
+		(d) => new Date(d),
 	);
 
 	const applicableDates = [...versionDates, ...overrideDates]
@@ -66,7 +66,7 @@ const getMenuContentForDate = (date) => {
 	if (!baseVersionKey) return null;
 
 	let finalMenuContent = JSON.parse(
-		JSON.stringify(data.versions[baseVersionKey].Messmenu.Categories)
+		JSON.stringify(data.versions[baseVersionKey].Messmenu.Categories),
 	);
 	const baseVersionDate = new Date(baseVersionKey);
 	baseVersionDate.setHours(0, 0, 0, 0);
@@ -95,7 +95,7 @@ const getMenuContentForDate = (date) => {
 
 export const getCycleForDate = (targetDate) => {
 	const sortedCycles = [...data.cycles].sort(
-		(a, b) => new Date(a.startDate) - new Date(b.startDate)
+		(a, b) => new Date(a.startDate) - new Date(b.startDate),
 	);
 	return (
 		sortedCycles
@@ -132,7 +132,7 @@ export const getContextForDate = (date) => {
 		eventName = activeEvent.eventName;
 		const dateString = toLocalDateString(date);
 		const activeRules = activeEvent.rules.filter(
-			(rule) => rule.onDate === dateString
+			(rule) => rule.onDate === dateString,
 		);
 
 		if (activeRules.length > 0) {
@@ -248,7 +248,7 @@ export const getContextForDate = (date) => {
 
 	const availableCategoryKeys = Object.keys(menuContent);
 	const availableCategories = MENUS.filter((menu) =>
-		availableCategoryKeys.includes(menu.value)
+		availableCategoryKeys.includes(menu.value),
 	);
 
 	return {
@@ -269,7 +269,7 @@ export const getContextForCycle = (cycle) => {
 	const { menuContent, versionId } = context;
 	const availableCategoryKeys = Object.keys(menuContent);
 	const availableCategories = MENUS.filter((menu) =>
-		availableCategoryKeys.includes(menu.value)
+		availableCategoryKeys.includes(menu.value),
 	);
 
 	return {
@@ -313,7 +313,7 @@ export const getTodaysMenu = async () => {
 		const categoryData = menuData[category];
 		if (!categoryData) {
 			throw new Error(
-				`Your preferred mess "${category}" is not available in the current menu.`
+				`Your preferred mess "${category}" is not available in the current menu.`,
 			);
 		}
 
@@ -324,7 +324,7 @@ export const getTodaysMenu = async () => {
 			return new ApiResponse(
 				200,
 				"Menu retrieved, but no items for this meal.",
-				{}
+				{},
 			);
 		}
 
@@ -345,7 +345,7 @@ export const getTodaysMenu = async () => {
 		return new ApiResponse(
 			200,
 			"Today's menu retrieved successfully",
-			finalMenu
+			finalMenu,
 		);
 	} catch (error) {
 		return new ApiResponse(500, error.message, null);
@@ -360,7 +360,7 @@ export const getTodaysMenu = async () => {
 export const getNeighboringCycles = () => {
 	// Ensure cycles are sorted chronologically.
 	const sortedCycles = [...data.cycles].sort(
-		(a, b) => new Date(a.startDate) - new Date(b.startDate)
+		(a, b) => new Date(a.startDate) - new Date(b.startDate),
 	);
 	const today = getIndianTime();
 	today.setHours(0, 0, 0, 0); // Normalize today for accurate comparison
@@ -388,7 +388,7 @@ export const getNeighboringCycles = () => {
 		// --- Edge Case: We are in a "gap" between cycles. ---
 		// Find the next upcoming cycle and treat it as "current" for display.
 		const nextUpcomingIndex = sortedCycles.findIndex(
-			(cycle) => new Date(cycle.startDate) > today
+			(cycle) => new Date(cycle.startDate) > today,
 		);
 
 		if (nextUpcomingIndex !== -1) {
