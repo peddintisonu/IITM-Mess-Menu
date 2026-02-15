@@ -12382,7 +12382,7 @@
 							"Snacks": "Tea, Coffee, Milk, Biscuits/Rusk",
 							"Dinner": "Plain Rice, Curd with Sugar & Salt, Papad/Fryums"
 						},
-						"A": {
+						"D": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -12589,7 +12589,7 @@
 								}
 							}
 						},
-						"B": {
+						"A": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -12794,7 +12794,7 @@
 								}
 							}
 						},
-						"C": {
+						"B": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13001,7 +13001,7 @@
 								}
 							}
 						},
-						"D": {
+						"C": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13214,7 +13214,7 @@
 							"Snacks": "Tea, Coffee, Milk, Biscuits/Rusk",
 							"Dinner": "Plain Rice, Curd with sugar and salt, Papad/Fryums"
 						},
-						"A": {
+						"D": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13421,7 +13421,7 @@
 								}
 							}
 						},
-						"B": {
+						"A": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13626,7 +13626,7 @@
 								}
 							}
 						},
-						"C": {
+						"B": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13833,7 +13833,7 @@
 								}
 							}
 						},
-						"D": {
+						"C": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -14074,6 +14074,11 @@
 			"name": "Jan 16, 2026 to Feb 15, 2026",
 			"startDate": "2026-01-16",
 			"endDate": "2026-02-15"
+		},
+		{
+			"name": "Feb 16, 2026 to Mar 31, 2026",
+			"startDate": "2026-02-16",
+			"endDate": "2026-03-31"
 		}
 	],
 
