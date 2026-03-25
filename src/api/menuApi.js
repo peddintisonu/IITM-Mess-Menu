@@ -2,6 +2,7 @@ import data from "../database/messMenu.json";
 import {
 	getCurrentDay,
 	getCurrentWeek,
+	getCycleForDate,
 	getIndianTime,
 	getUserCategory,
 	getWeekForDate,
@@ -9,8 +10,6 @@ import {
 } from "../utils/weekManager";
 import ApiResponse from "./ApiResponse";
 import { MENUS } from "./constants";
-
-// --- Core Helper Functions ---
 
 const deepMerge = (base, override) => {
 	const merged = { ...base };
@@ -35,7 +34,6 @@ const deepMerge = (base, override) => {
 };
 
 const getMenuContentForDate = (date) => {
-	// 1. Normalize the input date to the start of the day to ensure consistent comparisons
 	const targetDate = new Date(date);
 	targetDate.setHours(0, 0, 0, 0);
 
@@ -71,12 +69,10 @@ const getMenuContentForDate = (date) => {
 	const baseVersionDate = new Date(baseVersionKey);
 	baseVersionDate.setHours(0, 0, 0, 0);
 
-	// 2. The crucial fix for the override logic
 	const applicableOverrides = applicableDates.filter((d) => {
 		const overrideDate = new Date(d);
 		overrideDate.setHours(0, 0, 0, 0);
 		const dateKey = toLocalDateString(overrideDate);
-		// An override is valid if its date is ON OR AFTER the base version's start date
 		return (data.overrides || {})[dateKey] && overrideDate >= baseVersionDate;
 	});
 
@@ -89,24 +85,6 @@ const getMenuContentForDate = (date) => {
 		menuContent: finalMenuContent,
 		versionId: baseVersionKey,
 	};
-};
-
-// --- Exported API Functions ---
-
-export const getCycleForDate = (targetDate) => {
-	const sortedCycles = [...data.cycles].sort(
-		(a, b) => new Date(a.startDate) - new Date(b.startDate),
-	);
-	return (
-		sortedCycles
-			.slice()
-			.reverse()
-			.find((cycle) => {
-				const startDate = new Date(cycle.startDate);
-				startDate.setHours(0, 0, 0, 0);
-				return startDate <= targetDate;
-			}) || null
-	);
 };
 
 export const getContextForDate = (date) => {
@@ -137,65 +115,72 @@ export const getContextForDate = (date) => {
 
 		if (activeRules.length > 0) {
 			const baseMenuSnapshot = JSON.parse(JSON.stringify(menuContent));
-			const weekForEventDate = getWeekForDate(date);
 			const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
 			let descriptions = [];
 
 			for (const rule of activeRules) {
-				// --- 1. REMAP LOGIC (Unchanged) ---
+				// --- 1. REMAP LOGIC ---
 				if (rule.type === "remap" && rule.targetMeal && rule.sourceDay) {
 					const { targetMeal, sourceDay } = rule;
 					for (const category in menuContent) {
+						// Calculate week specifically for this category's timeline
+						const currentCategoryWeek = getWeekForDate(date, category);
+
 						const sourceMenu =
-							baseMenuSnapshot[category]?.[weekForEventDate]?.schedule?.[
+							baseMenuSnapshot[category]?.[currentCategoryWeek]?.schedule?.[
 								sourceDay
 							]?.[targetMeal];
 						if (sourceMenu) {
-							if (!menuContent[category][weekForEventDate])
-								menuContent[category][weekForEventDate] = { schedule: {} };
-							if (!menuContent[category][weekForEventDate].schedule[dayOfWeek])
-								menuContent[category][weekForEventDate].schedule[dayOfWeek] =
+							if (!menuContent[category][currentCategoryWeek])
+								menuContent[category][currentCategoryWeek] = { schedule: {} };
+							if (
+								!menuContent[category][currentCategoryWeek].schedule[dayOfWeek]
+							)
+								menuContent[category][currentCategoryWeek].schedule[dayOfWeek] =
 									{};
-							menuContent[category][weekForEventDate].schedule[dayOfWeek][
+							menuContent[category][currentCategoryWeek].schedule[dayOfWeek][
 								targetMeal
 							] = sourceMenu;
 						}
 					}
 				}
-				// --- 2. OVERRIDE LOGIC (With "All_Categories" Support) ---
+				// --- 2. OVERRIDE LOGIC ---
 				else if (rule.type === "override" && rule.targetMeal && rule.items) {
 					const { targetMeal, items } = rule;
 					const globalItems = items["All_Categories"];
 
-					// If global items exist, we iterate ALL menu categories.
-					// Otherwise, we only iterate the specific categories listed in items.
 					const categoriesToProcess = globalItems
 						? Object.keys(menuContent)
 						: Object.keys(items);
 
 					for (const category of categoriesToProcess) {
 						if (Object.prototype.hasOwnProperty.call(menuContent, category)) {
-							// Determine which food list to use: Specific > Global
+							// Calculate week specifically for this category's timeline
+							const currentCategoryWeek = getWeekForDate(date, category);
+
 							const foodList = items[category] || globalItems;
 
 							if (foodList) {
-								if (!menuContent[category][weekForEventDate])
-									menuContent[category][weekForEventDate] = { schedule: {} };
+								if (!menuContent[category][currentCategoryWeek])
+									menuContent[category][currentCategoryWeek] = { schedule: {} };
 								if (
-									!menuContent[category][weekForEventDate].schedule[dayOfWeek]
+									!menuContent[category][currentCategoryWeek].schedule[
+										dayOfWeek
+									]
 								)
-									menuContent[category][weekForEventDate].schedule[dayOfWeek] =
-										{};
+									menuContent[category][currentCategoryWeek].schedule[
+										dayOfWeek
+									] = {};
 
 								// REPLACE items
-								menuContent[category][weekForEventDate].schedule[dayOfWeek][
+								menuContent[category][currentCategoryWeek].schedule[dayOfWeek][
 									targetMeal
 								] = foodList;
 							}
 						}
 					}
 				}
-				// --- 3. ADDON LOGIC (With "All_Categories" Support) ---
+				// --- 3. ADDON LOGIC ---
 				else if (rule.type === "addon" && rule.targetMeal && rule.items) {
 					const { targetMeal, items } = rule;
 					const globalItems = items["All_Categories"];
@@ -206,24 +191,30 @@ export const getContextForDate = (date) => {
 
 					for (const category of categoriesToProcess) {
 						if (Object.prototype.hasOwnProperty.call(menuContent, category)) {
+							// Calculate week specifically for this category's timeline
+							const currentCategoryWeek = getWeekForDate(date, category);
+
 							const itemsToAdd = items[category] || globalItems;
 
 							if (itemsToAdd) {
-								if (!menuContent[category][weekForEventDate])
-									menuContent[category][weekForEventDate] = { schedule: {} };
+								if (!menuContent[category][currentCategoryWeek])
+									menuContent[category][currentCategoryWeek] = { schedule: {} };
 								if (
-									!menuContent[category][weekForEventDate].schedule[dayOfWeek]
+									!menuContent[category][currentCategoryWeek].schedule[
+										dayOfWeek
+									]
 								)
-									menuContent[category][weekForEventDate].schedule[dayOfWeek] =
-										{};
+									menuContent[category][currentCategoryWeek].schedule[
+										dayOfWeek
+									] = {};
 
 								const currentItems =
-									menuContent[category][weekForEventDate].schedule[dayOfWeek][
-										targetMeal
-									] || [];
+									menuContent[category][currentCategoryWeek].schedule[
+										dayOfWeek
+									][targetMeal] || [];
 
 								// APPEND items
-								menuContent[category][weekForEventDate].schedule[dayOfWeek][
+								menuContent[category][currentCategoryWeek].schedule[dayOfWeek][
 									targetMeal
 								] = [...currentItems, ...itemsToAdd];
 							}
@@ -296,7 +287,8 @@ export const getAvailableCategoriesForCurrentVersion = () => {
 export const getTodaysMenu = async () => {
 	try {
 		const category = getUserCategory();
-		const week = getCurrentWeek();
+		// Fetch week using category to determine if Protein Phase Shift applies
+		const week = getCurrentWeek(category);
 		const day = getCurrentDay();
 
 		if (!category || !week || !day) {
@@ -340,6 +332,11 @@ export const getTodaysMenu = async () => {
 				Snacks: commonItems.Snacks || "",
 				Dinner: commonItems.Dinner || "",
 			},
+			meta: {
+				eventName: context.eventName || null,
+				eventDescription: context.eventDescription || null,
+				isEventActive: !!context.eventName,
+			},
 		};
 
 		return new ApiResponse(
@@ -354,39 +351,29 @@ export const getTodaysMenu = async () => {
 
 /**
  * Finds the current cycle and its immediate previous and next neighbors.
- * This is the single source of truth for the settings modal and calendar range.
- * @returns {{previous: object | null, current: object | null, next: object | null}}
  */
 export const getNeighboringCycles = () => {
-	// Ensure cycles are sorted chronologically.
 	const sortedCycles = [...data.cycles].sort(
 		(a, b) => new Date(a.startDate) - new Date(b.startDate),
 	);
 	const today = getIndianTime();
-	today.setHours(0, 0, 0, 0); // Normalize today for accurate comparison
+	today.setHours(0, 0, 0, 0);
 
-	// --- THE DEFINITIVE FIX IS HERE ---
-
-	// 1. Find the index of the cycle that is TRULY active right now.
 	const trueCurrentIndex = sortedCycles.findIndex((cycle) => {
 		const startDate = new Date(cycle.startDate);
 		const endDate = new Date(cycle.endDate);
 		startDate.setHours(0, 0, 0, 0);
-		endDate.setHours(23, 59, 59, 999); // Cover the entire end day
+		endDate.setHours(23, 59, 59, 999);
 		return today >= startDate && today <= endDate;
 	});
 
-	// 2. Handle all possible scenarios based on the result.
 	if (trueCurrentIndex !== -1) {
-		// --- Happy Path: We are currently within an active cycle. ---
 		return {
 			previous: sortedCycles[trueCurrentIndex - 1] || null,
 			current: sortedCycles[trueCurrentIndex],
 			next: sortedCycles[trueCurrentIndex + 1] || null,
 		};
 	} else {
-		// --- Edge Case: We are in a "gap" between cycles. ---
-		// Find the next upcoming cycle and treat it as "current" for display.
 		const nextUpcomingIndex = sortedCycles.findIndex(
 			(cycle) => new Date(cycle.startDate) > today,
 		);
@@ -394,11 +381,10 @@ export const getNeighboringCycles = () => {
 		if (nextUpcomingIndex !== -1) {
 			return {
 				previous: sortedCycles[nextUpcomingIndex - 1] || null,
-				current: sortedCycles[nextUpcomingIndex], // The next one is "current"
+				current: sortedCycles[nextUpcomingIndex],
 				next: sortedCycles[nextUpcomingIndex + 1] || null,
 			};
 		} else {
-			// We are past all defined cycles. The last cycle is "current".
 			const lastIndex = sortedCycles.length - 1;
 			return {
 				previous: sortedCycles[lastIndex - 1] || null,
@@ -409,28 +395,14 @@ export const getNeighboringCycles = () => {
 	}
 };
 
-/**
- * Determines the valid date range for the calendar based on the neighboring cycles.
- * The range spans from the start of the previous cycle (if it exists)
- * to the end of the next cycle (if it exists).
- * @returns {{minDate: Date, maxDate: Date} | null} An object with the date range.
- */
 export const getCalendarDateRange = () => {
 	const { previous, current, next } = getNeighboringCycles();
 
 	if (!current) {
-		// If there are no cycles at all, return null.
 		return null;
 	}
 
-	// Determine the minimum selectable date.
-	// If a previous cycle exists, the range starts from its start date.
-	// Otherwise, it starts from the current cycle's start date.
 	const minDate = new Date(previous ? previous.startDate : current.startDate);
-
-	// Determine the maximum selectable date.
-	// If a next cycle exists, the range ends at its end date.
-	// Otherwise, it ends at the current cycle's end date.
 	const maxDate = new Date(next ? next.endDate : current.endDate);
 
 	return { minDate, maxDate };
