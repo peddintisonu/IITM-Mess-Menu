@@ -14146,6 +14146,1313 @@
 					}
 				}
 			]
+		},
+		{
+			"eventName": "LPG SUPPLY DISRUPTION",
+			"description": "Temporary Menu Adjustments following the LPG shortage disruption",
+			"startDate": "2026-03-13",
+			"endDate": "2026-04-05",
+			"rules": [
+				{
+					"type": "override",
+					"onDate": "2026-03-13",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Boiled White Chana",
+							"Semiya",
+							"Mint Chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-13",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (Basmati)",
+							"Gutti Vankaya Curry (gravy)/Cabbage Beans",
+							"Carrot sabzi",
+							"Toor dal/Radish Sambar",
+							"Gongura Thoviyal",
+							"Raita"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-13",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Dahi Papdi/Sweetcorn"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-13",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg pulao/Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-14",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled green gram",
+							"Poha",
+							"Coconut Chutney/ Imli chutney",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-14",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Beetroot Black Channa poriyal (dry)",
+							"Dalma/ Kara Kuzhambu",
+							"Pepper rasam",
+							"Tomato Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-14",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Fruit Chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-14",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Lemon rice",
+							"Curd Rice",
+							"Sambar Rice",
+							"Boost Milk",
+							"Banana fruit",
+							"Potato chips/Fryums",
+							"Salad",
+							"(No Plain Rice today)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-15",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Cornflakes",
+							"Boiled white peas",
+							"Tamarind chutney/Coconut Chutney",
+							"Pickle",
+							"Dalia"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-15",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Onion lemon Cucumber salad",
+							"Hyderabadi Chicken Dum biryani/ Paneer Dum Biryani",
+							"Mirchi ka Salan",
+							"Tomato Rasam",
+							"Raita",
+							"Ice Cream",
+							"Fryums/ Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-15",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Chana chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-15",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Idiyappam/ Chapathi",
+							"Veg Kurma",
+							"Drumstick Sambar/ Dal",
+							"Watermelon",
+							"Salad",
+							"Buttermilk"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-16",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg/Cornflakes (Pure veg)",
+							"Boiled Chawli",
+							"White Pongal",
+							"Groundnut Chutney",
+							"Sambar"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-16",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Cucumber Carrot salad",
+							"Kashmiri Pulao/ Tamarind Rice",
+							"Cauliflower masala (gravy)",
+							"Radish Sambar Dal (north)",
+							"Gongura thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-16",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Masala corn & Lemon"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-16",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Pudina chapathi",
+							"Roasted egg masala/soya chana gravy",
+							"Mix veg Sambar/Dal",
+							"Kaddu ka Kheer",
+							"Lemon Water",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-17",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled Peanut",
+							"Pav bhaji",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-17",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (basmati)",
+							"Mix Veg Curry (gravy)",
+							"Mixed dal",
+							"Pepper Rasam",
+							"Mint Thoviyal",
+							"Raita",
+							"Fryums/Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-17",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Sweet Potato/Sev Puri"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-17",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Chapati/ Idli chutney+sambar",
+							"Black Channa (Gravy)",
+							"Fruit custard",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-18",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Green Gram Sprouts",
+							"Vegetable rava upma",
+							"Coconut chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-18",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Variety Rice",
+							"Meal Maker peas (gravy)",
+							"Bhindi Sambar/ Makhana Dal",
+							"Ridge Gourd Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-18",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Rusk (4 pieces)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-18",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Methi chapathi",
+							"Jeera Rice",
+							"Kadai Chicken Curry/ Kadai Paneer",
+							"Garlic Rasam",
+							"Rava kesari",
+							"Lemon water",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-19",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/ Cornflakes",
+							"Boiled black chana",
+							"Pasta",
+							"Tomato Sauce"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-19",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Cucumber carrot salad",
+							"Achari Paneer Pulao",
+							"Mor kuzhambu (gravy)",
+							"Palak dal",
+							"Curry Leaf Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-19",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Bhel Puri"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-19",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg Pulao/ Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet Corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-20",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Boiled White Chana",
+							"Semiya",
+							"Mint Chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-20",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (Basmati)",
+							"Gutti Vankaya Curry (gravy)/Cabbage Beans",
+							"Carrot sabzi",
+							"Toor dal/Radish Sambar",
+							"Gongura Thoviyal",
+							"Raita"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-20",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Dahi Papdi/Sweetcorn"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-20",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg pulao/Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-21",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled green gram",
+							"Poha",
+							"Coconut Chutney/ Imli chutney",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-21",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Beetroot Black Channa poriyal (dry)",
+							"Dalma/ Kara Kuzhambu",
+							"Pepper rasam",
+							"Tomato Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-21",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Fruit Chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-21",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Lemon rice",
+							"Curd Rice",
+							"Sambar Rice",
+							"Boost Milk",
+							"Banana fruit",
+							"Potato chips/Fryums",
+							"Salad",
+							"(No Plain Rice today)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-22",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Cornflakes",
+							"Boiled white peas",
+							"Tamarind chutney/Coconut Chutney",
+							"Pickle",
+							"Dalia"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-22",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Onion lemon Cucumber salad",
+							"Hyderabadi Chicken Dum biryani/ Paneer Dum Biryani",
+							"Mirchi ka Salan",
+							"Tomato Rasam",
+							"Raita",
+							"Ice Cream",
+							"Fryums/ Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-22",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Chana chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-22",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Idiyappam/ Chapathi",
+							"Veg Kurma",
+							"Drumstick Sambar/ Dal",
+							"Watermelon",
+							"Salad",
+							"Buttermilk"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-23",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg/Cornflakes (Pure veg)",
+							"Boiled Chawli",
+							"White Pongal",
+							"Groundnut Chutney",
+							"Sambar"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-23",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Cucumber Carrot salad",
+							"Kashmiri Pulao/ Tamarind Rice",
+							"Cauliflower masala (gravy)",
+							"Radish Sambar Dal (north)",
+							"Gongura thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-23",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Masala corn & Lemon"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-23",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Pudina chapathi",
+							"Roasted egg masala/soya chana gravy",
+							"Mix veg Sambar/Dal",
+							"Kaddu ka Kheer",
+							"Lemon Water",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-24",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled Peanut",
+							"Pav bhaji",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-24",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (basmati)",
+							"Mix Veg Curry (gravy)",
+							"Mixed dal",
+							"Pepper Rasam",
+							"Mint Thoviyal",
+							"Raita",
+							"Fryums/Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-24",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Sweet Potato/Sev Puri"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-24",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Chapati/ Idli chutney+sambar",
+							"Black Channa (Gravy)",
+							"Fruit custard",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-25",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Green Gram Sprouts",
+							"Vegetable rava upma",
+							"Coconut chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-25",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Variety Rice",
+							"Meal Maker peas (gravy)",
+							"Bhindi Sambar/ Makhana Dal",
+							"Ridge Gourd Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-25",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Rusk (4 pieces)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-25",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Methi chapathi",
+							"Jeera Rice",
+							"Kadai Chicken Curry/ Kadai Paneer",
+							"Garlic Rasam",
+							"Rava kesari",
+							"Lemon water",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-26",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/ Cornflakes",
+							"Boiled black chana",
+							"Pasta",
+							"Tomato Sauce"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-26",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Cucumber carrot salad",
+							"Achari Paneer Pulao",
+							"Mor kuzhambu (gravy)",
+							"Palak dal",
+							"Curry Leaf Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-26",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Bhel Puri"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-26",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg Pulao/ Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet Corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-27",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Boiled White Chana",
+							"Semiya",
+							"Mint Chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-27",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (Basmati)",
+							"Gutti Vankaya Curry (gravy)/Cabbage Beans",
+							"Carrot sabzi",
+							"Toor dal/Radish Sambar",
+							"Gongura Thoviyal",
+							"Raita"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-27",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Dahi Papdi/Sweetcorn"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-27",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg pulao/Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-28",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled green gram",
+							"Poha",
+							"Coconut Chutney/ Imli chutney",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-28",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Beetroot Black Channa poriyal (dry)",
+							"Dalma/ Kara Kuzhambu",
+							"Pepper rasam",
+							"Tomato Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-28",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Fruit Chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-28",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Lemon rice",
+							"Curd Rice",
+							"Sambar Rice",
+							"Boost Milk",
+							"Banana fruit",
+							"Potato chips/Fryums",
+							"Salad",
+							"(No Plain Rice today)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-29",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Cornflakes",
+							"Boiled white peas",
+							"Tamarind chutney/Coconut Chutney",
+							"Pickle",
+							"Dalia"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-29",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Onion lemon Cucumber salad",
+							"Hyderabadi Chicken Dum biryani/ Paneer Dum Biryani",
+							"Mirchi ka Salan",
+							"Tomato Rasam",
+							"Raita",
+							"Ice Cream",
+							"Fryums/ Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-29",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Chana chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-29",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Idiyappam/ Chapathi",
+							"Veg Kurma",
+							"Drumstick Sambar/ Dal",
+							"Watermelon",
+							"Salad",
+							"Buttermilk"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-30",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg/Cornflakes (Pure veg)",
+							"Boiled Chawli",
+							"White Pongal",
+							"Groundnut Chutney",
+							"Sambar"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-30",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Cucumber Carrot salad",
+							"Kashmiri Pulao/ Tamarind Rice",
+							"Cauliflower masala (gravy)",
+							"Radish Sambar Dal (north)",
+							"Gongura thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-30",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Masala corn & Lemon"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-30",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Pudina chapathi",
+							"Roasted egg masala/soya chana gravy",
+							"Mix veg Sambar/Dal",
+							"Kaddu ka Kheer",
+							"Lemon Water",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-31",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled Peanut",
+							"Pav bhaji",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-31",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (basmati)",
+							"Mix Veg Curry (gravy)",
+							"Mixed dal",
+							"Pepper Rasam",
+							"Mint Thoviyal",
+							"Raita",
+							"Fryums/Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-31",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Sweet Potato/Sev Puri"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-03-31",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Chapati/ Idli chutney+sambar",
+							"Black Channa (Gravy)",
+							"Fruit custard",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-01",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Green Gram Sprouts",
+							"Vegetable rava upma",
+							"Coconut chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-01",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Variety Rice",
+							"Meal Maker peas (gravy)",
+							"Bhindi Sambar/ Makhana Dal",
+							"Ridge Gourd Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-01",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Rusk (4 pieces)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-01",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Methi chapathi",
+							"Jeera Rice",
+							"Kadai Chicken Curry/ Kadai Paneer",
+							"Garlic Rasam",
+							"Rava kesari",
+							"Lemon water",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-02",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/ Cornflakes",
+							"Boiled black chana",
+							"Pasta",
+							"Tomato Sauce"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-02",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Cucumber carrot salad",
+							"Achari Paneer Pulao",
+							"Mor kuzhambu (gravy)",
+							"Palak dal",
+							"Curry Leaf Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-02",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Bhel Puri"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-02",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg Pulao/ Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet Corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-03",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Chocos",
+							"Boiled White Chana",
+							"Semiya",
+							"Mint Chutney"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-03",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Beetroot Tomato Salad",
+							"Veg Biryani (Basmati)",
+							"Gutti Vankaya Curry (gravy)/Cabbage Beans",
+							"Carrot sabzi",
+							"Toor dal/Radish Sambar",
+							"Gongura Thoviyal",
+							"Raita"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-03",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Dahi Papdi/Sweetcorn"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-03",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Boiled Egg pulao/Veg Pulao",
+							"Sherva",
+							"Roti",
+							"Mixed Dal",
+							"Boiled Sweet corn",
+							"Buttermilk",
+							"Salad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-04",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Oats",
+							"Boiled green gram",
+							"Poha",
+							"Coconut Chutney/ Imli chutney",
+							"Lime and onion"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-04",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Radish Cucumber Salad",
+							"Beetroot Black Channa poriyal (dry)",
+							"Dalma/ Kara Kuzhambu",
+							"Pepper rasam",
+							"Tomato Thoviyal"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-04",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Fruit Chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-04",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Lemon rice",
+							"Curd Rice",
+							"Sambar Rice",
+							"Boost Milk",
+							"Banana fruit",
+							"Potato chips/Fryums",
+							"Salad",
+							"(No Plain Rice today)"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-05",
+					"targetMeal": "Breakfast",
+					"items": {
+						"All_Categories": [
+							"Boiled egg/Cornflakes",
+							"Boiled white peas",
+							"Tamarind chutney/Coconut Chutney",
+							"Pickle",
+							"Dalia"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-05",
+					"targetMeal": "Lunch",
+					"items": {
+						"All_Categories": [
+							"Onion lemon Cucumber salad",
+							"Hyderabadi Chicken Dum biryani/ Paneer Dum Biryani",
+							"Mirchi ka Salan",
+							"Tomato Rasam",
+							"Raita",
+							"Ice Cream",
+							"Fryums/ Papad"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-05",
+					"targetMeal": "Snacks",
+					"items": {
+						"All_Categories": [
+							"Chana chaat"
+						]
+					}
+				},
+				{
+					"type": "override",
+					"onDate": "2026-04-05",
+					"targetMeal": "Dinner",
+					"items": {
+						"All_Categories": [
+							"Idiyappam/ Chapathi",
+							"Veg Kurma",
+							"Drumstick Sambar/ Dal",
+							"Watermelon",
+							"Salad",
+							"Buttermilk"
+						]
+					}
+				}
+			]
 		}
 	]
 }
