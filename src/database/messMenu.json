@@ -14156,7 +14156,7 @@
 			"eventName": "LPG SUPPLY DISRUPTION",
 			"description": "Temporary Menu Adjustments following the LPG shortage disruption",
 			"startDate": "2026-03-13",
-			"endDate": "2026-04-05",
+			"endDate": "2026-03-31",
 			"rules": [
 				{
 					"type": "override",
