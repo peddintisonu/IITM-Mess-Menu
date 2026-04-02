@@ -18,20 +18,30 @@ export const MENUS = [
 // Define the "Week A" starting point for each specific category.
 export const CATEGORY_REFERENCE_DATES = {
 	// The "Old" Messes start from July 28, 2025
-	South_Veg: "2025-07-28",
-	South_Non_Veg: "2025-07-28",
-	North_Veg: "2025-07-28",
-	North_Non_Veg: "2025-07-28",
-	North_Veg_No_Onion_Garlic: "2025-07-28",
-	Unified_Veg: "2025-07-28",
-	Unified_Non_Veg: "2025-07-28",
+	// South_Veg: "2025-07-28",
+	South_Veg: "2025-08-04",
+	// South_Non_Veg: "2025-07-28",
+	South_Non_Veg: "2025-08-04",
+	// North_Veg: "2025-07-28",
+	North_Veg: "2025-08-04",
+	// North_Non_Veg: "2025-07-28",
+	North_Non_Veg: "2025-08-04",
+	// North_Veg_No_Onion_Garlic: "2025-07-28",
+	North_Veg_No_Onion_Garlic: "2025-08-04",
+	// Unified_Veg: "2025-07-28",
+	Unified_Veg: "2025-08-04",
+	// Unified_Non_Veg: "2025-07-28",
+	Unified_Non_Veg: "2025-08-04",
 
 	// The "New" Protein Messes start Week A on Jan 19, 2026
-	Protein_Veg: "2026-01-19",
-	Protein_Non_Veg: "2026-01-19",
+	// Protein_Veg: "2026-01-19",
+	Protein_Veg: "2026-01-26",
+	// Protein_Non_Veg: "2026-01-19",
+	Protein_Non_Veg: "2026-01-26",
 
 	// Fallback for safety
 	DEFAULT: "2025-07-28",
+	// DEFAULT: "2025-08-04",
 };
 
 export const WEEKS = [
