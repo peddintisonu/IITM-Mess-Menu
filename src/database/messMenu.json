@@ -12382,7 +12382,7 @@
 							"Snacks": "Tea, Coffee, Milk, Biscuits/Rusk",
 							"Dinner": "Plain Rice, Curd with Sugar & Salt, Papad/Fryums"
 						},
-						"D": {
+						"A": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -12589,7 +12589,7 @@
 								}
 							}
 						},
-						"A": {
+						"B": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -12794,7 +12794,7 @@
 								}
 							}
 						},
-						"B": {
+						"C": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13001,7 +13001,7 @@
 								}
 							}
 						},
-						"C": {
+						"D": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13214,7 +13214,7 @@
 							"Snacks": "Tea, Coffee, Milk, Biscuits/Rusk",
 							"Dinner": "Plain Rice, Curd with sugar and salt, Papad/Fryums"
 						},
-						"D": {
+						"A": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13421,7 +13421,7 @@
 								}
 							}
 						},
-						"A": {
+						"B": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13626,7 +13626,7 @@
 								}
 							}
 						},
-						"B": {
+						"C": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
@@ -13833,7 +13833,7 @@
 								}
 							}
 						},
-						"C": {
+						"D": {
 							"schedule": {
 								"Monday": {
 									"Breakfast": [
