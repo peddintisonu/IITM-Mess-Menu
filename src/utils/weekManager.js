@@ -128,12 +128,12 @@ export function getWeekForDate(targetDate, category) {
 	const finalIndex =
 		(((baseIndex + weeksPassed) % WEEKS.length) + WEEKS.length) % WEEKS.length;
 
-	console.log({
-		category,
-		activeCheckpoint,
-		diffDays,
-		weeksPassed,
-	});
+	// console.log({
+	// 	category,
+	// 	activeCheckpoint,
+	// 	diffDays,
+	// 	weeksPassed,
+	// });
 
 	return WEEKS[finalIndex];
 }
@@ -192,7 +192,7 @@ export function getUserCategory() {
 		return null;
 	}
 
-	console.log("User category:", getPreferenceForCycle(currentCycle.name));
+	// console.log("User category:", getPreferenceForCycle(currentCycle.name));
 	return getPreferenceForCycle(currentCycle.name);
 }
 

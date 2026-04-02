@@ -286,24 +286,24 @@ export const getTodaysMenu = async () => {
 			console.warn("Invalid category, falling back to DEFAULT:", category);
 		}
 
-		console.log("==== DEBUG TODAY MENU ====");
-		console.log("Category:", category);
-		console.log("Week from logic:", week);
-		console.log("Available weeks:", Object.keys(categoryData));
-		console.log("Full categoryData:", categoryData);
+		// console.log("==== DEBUG TODAY MENU ====");
+		// console.log("Category:", category);
+		// console.log("Week from logic:", week);
+		// console.log("Available weeks:", Object.keys(categoryData));
+		// console.log("Full categoryData:", categoryData);
 		// Fetch week using category to determine if Protein Phase Shift applies
 		const week = getCurrentWeek(category);
 		const day = getCurrentDay();
 
-		console.log("Selected weekData:", weekData);
-		console.log("Day:", day);
-		console.log("Day menu:", weekData?.schedule?.[day]);
+		// console.log("Selected weekData:", weekData);
+		// console.log("Day:", day);
+		// console.log("Day menu:", weekData?.schedule?.[day]);
 
-		console.log("Resolved Week:", {
-			category,
-			week,
-			date: getIndianTime(),
-		});
+		// console.log("Resolved Week:", {
+		// 	category,
+		// 	week,
+		// 	date: getIndianTime(),
+		// });
 
 		if (!category || !week || !day) {
 			throw new Error("User context is not fully set up.");
