@@ -109,15 +109,20 @@ export function getWeekForDate(targetDate, category) {
 		activeCheckpoint = checkpoints[0];
 	}
 
-	const baseDate = new Date(activeCheckpoint.date);
 	const baseWeek = activeCheckpoint.week;
 
-	// 5. Calculate days difference
+	// 5. Snap baseDate back to its Monday so week cycles always reset on Monday
+	const baseDate = new Date(activeCheckpoint.date);
+	const dayOfWeek = baseDate.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+	const daysToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+	baseDate.setDate(baseDate.getDate() + daysToMonday);
+
+	// 6. Calculate days difference
 	const diffDays = Math.floor((currentDate - baseDate) / (1000 * 60 * 60 * 24));
 
 	const weeksPassed = Math.floor(diffDays / 7);
 
-	// 6. Rotate from base week
+	// 7. Rotate from base week
 	const baseIndex = WEEKS.indexOf(baseWeek);
 
 	if (baseIndex === -1) {
