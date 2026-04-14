@@ -21,6 +21,8 @@ import SetupModal from "./components/SetupModal";
 import TodaysMenu from "./components/TodaysMenu";
 import UpdatePrompt from "./components/UpdatePrompt";
 import { MigrationApp } from "./components/MigrationApp";
+import DonateModal from "./components/DonateModal";
+import { Heart } from "lucide-react";
 
 function App() {
 	const [modalToShow, setModalToShow] = useState(null); // 'initialSetup', 'newCyclePrompt', 'confirmNewCycle', 'settings'
@@ -67,6 +69,7 @@ function App() {
 	};
 
 	const openSettingsModal = () => setModalToShow("settings");
+	const openDonateModal = () => setModalToShow("donate");
 	const closeAllModals = () => setModalToShow(null);
 
 	const skeletonThemeLight = {
@@ -104,6 +107,10 @@ function App() {
 					<SettingsModal isOpen={true} onClose={closeAllModals} />
 				)}
 
+				{modalToShow === "donate" && (
+					<DonateModal isOpen={true} onClose={closeAllModals} />
+				)}
+
 				<div className="min-h-screen bg-bg font-sans text-fg transition-colors">
 					<Navbar onOpenSettings={openSettingsModal} />
 					<main>
@@ -122,6 +129,15 @@ function App() {
 						)}
 					</main>
 					<Footer />
+
+					{/* Floating Donate Button */}
+					<button
+						onClick={openDonateModal}
+						className="fixed bottom-6 right-6 p-4 bg-primary text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-transform z-40 flex items-center justify-center group"
+						aria-label="Support Us"
+					>
+						<Heart className="group-hover:animate-pulse" size={24} fill="currentColor" />
+					</button>
 				</div>
 
 				<UpdatePrompt />
