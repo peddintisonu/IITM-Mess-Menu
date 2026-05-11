@@ -1,0 +1,52 @@
+{
+  "items": {
+    "Boiled Egg": {
+      "1 Egg": {
+        "Calories": "78 kcal",
+        "Protein": "6g",
+        "Carbs": "0.6g",
+        "Fat": "5g"
+      }
+    },
+    "Green Gram Sprouts": {
+      "100g": {
+        "Calories": "30 kcal",
+        "Protein": "3g",
+        "Carbs": "6g",
+        "Fat": "0.2g"
+      }
+    },
+    "Boiled Black Chana": {
+      "100g": {
+        "Calories": "164 kcal",
+        "Protein": "9g",
+        "Carbs": "27g",
+        "Fat": "2.6g"
+      }
+    },
+    "Boiled Moong": {
+      "100g": {
+        "Calories": "105 kcal",
+        "Protein": "7g",
+        "Carbs": "19g",
+        "Fat": "0.4g"
+      }
+    },
+    "Boiled Peanut": {
+      "100g": {
+        "Calories": "318 kcal",
+        "Protein": "13g",
+        "Carbs": "21g",
+        "Fat": "22g"
+      }
+    },
+    "Boiled Peanuts": {
+      "100g": {
+        "Calories": "318 kcal",
+        "Protein": "13g",
+        "Carbs": "21g",
+        "Fat": "22g"
+      }
+    }
+  }
+}

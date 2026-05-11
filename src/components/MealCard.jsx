@@ -1,14 +1,40 @@
-import React from "react";
-import { Circle } from "lucide-react";
+import React, { useState } from "react";
+import { Circle, Info } from "lucide-react";
 import { MEALS } from "../api/constants";
 import MenuIcon from "./MenuIcon";
 import MenuItem from "./MenuItem";
+import NutritionModal from "./NutritionModal";
+import nutritionData from "../database/nutritionMenu.json";
 
 
 
 const MealCard = ({ title, items, commonItems, status }) => {
+	const [selectedNutritionItem, setSelectedNutritionItem] = useState(null);
+	const [isNutritionModalOpen, setIsNutritionModalOpen] = useState(false);
+
+	const handleInfoClick = (item) => {
+		const itemName = typeof item === "object" && item !== null ? item.name : item;
+		// Strip asterisks if it's a string
+		const cleanName = typeof itemName === "string" ? itemName.replace(/\*/g, "") : itemName;
+		setSelectedNutritionItem(cleanName);
+		setIsNutritionModalOpen(true);
+	};
+
 	const mealInfo = MEALS.find((meal) => meal.value === title);
 	const timing = mealInfo ? mealInfo.timing : null;
+
+	const hasNutritionData = (item) => {
+		const itemName = typeof item === "object" && item !== null ? item.name : item;
+		const cleanName = typeof itemName === "string" ? itemName.replace(/\*/g, "") : itemName;
+		if (!cleanName) return false;
+		
+		const searchName = cleanName.toLowerCase().trim();
+		const itemsObj = nutritionData.items || {};
+		return Object.keys(itemsObj).some(key => {
+			const keyLower = key.toLowerCase();
+			return keyLower === searchName || searchName.includes(keyLower) || keyLower.includes(searchName);
+		});
+	};
 
 	const getContainerClasses = () => {
 		const baseClasses =
@@ -57,14 +83,24 @@ const MealCard = ({ title, items, commonItems, status }) => {
 				{/* --- Main Content Area (Grows to fill space) --- */}
 				<ul className="flex-grow space-y-2 text-muted pt-4">
 					{items.map((item, index) => (
-						<li key={index} className="flex gap-2 items-center">
+						<li key={index} className="flex gap-2 items-start sm:items-center">
 							<Circle
-								className="text-primary flex-shrink-0 self-center"
+								className="text-primary flex-shrink-0 mt-1.5 sm:mt-0 sm:self-center"
 								size={6}
 								fill="currentColor"
 							/>
-							<div className="flex-grow">
+							<div className="flex-grow flex items-center flex-wrap gap-x-1.5 gap-y-0.5">
 								<MenuItem item={item} />
+								{hasNutritionData(item) && (
+									<button 
+										className="text-muted hover:text-primary transition-colors focus-reset rounded-full flex-shrink-0"
+										onClick={() => handleInfoClick(item)}
+										aria-label="Nutritional Info"
+										title="Nutritional Info"
+									>
+										<Info size={14} />
+									</button>
+								)}
 							</div>
 						</li>
 					))}
@@ -80,6 +116,12 @@ const MealCard = ({ title, items, commonItems, status }) => {
 					</div>
 				)}
 			</div>
+
+			<NutritionModal 
+				isOpen={isNutritionModalOpen} 
+				onClose={() => setIsNutritionModalOpen(false)} 
+				itemName={selectedNutritionItem} 
+			/>
 		</div>
 	);
 };
