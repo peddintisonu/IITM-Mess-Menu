@@ -127,7 +127,10 @@ function App() {
 					<main>
 						{isSetupComplete() ? (
 							<>
-								<TodaysMenu onOpenSettings={openSettingsModal} />
+								<TodaysMenu 
+									onOpenSettings={openSettingsModal} 
+									onOpenFeedback={openFeedbackModal} 
+								/>
 								<div className="w-full max-w-7xl mx-auto px-4">
 									<div className="border-t border-border my-4 sm:my-10"></div>
 								</div>

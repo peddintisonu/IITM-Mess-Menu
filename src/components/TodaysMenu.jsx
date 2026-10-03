@@ -19,13 +19,14 @@ import {
 import CalendarModal from "./CalendarModal";
 import MealCard from "./MealCard";
 import TodaysMenuSkeleton from "./skeletons/TodaysMenuSkeleton";
+import EventDescription from "./EventDescription";
 
 /**
  * A dynamic component that displays the menu for a selected date.
  * It intelligently highlights the current/next meal, scrolls it into view,
  * and provides clear context when browsing historical dates.
  */
-const TodaysMenu = ({ onOpenSettings }) => {
+const TodaysMenu = ({ onOpenSettings, onOpenFeedback }) => {
 	const [menu, setMenu] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -328,8 +329,31 @@ const TodaysMenu = ({ onOpenSettings }) => {
 							{activeEvent.name}
 						</div>
 						{activeEvent.description && (
-							<div className="event-banner-description">
-								{activeEvent.description}
+							<div
+								className="event-banner-description whitespace-pre-line leading-relaxed"
+								onClick={(e) => {
+									const anchor = e.target.closest("a, button");
+									if (anchor) {
+										const href = anchor.getAttribute("href");
+										const action = anchor.getAttribute("data-action");
+										const normHref = href?.trim().toLowerCase();
+										if (
+											normHref === "#feedback" ||
+											normHref === "#feedbackmodal" ||
+											normHref === "action:feedback" ||
+											normHref === "feedback" ||
+											action === "feedback"
+										) {
+											e.preventDefault();
+											onOpenFeedback?.();
+										}
+									}
+								}}
+							>
+								<EventDescription
+									content={activeEvent.description}
+									onOpenFeedback={onOpenFeedback}
+								/>
 							</div>
 						)}
 					</div>

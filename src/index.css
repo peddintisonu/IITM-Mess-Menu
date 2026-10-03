@@ -195,7 +195,9 @@
 	/* Event Banner */
 	.event-banner { @apply w-full p-3 rounded-lg text-sm bg-event-banner-bg; }
 	.event-banner-title { @apply mb-1 flex items-center gap-2 font-semibold text-event-banner-title; }
-	.event-banner-description { @apply text-event-banner-desc; }
+	.event-banner-description { @apply text-event-banner-desc whitespace-pre-line leading-relaxed; }
+	.event-banner-description a { @apply font-medium underline underline-offset-2 hover:opacity-80 transition-opacity cursor-pointer; }
+	.event-banner-description button { @apply font-medium underline underline-offset-2 hover:opacity-80 transition-opacity cursor-pointer; }
 
 	/* Form Utilities */
 	.form-group { @apply w-full flex flex-col gap-1.5; }
