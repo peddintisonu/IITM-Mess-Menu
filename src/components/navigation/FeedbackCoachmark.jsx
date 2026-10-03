@@ -33,7 +33,7 @@ export default function FeedbackCoachmark({ isMenuExpanded }) {
   if (!isVisible) return null;
 
   return (
-    <div className="absolute bottom-[50%] right-0 mb-4 w-64 bg-bg border border-border p-4 rounded-2xl shadow-2xl animate-fade-in-up z-50">
+    <div className="absolute bottom-[70%] right-0 mb-4 w-64 bg-bg border border-border p-4 rounded-2xl shadow-2xl animate-fade-in-up z-50">
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2 text-primary">

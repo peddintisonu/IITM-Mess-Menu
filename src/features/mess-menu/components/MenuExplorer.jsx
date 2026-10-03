@@ -10,7 +10,7 @@ import MealCard from "./MealCard";
 import SelectDropdown from "./SelectDropdown";
 import FullWeekView from "./FullWeekView"; // Import the new component
 import MealCardSkeleton from "./skeletons/MealCardSkeleton";
-import data from "../database/messMenu.json";
+import data from "../data/messMenu.json";
 
 /**
  * A component to explore the menu for relevant neighboring cycles.

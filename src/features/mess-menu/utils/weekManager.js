@@ -1,5 +1,5 @@
 import { CATEGORY_REFERENCE_DATES, MEALS } from "../api/constants";
-import data from "../database/messMenu.json"; // Import Data Here
+import data from "../data/messMenu.json"; // Import Data Here
 
 // --- Configuration ---
 const WEEKS = ["A", "B", "C", "D"];

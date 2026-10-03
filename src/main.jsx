@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
-import { ThemeProvider } from "./context/ThemeContext.jsx";
 import "./index.css";
 
 // ==========================================================================
@@ -10,7 +10,7 @@ import "./index.css";
 // ==========================================================================
 // if (import.meta.env.DEV) {
 // 	const travelToDate = "2026-01-20T10:00:00+05:30"; // <-- SET YOUR TARGET DATE HERE
-
+// 
 // 	// We are overriding the global Date object.
 // 	// Now, every time any part of your app calls `new Date()`,
 // 	// it will get our fake date instead of the real one.
@@ -34,8 +34,8 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<ThemeProvider>
+		<BrowserRouter>
 			<App />
-		</ThemeProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );

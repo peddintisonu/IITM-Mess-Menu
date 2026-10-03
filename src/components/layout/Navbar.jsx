@@ -1,7 +1,7 @@
 import React from "react";
 import { Settings } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
-import { APP_NAME } from "../api/constants";
+import ThemeToggle from "../ui/ThemeToggle";
+import { APP_NAME } from "../../features/mess-menu/api/constants";
 
 const Navbar = ({ onOpenSettings }) => {
 	return (

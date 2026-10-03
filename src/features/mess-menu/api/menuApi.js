@@ -1,4 +1,4 @@
-import data from "../database/messMenu.json";
+import data from "../data/messMenu.json";
 import {
 	getCurrentDay,
 	getCurrentWeek,

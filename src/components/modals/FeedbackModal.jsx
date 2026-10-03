@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MessageSquare, X, Send } from "lucide-react";
-import { MESSES } from "../api/constants";
+import { MESSES } from "../../features/mess-menu/api/constants";
 
 
 const FeedbackModal = ({ isOpen, onClose }) => {

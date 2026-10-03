@@ -1,5 +1,5 @@
 import { Heart } from "lucide-react";
-import { APP_NAME, APP_VERSION } from "../api/constants";
+import { APP_NAME, APP_VERSION } from "../../features/mess-menu/api/constants";
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear();

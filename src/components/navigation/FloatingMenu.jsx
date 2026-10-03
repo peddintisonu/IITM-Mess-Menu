@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Heart, MessageSquare, Menu, X } from "lucide-react";
 import FeedbackCoachmark from "./FeedbackCoachmark";
+import { CardsViewIcon } from "../ui/CardsViewIcon";
 
 const FloatingMenu = ({ 
     onOpenDonate, 
-    onOpenFeedback, 
+    onOpenFeedback,
+    onOpenConnectedApps,
     showMenu = true,
     showDonate = true,
-    showFeedback = true 
+    showFeedback = true,
+    showConnectedApps = true,
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isConnectedAppsActive, setIsConnectedAppsActive] = useState(false);
     const menuRef = useRef(null);
 
     useEffect(() => {
@@ -32,8 +36,15 @@ const FloatingMenu = ({
 
     if (!showMenu) return null;
 
+    const handleConnectedAppsClick = () => {
+        setIsConnectedAppsActive(true);
+        onOpenConnectedApps?.();
+        // Reset the animation after a short delay
+        setTimeout(() => setIsConnectedAppsActive(false), 600);
+    };
+
     return (
-        <div ref={menuRef} className="fixed bottom-6 right-6 flex flex-col items-center gap-4 z-40">
+        <div ref={menuRef} className="fixed bottom-6 right-6 flex flex-col items-center gap-3 z-40">
             
             <FeedbackCoachmark isMenuExpanded={isExpanded} />
             
@@ -81,6 +92,18 @@ const FloatingMenu = ({
                     <Menu size={20} className="animate-in fade-in zoom-in duration-300 group-hover:animate-pulse" />
                 )}
             </button>
+
+            {/* Connected Apps Menu Button */}
+            {showConnectedApps && (
+                <button
+                    onClick={handleConnectedAppsClick}
+                    className="p-3.5 bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-transform flex items-center justify-center"
+                    aria-label="Connected Apps"
+                    title="Connected Apps"
+                >
+                    <CardsViewIcon isActive={isConnectedAppsActive} className="!h-5 !w-5 [&>span]:!size-[7px] [&>span]:!rounded-[2px]" />
+                </button>
+            )}
         </div>
     );
 };
