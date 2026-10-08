@@ -1,5 +1,5 @@
 export const APP_NAME = "DigiMess";
-export const APP_VERSION = "v1.2.2";
+export const APP_VERSION = "v1.2.3";
 
 export const MENUS = [
 	{ value: "South_Veg", label: "South Indian (Veg)" },
@@ -22,13 +22,14 @@ export const MENUS = [
 
 export const MESSES = [
 	{ value: "Neelkesh-Neelkanth", label: "Neelkesh-Neelkanth" },
-	{ value: "SRR-Annapurna", label: "SRR-Annapurna" },
+	{ value: "SRR-Annapurna-PureVeg", label: "SRR-Annapurna-PureVeg" },
 	{ value: "SRR-Nandadevi", label: "SRR-Nandadevi" },
 	{ value: "Firstman-Kanchenjunga", label: "Firstman-Kanchenjunga" },
-	{ value: "RGouras-NangaParbat", label: "RGouras-NangaParbat" },
+	{ value: "RGouras-NangaParbat-Himalaya", label: "RGouras-NangaParbat-Himalaya" },
 	{ value: "Rassense-Makurni", label: "Rassense-Makurni" },
 	{ value: "Prism-Mukurthi", label: "Prism-Mukurthi" },
-	{ value: "RGouras-Sahyadri", label: "RGouras-Sahyadri" },
+	{ value: "SGR-Dodabetta", label: "SGR-Dodabetta" },
+	{ value: "RGouras-Sahyadri-Vindhya", label: "RGouras-Sahyadri-Vindhya" },
 	{ value: "FoodSutra-Satpura", label: "FoodSutra-Satpura" },
 ];
 

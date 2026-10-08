@@ -22209,9 +22209,14 @@
 			"endDate": "2026-08-31"
 		},
 		{
-			"name": "Sep 01, 2026 to Oct 10, 2026",
+			"name": "Sep 01, 2026 to Oct 11, 2026",
 			"startDate": "2026-09-01",
-			"endDate": "2026-10-10"
+			"endDate": "2026-10-11"
+		},
+		{
+			"name": "Oct 12, 2026 to Nov 19, 2026",
+			"startDate": "2026-10-12",
+			"endDate": "2026-11-19"
 		}
 	],
 
@@ -22383,7 +22388,7 @@
 			"eventName": "Mess Registration Open",
 			"description": "Mess Registration for the next cycle is open\nRead student's feedback by <a href='https://docs.google.com/spreadsheets/d/1NeglaMeId-p5glsISIkmJwPa-JAQnI4HLRzdfi5lgIM/edit?gid=0#gid=0' className='text-primary underline' target='_blank'>clicking here.</a>\nShare your thoughts by <a href='#feedback' className='text-primary underline'>giving feedback.</a>\nTake a wise Decision.",
 			"startDate": "2026-10-03",
-			"endDate": "2026-10-10",
+			"endDate": "2026-10-11",
 			"rules": []
 		}
 	]

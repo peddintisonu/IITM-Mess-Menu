@@ -101,7 +101,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
 										<option value="" disabled>Select Type</option>
 										<option value="Website">Website Related</option>
 										<option value="Mess-Issue">Mess Issue</option>
-										<option value="Mess-Fix">Mess Improvement</option>
+										<option value="Mess-Improve">Mess Improvement</option>
 									</select>
 								</div>
 
