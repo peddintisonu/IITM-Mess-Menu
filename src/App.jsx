@@ -45,7 +45,10 @@ export default function App() {
 			<ConnectedAppsCarousel isOpen={modalToShow === "connectedApps"} onClose={closeAllModals} />
 
 			{/* Router Views */}
-			<AppRouter onOpenSettings={openSettingsModal} />
+			<AppRouter
+				onOpenSettings={openSettingsModal}
+				onOpenFeedback={openFeedbackModal}
+			/>
 
 			{/* Global Floating Action Bar */}
 			<FloatingMenu

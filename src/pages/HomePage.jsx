@@ -18,7 +18,7 @@ import TodaysMenu from "../features/mess-menu/components/TodaysMenu";
  * The Home Page — the main Mess Menu experience.
  * Handles cycle detection, onboarding, and renders TodaysMenu + MenuExplorer.
  */
-const HomePage = ({ onOpenSettings }) => {
+const HomePage = ({ onOpenSettings, onOpenFeedback }) => {
 	const [modalToShow, setModalToShow] = useState(null); // 'initialSetup', 'newCyclePrompt', 'confirmNewCycle'
 	const [prefilledPreference, setPrefilledPreference] = useState(null);
 
@@ -86,7 +86,10 @@ const HomePage = ({ onOpenSettings }) => {
 
 			{isSetupComplete() ? (
 				<>
-					<TodaysMenu onOpenSettings={onOpenSettings} />
+					<TodaysMenu
+						onOpenSettings={onOpenSettings}
+						onOpenFeedback={onOpenFeedback}
+					/>
 					<div className="w-full max-w-7xl mx-auto px-4">
 						<div className="border-t border-border my-4 sm:my-10"></div>
 					</div>

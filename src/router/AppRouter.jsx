@@ -16,7 +16,7 @@ const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
  * Central routing configuration.
  * All routes are wrapped in MainLayout which provides Navbar + Footer.
  */
-const AppRouter = ({ onOpenSettings }) => {
+const AppRouter = ({ onOpenSettings, onOpenFeedback }) => {
 	return (
 		<Suspense
 			fallback={
@@ -31,7 +31,10 @@ const AppRouter = ({ onOpenSettings }) => {
 						path="/"
 						element={
 							<Suspense fallback={<HomePageSkeleton />}>
-								<HomePage onOpenSettings={onOpenSettings} />
+								<HomePage
+									onOpenSettings={onOpenSettings}
+									onOpenFeedback={onOpenFeedback}
+								/>
 							</Suspense>
 						}
 					/>
