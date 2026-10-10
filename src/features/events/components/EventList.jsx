@@ -48,7 +48,7 @@ function useItemsPerPage() {
    PILL TABS — Reusable velocity-style tabs with sliding indicator
    ═══════════════════════════════════════════════════════ */
 
-function PillTabs({ items, active, onChange, className = "" }) {
+function PillTabs({ items, active, onChange, className = "", center = false }) {
 	const containerRef = useRef(null);
 	const [indicatorStyle, setIndicatorStyle] = useState({});
 
@@ -65,18 +65,20 @@ function PillTabs({ items, active, onChange, className = "" }) {
 	}, [active]);
 
 	return (
-		<div className={`relative ${className}`}>
+		<div className={`relative w-full ${className}`}>
 			<div
 				ref={containerRef}
-				className="relative flex items-center justify-center gap-1 overflow-x-auto py-1 px-0.5 no-scrollbar"
+				className={`relative flex items-center gap-1 overflow-x-auto py-1.5 px-2 no-scrollbar ${
+					center ? "justify-center" : "sm:justify-center"
+				}`}
 			>
 				{/* Sliding indicator pill */}
 				<motion.div
-					className="absolute top-1 bottom-1 rounded-xl bg-primary/15 dark:bg-primary/20"
+					className="absolute top-1.5 bottom-1.5 rounded-xl bg-primary/15 dark:bg-primary/20"
 					initial={false}
 					animate={indicatorStyle}
 					transition={{ type: "spring", stiffness: 400, damping: 30 }}
-					style={{ height: "calc(100% - 8px)" }}
+					style={{ height: "calc(100% - 12px)" }}
 				/>
 
 				{items.map((item) => (
@@ -308,11 +310,12 @@ export default function EventList({ events, categories }) {
 	return (
 		<div className="flex flex-col h-full">
 			{/* ── Top status tabs (Upcoming / Finished) ── */}
-			<div className="shrink-0 border-b border-border px-2 sm:px-4 pt-2 sm:pt-3 pb-0">
+			<div className="shrink-0 border-b border-border px-2 sm:px-4 py-2 sm:py-3 flex justify-center">
 				<PillTabs
 					items={STATUS_TABS}
 					active={statusTab}
 					onChange={setStatusTab}
+					center
 				/>
 			</div>
 

@@ -4,7 +4,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { MinimalCarousel, type CarouselCard } from "../ui/MinimalCarousel";
-import { Box, Layers } from "lucide-react";
+import { UtensilsCrossed, CalendarDays, Store } from "lucide-react";
 
 const CONNECTED_APPS_CARDS: CarouselCard[] = [
   {
@@ -12,20 +12,28 @@ const CONNECTED_APPS_CARDS: CarouselCard[] = [
     title: "DigiMess",
     value: "Stay updated with Menu",
     color: "bg-primary-500",
-    icon: Box,
+    icon: UtensilsCrossed,
   },
+  // {
+  //   id: "digievents",
+  //   title: "DigiEvents",
+  //   value: "Stay updated with Events",
+  //   color: "bg-primary-700",
+  //   icon: CalendarDays,
+  // },
   {
-    id: "digievents",
-    title: "DigiEvents",
-    value: "Stay updated with Events",
-    color: "bg-primary-700",
-    icon: Layers,
+    id: "digifacilities",
+    title: "DigiFacilities",
+    value: "Stay updated with Facilities",
+    color: "bg-primary-900",
+    icon: Store,
   },
 ];
 
 const CARD_ROUTES: Record<string, string> = {
   digimess: "/",
   digievents: "/events",
+  digifacilities: "/facilities",
 };
 
 interface ConnectedAppsCarouselProps {

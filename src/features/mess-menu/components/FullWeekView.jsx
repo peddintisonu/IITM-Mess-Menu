@@ -3,6 +3,7 @@ import { getContextForCycle } from "../api/menuApi";
 import { DAYS } from "../api/constants";
 import MealCardSkeleton from "./skeletons/MealCardSkeleton";
 import MenuIcon from "./MenuIcon";
+import MenuItem from "./MenuItem";
 import { Circle } from "lucide-react";
 
 /**
@@ -35,47 +36,18 @@ const MiniDayCard = ({ dayName, daySchedule }) => {
 									<h4 className="font-semibold text-fg text-sm">{meal}</h4>
 								</div>
 								<ul className="text-sm text-muted space-y-1 pl-1">
-									{items.map((item, index) => {
-										const isSpecialByObject =
-											typeof item === "object" &&
-											item !== null &&
-											item.isSpecial;
-										const isSpecialByString =
-											typeof item === "string" &&
-											item.startsWith("*") &&
-											item.endsWith("*");
-										const isSpecial = isSpecialByObject || isSpecialByString;
-
-										let itemName = "";
-										if (typeof item === "object" && item !== null) {
-											itemName = item.name;
-										} else if (isSpecialByString) {
-											itemName = item.slice(1, -1);
-										} else {
-											itemName = item;
-										}
-
-										if (!itemName) return null;
-
-										return (
-											<li key={index} className="flex items-start gap-2">
-												<Circle
-													size={6}
-													fill="currentColor"
-													className="text-primary flex-shrink-0 mt-1.5"
-												/>
-												<div className="flex-grow">
-													<span
-														className={
-															isSpecial ? "font-bold text-primary" : ""
-														}
-													>
-														{itemName}
-													</span>
-												</div>
-											</li>
-										);
-									})}
+									{items.map((item, index) => (
+										<li key={index} className="flex items-start gap-2">
+											<Circle
+												size={6}
+												fill="currentColor"
+												className="text-primary flex-shrink-0 mt-1.5"
+											/>
+											<div className="flex-grow">
+												<MenuItem item={item} />
+											</div>
+										</li>
+									))}
 								</ul>
 							</div>
 						</React.Fragment>

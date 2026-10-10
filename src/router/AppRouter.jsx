@@ -2,11 +2,14 @@ import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 
+import HomePageSkeleton from "../features/mess-menu/components/skeletons/HomePageSkeleton";
+
 // Lazy-load pages for code splitting.
 // The home page (mess menu) loads eagerly since it's the primary use case and needs to work offline.
 // Other pages are lazy-loaded to keep the initial bundle small.
 const HomePage = lazy(() => import("../pages/HomePage"));
 const EventsPage = lazy(() => import("../pages/EventsPage"));
+const FacilitiesPage = lazy(() => import("../pages/FacilitiesPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 /**
@@ -26,9 +29,15 @@ const AppRouter = ({ onOpenSettings }) => {
 				<Route element={<MainLayout onOpenSettings={onOpenSettings} />}>
 					<Route
 						path="/"
-						element={<HomePage onOpenSettings={onOpenSettings} />}
+						element={
+							<Suspense fallback={<HomePageSkeleton />}>
+								<HomePage onOpenSettings={onOpenSettings} />
+							</Suspense>
+						}
 					/>
-					<Route path="/events" element={<EventsPage />} />
+					{/* Temporarily disabled while in progress */}
+					{/* <Route path="/events" element={<EventsPage />} /> */}
+					<Route path="/facilities" element={<FacilitiesPage />} />
 					<Route path="*" element={<NotFoundPage />} />
 				</Route>
 			</Routes>

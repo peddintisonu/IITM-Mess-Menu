@@ -3,6 +3,43 @@ import { Heart, MessageSquare, Menu, X } from "lucide-react";
 import FeedbackCoachmark from "./FeedbackCoachmark";
 import { CardsViewIcon } from "../ui/CardsViewIcon";
 
+const FloatingActionButton = ({
+    onClick,
+    icon,
+    ariaLabel,
+    title,
+    paddingClass = "p-3",
+    extraClasses = "",
+    enableGradient = false,
+}) => {
+    if (enableGradient) {
+        return (
+            <button
+                onClick={onClick}
+                aria-label={ariaLabel}
+                title={title}
+                className={`relative inline-flex items-center justify-center rounded-full p-[2.5px] shadow-lg hover:shadow-xl hover:scale-110 transition-transform overflow-hidden focus:outline-none group ${extraClasses}`}
+            >
+                <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#06b6d4_0%,#d946ef_33%,#f97316_66%,#06b6d4_100%)]" />
+                <div className={`relative flex h-full w-full items-center justify-center rounded-full bg-primary text-white ${paddingClass}`}>
+                    {icon}
+                </div>
+            </button>
+        );
+    }
+
+    return (
+        <button
+            onClick={onClick}
+            aria-label={ariaLabel}
+            title={title}
+            className={`bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-transform flex items-center justify-center focus:outline-none ${paddingClass} ${extraClasses}`}
+        >
+            {icon}
+        </button>
+    );
+};
+
 const FloatingMenu = ({ 
     onOpenDonate, 
     onOpenFeedback,
@@ -11,6 +48,10 @@ const FloatingMenu = ({
     showDonate = true,
     showFeedback = true,
     showConnectedApps = true,
+    enableMainGradient = false,
+    enableFeedbackGradient = false,
+    enableDonateGradient = false,
+    enableConnectedAppsGradient = true,
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isConnectedAppsActive, setIsConnectedAppsActive] = useState(false);
@@ -53,14 +94,14 @@ const FloatingMenu = ({
                 <div 
                     className={`transition-all duration-300 transform ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-50 pointer-events-none'} flex flex-col items-center gap-2`}
                 >
-                    <button
+                    <FloatingActionButton
                         onClick={() => { setIsExpanded(false); onOpenFeedback(); }}
-                        className="p-3 bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-transform"
-                        aria-label="Give Feedback"
+                        icon={<MessageSquare size={20} />}
+                        ariaLabel="Give Feedback"
                         title="Give Feedback"
-                    >
-                        <MessageSquare size={20} />
-                    </button>
+                        paddingClass="p-3"
+                        enableGradient={enableFeedbackGradient}
+                    />
                 </div>
             )}
 
@@ -69,40 +110,41 @@ const FloatingMenu = ({
                 <div 
                     className={`transition-all duration-300 transform ${isExpanded ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-50 pointer-events-none'} flex flex-col items-center gap-2`}
                 >
-                    <button
+                    <FloatingActionButton
                         onClick={() => { setIsExpanded(false); onOpenDonate(); }}
-                        className="p-3 bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-transform"
-                        aria-label="Support Us"
+                        icon={<Heart size={20} fill="currentColor" />}
+                        ariaLabel="Support Us"
                         title="Support Us"
-                    >
-                        <Heart size={20} fill="currentColor" />
-                    </button>
+                        paddingClass="p-3"
+                        enableGradient={enableDonateGradient}
+                    />
                 </div>
             )}
 
             {/* Main Toggle Button */}
-            <button
+            <FloatingActionButton
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="p-4 bg-primary text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-transform flex items-center justify-center z-50 group"
-                aria-label="Open Menu"
-            >
-                {isExpanded ? (
+                icon={isExpanded ? (
                     <X size={20} className="animate-in fade-in zoom-in duration-300" />
                 ) : (
                     <Menu size={20} className="animate-in fade-in zoom-in duration-300 group-hover:animate-pulse" />
                 )}
-            </button>
+                ariaLabel="Open Menu"
+                paddingClass="p-4"
+                enableGradient={enableMainGradient}
+                extraClasses="z-50"
+            />
 
             {/* Connected Apps Menu Button */}
             {showConnectedApps && (
-                <button
+                <FloatingActionButton
                     onClick={handleConnectedAppsClick}
-                    className="p-3.5 bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-transform flex items-center justify-center"
-                    aria-label="Connected Apps"
+                    icon={<CardsViewIcon isActive={isConnectedAppsActive} className="!h-5 !w-5 [&>span]:!size-[7px] [&>span]:!rounded-[2px]" />}
+                    ariaLabel="Connected Apps"
                     title="Connected Apps"
-                >
-                    <CardsViewIcon isActive={isConnectedAppsActive} className="!h-5 !w-5 [&>span]:!size-[7px] [&>span]:!rounded-[2px]" />
-                </button>
+                    paddingClass="p-3.5"
+                    enableGradient={enableConnectedAppsGradient}
+                />
             )}
         </div>
     );

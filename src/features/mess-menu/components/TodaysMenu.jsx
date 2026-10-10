@@ -179,9 +179,6 @@ const TodaysMenu = ({ onOpenSettings, onOpenFeedback }) => {
 	const formattedDate = format(selectedDate, "EEEE, MMMM d");
 
 	const renderContent = () => {
-		if (loading) {
-			return <TodaysMenuSkeleton />;
-		}
 		if (missingPreferenceCycle) {
 			return (
 				<div className="alert alert-destructive text-center">
@@ -240,6 +237,10 @@ const TodaysMenu = ({ onOpenSettings, onOpenFeedback }) => {
 			<p className="text-center text-muted">No menu items for this meal.</p>
 		);
 	};
+
+	if (loading) {
+		return <TodaysMenuSkeleton />;
+	}
 
 	return (
 		<section

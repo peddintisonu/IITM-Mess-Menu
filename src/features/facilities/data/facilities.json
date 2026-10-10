@@ -1,0 +1,733 @@
+[
+  {
+    "id": "f1",
+    "name": "WAAH HYDERABADI",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Restaurant"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/QN5AsrSdbdruGRqX9",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "12:00",
+            "close": "23:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f2",
+    "name": "Prime mart",
+    "location": "Near CCW",
+    "categories": [
+      "Zaitoon Zone",
+      "General Store"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/12hf82GeD6dTXcM57",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "09:00",
+            "close": "22:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f3",
+    "name": "Usha Cafe",
+    "location": "Usha Zone",
+    "categories": [
+      "Usha Zone",
+      "Cafe"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/tGiuFX7WTzwKpS3dA",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "12:00",
+            "close": "02:00"
+          },
+          {
+            "open": "07:00",
+            "close": "23:59"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f4",
+    "name": "Xerox shop",
+    "location": "Usha Zone",
+    "categories": [
+      "Usha Zone",
+      "Xerox",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/tHtHdB9rATt4CzjG9",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:30",
+            "close": "22:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f5",
+    "name": "Cycle shop",
+    "location": "Near Library",
+    "categories": [
+      "Usha Zone",
+      "Cycle Shop",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/tC7NhRYfL4EjccHDA",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5
+        ],
+        "timeSlots": [
+          {
+            "open": "10:30",
+            "close": "19:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f6",
+    "name": "CCD",
+    "location": "Near Library",
+    "categories": [
+      "Usha Zone",
+      "Cafe"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/tC8iK5uJw2Vu8vyU9",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "00:30",
+            "close": "23:59"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f7",
+    "name": "Grub Hub",
+    "location": "Near Admin Block",
+    "categories": [
+      "Usha Zone",
+      "Food Truck"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/EibJGT8bxRPr1irL8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "20:30",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "04:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f8",
+    "name": "CreamStone",
+    "location": "Near Nilgiri",
+    "categories": [
+      "Usha Zone",
+      "Desserts"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/gD1fbPTBBsQEav8m8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "10:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "02:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f9",
+    "name": "5 STAR",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Snacks"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/fbcxyitqooBQuTdY7",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "12:00",
+            "close": "23:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f10",
+    "name": "CAKE WORLD",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Bakery"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/fbcxyitqooBQuTdY7",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "11:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "00:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f11",
+    "name": "Coolbizz",
+    "location": "Usha Zone",
+    "categories": [
+      "Usha Zone",
+      "Juices"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/aS3KKhStcmQXr2ra6",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "12:00",
+            "close": "02:00"
+          },
+          {
+            "open": "07:00",
+            "close": "23:59"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f12",
+    "name": "HOTEL ANANDA",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Restaurant"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/n4StKj6Vwr9eQGno8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:00",
+            "close": "23:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f13",
+    "name": "DELI PIZZERIA",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Cafe"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/Gd9WKkqhxgeDQ5kn8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "11:00",
+            "close": "23:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f14",
+    "name": "CHAI WAALE",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Cafe"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/AedqWXRSLqbNWLVN6",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "02:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f15",
+    "name": "EDF JUICES",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Juices"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/fZYB6tETwmhSFpiT9",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "01:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f16",
+    "name": "CHATKARA CHAAT",
+    "location": "In Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Snacks"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/YDTzysaFGFiRNUQ56",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "10:00",
+            "close": "22:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f17",
+    "name": "DOSA FOOD TRUCK",
+    "location": "Near Himalaya",
+    "categories": [
+      "HFC Zone",
+      "Food Truck"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/eBwKupuikXgTHAaY7",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "21:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "02:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f18",
+    "name": "SANGAM CYCLE SHOP",
+    "location": "Near Jamuna",
+    "categories": [
+      "HFC Zone",
+      "Cycle Shop",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/XuHP77AsBvG6bNud6",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5
+        ],
+        "timeSlots": [
+          {
+            "open": "09:00",
+            "close": "20:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f19",
+    "name": "FROZEN FEAST",
+    "location": "HFC_ZONE",
+    "categories": [
+      "HFC Zone",
+      "Desserts"
+    ],
+    "googleMapsUrl": "https://maps.google.com/?q=FROZEN%20FEAST%20IIT%20Madras",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "11:00",
+            "close": "23:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f20",
+    "name": "Zaitoon",
+    "location": "Near Sangam",
+    "categories": [
+      "Zaitoon Zone",
+      "Restaurant"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/gK42E9dwnTubDbXi8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:30",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "03:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f21",
+    "name": "Narmada Xerox shop",
+    "location": "Near Zaitoon",
+    "categories": [
+      "Zaitoon Zone",
+      "Xerox",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/RfJjw3DnDMsbAz536",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "10:00",
+            "close": "22:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f22",
+    "name": "Laundry bus",
+    "location": "Near Zaitoon",
+    "categories": [
+      "Zaitoon Zone",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/eBGPXowXmPsgo8bN9",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:00",
+            "close": "18:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f23",
+    "name": "Nescafe",
+    "location": "Near Jamuna",
+    "categories": [
+      "Zaitoon Zone",
+      "Cafe"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/JHkG6zCxggTw1pdy8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "11:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "03:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f24",
+    "name": "Rotormans",
+    "location": "Near Himalaya",
+    "categories": [
+      "Zaitoon Zone",
+      "Food Truck"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/eBwKupuikXgTHAaY7",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "21:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "04:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f25",
+    "name": "London waffles",
+    "location": "In Nilgiri",
+    "categories": [
+      "Zaitoon Zone",
+      "Desserts"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/ubb5qMrapzHo3EPfA",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "13:00",
+            "close": "23:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f26",
+    "name": "Dollar cafe",
+    "location": "Near Jamuna",
+    "categories": [
+      "Zaitoon Zone",
+      "Cafe"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/bRxnCgwvhuAYG8Vc9",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "18:00",
+            "close": "23:59"
+          },
+          {
+            "open": "00:00",
+            "close": "06:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f27",
+    "name": "7 star saloon",
+    "location": "Near Zaitoon",
+    "categories": [
+      "Zaitoon Zone",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/2EHUMCvtphBraQko8",
+    "schedules": [
+      {
+        "days": [
+          0, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "08:00",
+            "close": "21:00"
+          }
+        ]
+      },
+      {
+        "days": [
+          1
+        ],
+        "timeSlots": [
+          {
+            "open": "08:00",
+            "close": "13:00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f28",
+    "name": "Departmental store",
+    "location": "Usha Zone",
+    "categories": [
+      "Usha Zone",
+      "General Store"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/uKTdxdk3qP7PUxNt7",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5, 6
+        ],
+        "timeSlots": [
+          {
+            "open": "09:00",
+            "close": "22:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f29",
+    "name": "Tapti cycle shop",
+    "location": "Near Tapti",
+    "categories": [
+      "Zaitoon Zone",
+      "Cycle Shop",
+      "Services"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/poR2WViXxHSdMtpe8",
+    "schedules": [
+      {
+        "days": [
+          0, 1, 2, 3, 4, 5
+        ],
+        "timeSlots": [
+          {
+            "open": "09:00",
+            "close": "19:30"
+          }
+        ]
+      }
+    ]
+  }
+]

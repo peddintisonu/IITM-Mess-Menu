@@ -6,7 +6,7 @@
 			"1. SNAPSHOTS: Each version is independent. It must contain FULL data (Common Items + Schedule). It does not inherit from previous versions.",
 			"2. NAMING: The key must be the Start Date (YYYY-MM-DD).",
 			"3. HIERARCHY: Categories -> Week Cycle (e.g., Week_A) -> Schedule -> Day -> Meal.",
-			"4. STYLING: Wrap text in *asterisks* to make it *Bold* (e.g., '*Chicken Biryani*')."
+			"4. STYLING: *bold/highlight* ('*Chicken Biryani*'), ~strikethrough~ or ~~strikethrough~~ ('~Boiled Egg~'), _italic_ ('_Chef Special_'), +underline+ ('+New+'). Combinations like ~*Cancelled Special*~ are supported."
 		],
 
 		"YYYY-MM-DD": {
@@ -67,8 +67,7 @@
 			"_guide": [
 				"1. HIERARCHY: Rules process Top-to-Bottom. Recommended Order: Remap -> Override -> Addon.",
 				"2. SYNTAX: Use 'All_Categories' to apply items to everyone. If a specific category (e.g. South_Veg) is also defined, it will IGNORE the global list and use the specific one.",
-				"3. STYLING: Wrap text in *asterisks* to make it *Bold* (e.g., '*Special Sweet*').",
-				"4. LINKS: HTML <a href='...'> or markdown [text](url) are supported. Use <a href='#feedback'> or [text](#feedback) to directly open the FeedbackModal."
+				"3. STYLING: *bold/highlight* ('*Special Sweet*'), ~strikethrough~ ('~Old Item~'), _italic_ ('_Special_'), +underline+."
 			],
 
 			"eventName": "TEMPLATE: Event Name (e.g., Diwali Special)",

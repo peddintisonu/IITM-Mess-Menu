@@ -24,6 +24,7 @@ lerna-debug.log*
 
 # PDF Menu files (as requested)
 /Menus/
+/reference/
 
 # Editor directories and files
 .vscode/*
