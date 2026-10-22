@@ -109,7 +109,7 @@
     "schedules": [
       {
         "days": [
-          0, 1, 2, 3, 4, 5
+          1, 2, 3, 4, 5, 6
         ],
         "timeSlots": [
           {
@@ -437,7 +437,7 @@
     "schedules": [
       {
         "days": [
-          0, 1, 2, 3, 4, 5
+          1, 2, 3, 4, 5, 6
         ],
         "timeSlots": [
           {
@@ -451,7 +451,7 @@
   {
     "id": "f19",
     "name": "FROZEN FEAST",
-    "location": "HFC_ZONE",
+    "location": "HFC Zone",
     "categories": [
       "HFC Zone",
       "Desserts"
@@ -689,7 +689,7 @@
   },
   {
     "id": "f28",
-    "name": "Departmental store",
+    "name": "Usha Departmental store",
     "location": "Usha Zone",
     "categories": [
       "Usha Zone",
@@ -723,12 +723,68 @@
     "schedules": [
       {
         "days": [
-          0, 1, 2, 3, 4, 5
+          1, 2, 3, 4, 5, 6
         ],
         "timeSlots": [
           {
             "open": "09:00",
             "close": "19:30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f30",
+    "name": "Sri Durga Peeli Amman Temple",
+    "location": "Near Watsa",
+    "categories": [
+      "Temples"
+    ],
+    "googleMapsUrl": "https://maps.app.goo.gl/a7kJ3tqG8Y8CYx3F8",
+    "schedules": [
+      {
+        "days": [
+          1, 3, 4, 6, 0
+        ],
+        "timeSlots": [
+          {
+            "open": "07:00",
+            "close": "10:00"
+          },
+          {
+            "open": "17:00",
+            "close": "20:00"
+          }
+        ]
+      },
+      {
+        "days": [
+          5
+        ],
+        "timeSlots": [
+          {
+            "open": "07:00",
+            "close": "12:00"
+          },
+          {
+            "open": "17:00",
+            "close": "20:00"
+          }
+        ]
+      },
+      {
+        "days": [
+          2
+        ],
+        "timeSlots": [
+          {
+            "open": "07:00",
+            "close": "10:00"
+          },
+          {
+            "open": "15:00",
+            "close": "20:00"
           }
         ]
       }

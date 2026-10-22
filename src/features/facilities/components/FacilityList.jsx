@@ -302,7 +302,7 @@ function FacilityItem({ facility, isExpanded, onToggle, isOpen }) {
 									</div>
 								</div>
 
-								<div className="flex items-start gap-2">
+								{/* <div className="flex items-start gap-2">
 									<Tag
 										size={15}
 										className="text-primary mt-0.5 shrink-0"
@@ -313,7 +313,7 @@ function FacilityItem({ facility, isExpanded, onToggle, isOpen }) {
 											{facility.categories.join(", ")}
 										</p>
 									</div>
-								</div>
+								</div> */}
 
 								<div className="flex items-start gap-2 sm:col-span-2 lg:col-span-1">
 									<Clock
@@ -327,10 +327,12 @@ function FacilityItem({ facility, isExpanded, onToggle, isOpen }) {
 												const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 												const isAllWeek = schedule.days.length === 7;
 												const isWeekdays = schedule.days.length === 5 && !schedule.days.includes(0) && !schedule.days.includes(6);
+												const isExceptSunday = schedule.days.length === 6 && !schedule.days.includes(0);
 												
 												let daysLabel = "";
 												if (isAllWeek) daysLabel = "All days";
 												else if (isWeekdays) daysLabel = "Mon - Fri";
+												else if (isExceptSunday) daysLabel = "Mon - Sat";
 												else daysLabel = schedule.days.map(d => dayNames[d]).join(", ");
 
 												const timesLabel = schedule.timeSlots
